@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: WsLib.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: WsLib.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+//=========================================================================
+// Class / Command (Cmd) Managers
+//=========================================================================
+// These managers are set up to handle a Class:Cmd combination
+//    like Class: "gt2",  Cmd: "call"  or  Class: "nkmedia"  Cmd: "join"
+//    IF both the Class and Command are specified using 
+//        addClassManager( mngClass, mngCmd, clsManagerFunction )
+// OR fallback to use the manager for a Class if there is no match for the 
+//    Class:Cmd combination.  Setting a manager for a class is done by using
+//    addClassManager( mngClass, clsManagerFunction )
+//
+// NOTE: If there is a Class:Cmd manager it will ALWAYS be used instead of the 
+//    Class only manager.  Class only managers are used as a fallback IF there
+//    is no Class:Cmd manager specified.  
+// If one function will handle all Cmd: for a Class then, only that manager
+//    needs to be giving - no Class:Cmd managers are required.
+// However, if neither a Class:Cmd manager or a Class manager are set up, then
+//    then request will NOT be handled and NcLite will be sent an error by
+//    WsConnection stating that no manager is set to handle that request.
+//-------------------------------------------------------------------------
+
+// addClassManager - The clsManagerFunction will handle any cmd for a class that
+//   does not have a more specific handler.  A more specific handler would be one that
+//   is specified to handle a class:cmd combination, using 
+//      addClassManager( mngClass, mngCmd, clsManagerFunction )
+// 
+// mngClass - String value the names the class the clsManagerFunction will handle.
+// clsManagerFunction - A function that can handle and route all commands (cmd:) for class
+//
+
+'use strict';
+
+
+/**
+ * Utils File
+ * @class  WsLib
+ */
+(function (root, factory) {
+	if(typeof exports === 'object' &amp;&amp; typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' &amp;&amp; define.amd)
+		define("WsLib", [], factory);
+	else if(typeof exports === 'object')
+		exports.WsLib = factory();
+	else
+		root.WsLib = factory();
+})(this, function() {
+
+	var WsLibClass = {};
+	WsLibClass = function() {
+		// Map of Class Managers.  
+		// Only 1 manager per Class - like nkmedia, etc.  Core class handled at WsConnection
+	};
+
+	WsLibClass.prototype = {
+
+		cloneObj: function(obj) {
+		    var copy;
+
+		    // Handle the 3 simple types, and null or undefined
+		    if (null === obj || "object" != typeof obj) return obj;
+
+		    // Handle Date
+		    if (obj instanceof Date) {
+		        copy = new Date();
+		        copy.setTime(obj.getTime());
+		        return copy;
+		    }
+
+		    // Handle Array
+		    if (obj instanceof Array) {
+		        copy = [];
+		        for (var i = 0, len = obj.length; i &lt; len; i++) {
+		            copy[i] = this.cloneObj(obj[i]);
+		        }
+		        return copy;
+		    }
+
+		    // Handle Object
+		    if (obj instanceof Object) {
+		        copy = {};
+		        for (var attr in obj) {
+		            // if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+		            if (( typeof(obj[attr]) !==  'function') &amp;&amp; ( attr !== '__proto__')) copy[attr] = this.cloneObj(obj[attr]);
+		        }
+		        return copy;
+		    }
+
+		    throw new Error("Unable to copy obj! Its type isn't supported.");
+		},		// close function 
+
+		cloneObj4Log: function(obj, maxIndividualLength ) {
+		    var copy;
+		    var maxILen = (( !!maxIndividualLength) &amp;&amp; (maxIndividualLength >= 20 )) ? maxIndividualLength : 20;
+
+		    // Handle the 3 simple types, and null or undefined
+		    if ( ( typeof(obj) != 'undefined' ) &amp;&amp; ( null !== obj )) {
+		    	if ( ( typeof(obj) == 'boolean') || ( typeof(obj) == 'number') ) {
+		    		return obj;
+		    	} else if ( typeof(obj) == 'string' ) {
+		    		return ( obj.length &lt; maxILen ) ? obj : obj.substring(0, maxILen) + "...";
+		    	}
+		    } else if ( typeof(obj) == 'undefined' ) {
+		    	return "undefined";
+		    } else if ( null === obj ) {
+		    	return "null";
+		    }
+
+		    // if (null !== obj &amp;&amp; "boolean" === typeof obj) return obj;
+
+		    // if (null == obj || "object" != typeof obj) return ( obj.length &lt; maxILen ) ? obj : obj.substring(0, maxILen) + "...";
+
+		    // Handle Date
+		    if (obj instanceof Date) {
+		        copy = new Date();
+		        copy.setTime(obj.getTime());
+		        return copy;
+		    }
+
+		    // Handle Array
+		    if (obj instanceof Array) {
+		        copy = [];
+		        for (var i = 0, len = obj.length; i &lt; len; i++) {
+		            copy[i] = this.cloneObj4Log(obj[i], maxIndividualLength);
+		        }
+		        return copy;
+		    }
+
+		    // Handle Object
+		    if (obj instanceof Object) {
+		        copy = {};
+		        for (var attr in obj) {
+		            // if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+		            if (( typeof(obj[attr]) !==  'function') &amp;&amp; ( attr !== '__proto__')) copy[attr] = this.cloneObj4Log(obj[attr], maxIndividualLength);
+		        }
+		        return copy;
+		    }
+
+		    throw new Error("Unable to copy obj! Its type isn't supported. Type = " + (typeof(obj))  );
+		}	// close function 
+
+
+	};	// Close WsLibClass.prototype
+
+
+	var WsLib = new WsLibClass();
+	return WsLib;
+});
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WebSocketManager_old.html">WebSocketManager_old</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-tut1.html">tut1</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 11:58:45 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

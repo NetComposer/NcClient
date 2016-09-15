@@ -1,0 +1,9561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: NkMedia</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: NkMedia</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>NkMedia</h2>
+        
+            <div class="class-description"><p>Constructs a new SfuMngr NkMedia</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="NkMedia"><span class="type-signature"></span>new NkMedia<span class="signature">(SettingsObject)</span><span class="type-signature"> &rarr; {<a href="NkMedia.html">NkMedia</a>}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SettingsObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
+            It is a convience method for setting multple things at once and/or passing them from other sub classes or parents.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>confName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>confName     Name use for this instance</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+    <dt class="tag-tutorial">Tutorials:</dt>
+    <dd class="tag-tutorial">
+        <ul>
+            <li><a href="tutorial-tut1.html">tut1</a></li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html">RtcMedia</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+<h5>Requires:</h5>
+<ul>
+    <li>module:WebSocketManager</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="NkMedia.html">NkMedia</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+    
+    </div>
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="RtcMedia.html">RtcMedia</a></li>
+    </ul>
+
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:WebSocketManager</li>
+        </ul>
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".eventNames"><span class="type-signature">(static) </span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns events for this class PLUS events for parent classes if available.</p>
+<p>Events for this class are:</p>
+<ul>
+<li>nkEvent1</li>
+<li>nkEvent2</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1751">line 1751</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#.eventNames">RtcMedia.eventNames</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".mediaServerTypes"><span class="type-signature">(static, readonly) </span>mediaServerTypes<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Types of Media Servers</p>
+<ul>
+<li>FS: 'nkmedia_fs',</li>
+<li>FREESWITCH: 'nkmedia_fs',</li>
+<li>JANUS: 'nkmedia_janus',</li>
+<li>KURENTO: 'nkmedia_kurento'</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line139">line 139</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of NkMedia.mediaServerTypes.</p>
+    
+    <pre class="prettyprint"><code>NkMedia.mediaServerTypes.FREESWITCH;
+// returns 'nkmedia_fs'</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".ncErrorCode"><span class="type-signature">(static) </span>ncErrorCode<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Error Codes from NetComposer</p>
+<ul>
+<li>internal_error:               1001</li>
+<li>normal:                       1002</li>
+<li>anormal_termination:          1003</li>
+<li>invalid_state:                     1004</li>
+<li>timeout:                      1005</li>
+<li>not_implemented:              1006</li>
+<li>process_not_found:            1010</li>
+<li>process_down:                 1011</li>
+<li>registered_down:              1012</li>
+<li>user_stop:                         101</li>
+<li>service_not_found:            1020</li>
+<li>unauthorized:                 1030</li>
+<li>not_authenticated:            1031</li>
+<li>already_authenticated:        1032</li>
+<li>user_not_found:               1033</li>
+<li>duplicated_session_id:        1034</li>
+<li>invalid_session_id:           1035</li>
+<li>operation_error:              1040</li>
+<li>unknown_command:              1041</li>
+<li>unknown_class:                     1042</li>
+<li>incompatible_operation:  1043</li>
+<li>unknown_operation:            1044</li>
+<li>invalid_operation:            1045</li>
+<li>syntax_error:                 1046</li>
+<li>missing_field:                     1047</li>
+<li>invalid_parameters:           1048</li>
+<li>missing_parameters:           1049</li>
+<li>session_timeout:              1060</li>
+<li>session_stop:                 1061</li>
+<li>session_not_found:            1062</li>
+<li>no_mediaserver:               2001</li>
+<li>unknown_session_type:         2002</li>
+<li>missing_offer:                     2010</li>
+<li>duplicated_offer:             2011</li>
+<li>offer_not_set:                     2012</li>
+<li>offer_already_set:            2013</li>
+<li>duplicated_answer:            2014</li>
+<li>answer_not_set:               2015</li>
+<li>answer_already_set:           2016</li>
+<li>call_not_found:               2020</li>
+<li>call_rejected:                     2021</li>
+<li>no_destination:               2022</li>
+<li>no_answer:                         2023</li>
+<li>already_answered:             2024</li>
+<li>originator_cancel:            2025</li>
+<li>peer_hangup:                  2026</li>
+<li>room_not_found:               2030</li>
+<li>room_already_exists:          2031</li>
+<li>room_destroyed:               2032</li>
+<li>no_participants:              2033</li>
+<li>unknown_publisher:            2034</li>
+<li>invalid_publisher:            2035</li>
+<li>publisher_stopped:            2036</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1852">line 1852</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".nkMediaSessionType"><span class="type-signature">(static, readonly) </span>nkMediaSessionType<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Types of Sessions NkMedia supports</p>
+<ul>
+<li>p2p: 'p2p',</li>
+<li>echo: 'echo',</li>
+<li>proxy: 'proxy',</li>
+<li>publish: 'publish',</li>
+<li>listen: 'listen',</li>
+<li>park: 'park',</li>
+<li>mcu: 'mcu',</li>
+<li>bridge: 'bridge'</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line612">line 612</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of NkMedia.nkMediaSessionType.</p>
+    
+    <pre class="prettyprint"><code>NkMedia.nkMediaSessionType.p2p;
+// returns 'p2p'</code></pre>
+
+
+
+        
+            
+<h4 class="name" id=".participantType"><span class="type-signature">(static, readonly) </span>participantType<span class="type-signature"> :number</span></h4>
+
+
+
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">number</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line198">line 198</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of SfuMngr.participantType.</p>
+    
+    <pre class="prettyprint"><code>SfuMngr.participantType.admin;
+// returns 2</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="_constraints"><span class="type-signature">(private, readonly) </span>_constraints<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns contstraints used for getUserMedia.  These are set elsewher.</p>
+<p>The two values used in constraints are</p>
+<ul>
+<li>this.sendAudio - <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+<li>this.sendVideo - <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_constraints">RtcMedia#_constraints</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line713">line 713</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+        
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_rtcOfferOptions"><span class="type-signature">(private, readonly) </span>_rtcOfferOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get Options uses with peerConn.createOffer(optional RTCOfferOptions options)</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_rtcOfferOptions">RtcMedia#_rtcOfferOptions</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line774">line 774</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.w3.org/TR/webrtc/#idl-def-rtcofferoptions">RTCOfferOptions from RFC</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="eventNames"><span class="type-signature"></span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns a list of Event Names for this class and parents.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="RtcMedia.html#eventNames">RtcMedia#eventNames</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1736">line 1736</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="iceCandidatesTimeOutMs"><span class="type-signature"></span>iceCandidatesTimeOutMs<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Time in MS to wait before timing out waiting for Ice Candidates.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#iceCandidatesTimeOutMs">RtcMedia#iceCandidatesTimeOutMs</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1036">line 1036</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="iceRestart"><span class="type-signature"></span>iceRestart<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set true if you want restart Ice candidates each time you get user media.  Default = false.</p>
+<ul>
+<li>true = Reset and get Ice Candidates every time an offer or answer is processed.</li>
+<li>false = Only do Ice Candidates the first time.</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line629">line 629</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localAudioMuted"><span class="type-signature"></span>localAudioMuted<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get local audio muted.</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localAudioMuted">RtcMedia#localAudioMuted</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line929">line 929</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localCurrentStream"><span class="type-signature"></span>localCurrentStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get Latest Stream from getUserMedia.  There is no Set for this.  It is only set via getUserMedia.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line853">line 853</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localDescription"><span class="type-signature">(readonly) </span>localDescription<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the local JSEP Destription.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localDescription">RtcMedia#localDescription</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1242">line 1242</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localPreviousStream"><span class="type-signature"></span>localPreviousStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get the previous Stream from getUserMedia.  We keep the current (most recent getUserMedia) and one previous version of the streams.
+        This would allow you to get/use the latest 2 Streams from getUserMedia.  There is no Set for this.  It is only set via getUserMedia.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line869">line 869</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localStream"><span class="type-signature">(readonly) </span>localStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the local stream - Convienance for  this._peerConn.getLocalStreams()[0]</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localStream">RtcMedia#localStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1257">line 1257</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#publishStream">RtcMedia#publishStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localVideoElement"><span class="type-signature"></span>localVideoElement<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Local Video Element from HTML to put video in.  If this is set, the Video Element source
+        will automatically be set when media is ready.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localVideoElement">RtcMedia#localVideoElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1138">line 1138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localVideoMuted"><span class="type-signature"></span>localVideoMuted<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get local video muted.</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="RtcMedia.html#localVideoMuted">RtcMedia#localVideoMuted</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line969">line 969</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mediaDirection"><span class="type-signature">(private) </span>mediaDirection<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Meida Direction.
+  NOTE: Usually other classes set this.</p>
+<p>Values </p>
+<ul>
+<li>BOTH: 2</li>
+<li>PUBLISH_ONLY: 1</li>
+<li>LISTEN_ONLY: 0</li>
+<li>Default Value: BOTH</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#mediaDirection">RtcMedia#mediaDirection</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line891">line 891</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mediaServerType"><span class="type-signature"></span>mediaServerType<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>MediaServerType Must be one of <a href="NkMedia.html#.mediaServerTypes">NkMedia.mediaServerTypes</a></p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line391">line 391</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>The name for this instance.  Stored in internal DB</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#name">RtcMedia#name</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line406">line 406</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="negotiationNeededTimeOutMs"><span class="type-signature"></span>negotiationNeededTimeOutMs<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Time in MS to wait to determine if negotiation is needed.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#negotiationNeededTimeOutMs">RtcMedia#negotiationNeededTimeOutMs</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1072">line 1072</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="negotiationNeededTimeOutReject"><span class="type-signature"></span>negotiationNeededTimeOutReject<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>If NegotiaionNeeded times out, should we reject or resolve the promise?  True = Reject.  False = Resolve.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1108">line 1108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nkBitrate"><span class="type-signature"></span>nkBitrate<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set the nkBitrate for use with NkMedia commands</p>
+<ul>
+<li>0 = Unlimited</li>
+<li>1000 = 1K</li>
+</ul>
+<p>Commands that use update:</p>
+<ul>
+<li>update - <a href="NkMedia.html#._chn_nk_MediaSessionUpdate">NkMedia._chn_nk_MediaSessionUpdate</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line296">line 296</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nkRecord"><span class="type-signature"></span>nkRecord<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set the nkRecord for use with NkMedia commands</p>
+<p>Commands that use update:</p>
+<ul>
+<li>update - <a href="NkMedia.html#._chn_nk_MediaSessionUpdate">NkMedia._chn_nk_MediaSessionUpdate</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line326">line 326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nkSessionId"><span class="type-signature">(readonly) </span>nkSessionId<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get nkSessionId</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line187">line 187</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nkUseAudio"><span class="type-signature"></span>nkUseAudio<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get a flag used with muting and return values</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+<p>Commands that use update:</p>
+<ul>
+<li>update - <a href="NkMedia.html#._chn_nk_MediaSessionUpdate">NkMedia._chn_nk_MediaSessionUpdate</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line224">line 224</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="nkUseVideo"><span class="type-signature"></span>nkUseVideo<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get a flag used with muting and return values</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+<p>Commands that use update:</p>
+<ul>
+<li>update - <a href="NkMedia.html#._chn_nk_MediaSessionUpdate">NkMedia._chn_nk_MediaSessionUpdate</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line260">line 260</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="offerToReceiveAudio"><span class="type-signature"></span>offerToReceiveAudio<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn SDP Offer to recieve audio.</p>
+<ul>
+<li>true = yes - Request to recieve audio from remote side.</li>
+<li>false = no - Request to NOT recieve audio from remote side.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#offerToReceiveAudio">RtcMedia#offerToReceiveAudio</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line558">line 558</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="offerToReceiveVideo"><span class="type-signature"></span>offerToReceiveVideo<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn SDP Offer to recieve video. </p>
+<ul>
+<li>true = yes - Request to recieve video from remote side.</li>
+<li>false = no - Request to NOT recieve video from remote side.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#offerToReceiveVideo">RtcMedia#offerToReceiveVideo</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line581">line 581</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="peerConn"><span class="type-signature">(readonly) </span>peerConn<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the WebRTC PeerConnection.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#peerConn">RtcMedia#peerConn</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1179">line 1179</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="publishStream"><span class="type-signature"></span>publishStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/Get the local stream for publishing.  If no stream is set by the developer,
+        the last stream gotten via getUserMedia is returned.
+    <P>
+    This is the value that gets used by Set Stream methods.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#publishStream">RtcMedia#publishStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line830">line 830</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+        
+            <li><a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteDescription"><span class="type-signature">(readonly) </span>remoteDescription<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the remote JSEP Destription.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#remoteDescription">RtcMedia#remoteDescription</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1278">line 1278</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteStream"><span class="type-signature">(readonly) </span>remoteStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the remote stream - Convienance for this._peerConn.getRemoteStreams()[0]</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#remoteStream">RtcMedia#remoteStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1291">line 1291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteVideoElement"><span class="type-signature"></span>remoteVideoElement<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Remote Video Element from HTML to put video in.  If this is set, the Video Element source
+        will automatically be set when media is ready.
+    This should be set by the programer before getting user media (face or screen)</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#remoteVideoElement">RtcMedia#remoteVideoElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1158">line 1158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sdpAnswer"><span class="type-signature">(readonly) </span>sdpAnswer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets SDP from the answer.  It checks both local and remote descriptions.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#sdpAnswer">RtcMedia#sdpAnswer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1219">line 1219</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sdpOffer"><span class="type-signature">(readonly) </span>sdpOffer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets SDP from the offer.  It checks both local and remote descriptions.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#sdpOffer">RtcMedia#sdpOffer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1196">line 1196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Values used with getUserMedia functions.
+When creating a MediaStream via getUserMedia methods, should audio be used?  This works to set audio contrainst used in getUserMedia.</p>
+<ul>
+<li>true = yes - Ask getUserMedia to use audio.</li>
+<li>false = no - Do not get audio via getUserMedia</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line445">line 445</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Values used with getUserMedia functions.
+When creating a MediaStream via getUserMedia methods, should video be used?  This works to set video contrainst used in getUserMedia.</p>
+<p>Value Types:</p>
+<ul>
+<li>Boolean</li>
+<li>String</li>
+<li>Object </li>
+</ul>
+<p>Boolean Values:        </p>
+<ul>
+<li>true = yes - Ask getUserMedia to use video.</li>
+<li>false = no - Do not get video via getUserMedia.</li>
+</ul>
+<p>String Values:</p>
+<ul>
+<li>String values should be the name of one of the types returned by <a href="RtcMedia.html#.videoSizeOptions">RtcMedia.videoSizeOptions</a></li>
+</ul>
+<p>Object Value:</p>
+<ul>
+<li>MUST be valid for video contrainst used in getUserMedia.  See WebRTC Spec for more details.</li>
+</ul>
+<p>Default Value:</p>
+<ul>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line503">line 503</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="singleStreamOnly"><span class="type-signature"></span>singleStreamOnly<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Determines if peerConn can have more than one MediaStream at a given time.
+  PeerConn allows this, BUT it causes problems in most cases. This is turned off (false) by default
+  to prevent many problems.  Only set this to true if you really know what you are doing.</p>
+<ul>
+<li>true = Reset and get Ice Candidates every time an offer or answer is processed.</li>
+<li>false = Only do Ice Candidates the first time.</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#singleStreamOnly">RtcMedia#singleStreamOnly</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line798">line 798</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="stopCode"><span class="type-signature"></span>stopCode<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set / Get stop Code for stopping this Media Session</p>
+<ul>
+<li>Value MUST be a Number</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line404">line 404</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="stopReason"><span class="type-signature"></span>stopReason<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set / Get stop Reason for stopping this Media Session</p>
+<ul>
+<li>Value MUST be a String</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line424">line 424</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="trickleIce"><span class="type-signature"></span>trickleIce<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set true to trickel ice,  false to send sdp as a completed batch
+NOTE: This is not yet working - Only sends as a batch</p>
+<ul>
+<li>true = Yes - Trickle Ice - Send Candidates 1 at a time.  Not all services allow this.</li>
+<li>false = No - Do not trickle Ice.  Gather then all, then send in on completed SDP</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#trickleIce">RtcMedia#trickleIce</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1012">line 1012</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="voiceActivityDetection"><span class="type-signature"></span>voiceActivityDetection<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn use Voice Activity Detection. Set true if you want to use VAD to save bandwidth. </p>
+<ul>
+<li>true = Use Voice Activity Detection.</li>
+<li>false = Turn off Voice Activity Detection.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line606">line 606</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_nk_MediaSessionInfo"><span class="type-signature">(static) </span>_chn_nk_MediaSessionInfo<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Inforamation about a Media Session.</p>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self.nkSessionId - MUST not be set via developer.  Only set by <a href="NkMedia.html#._chn_nk_MediaSessionStart">NkMedia._chn_nk_MediaSessionStart</a></li>
+</ul>
+<p>Parameters Set - Via function (or Promise)</p>
+<ul>
+<li>self._wsSendData</li>
+<li>self._wsResponseData</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1064">line 1064</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="NkMedia.html#.nkMediaSessionType">NkMedia.nkMediaSessionType</a></li>
+        
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#get-info-about-a-session">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#get-info-about-a-session</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_nk_MediaSessionSetAnswer"><span class="type-signature">(static) </span>_chn_nk_MediaSessionSetAnswer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set the SDP Answer for a Media Session.</p>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self.nkSessionId - MUST not be set via developer.  Only set by <a href="NkMedia.html#._chn_nk_MediaSessionStart">NkMedia._chn_nk_MediaSessionStart</a></li>
+<li>self.sdpAnswer</li>
+</ul>
+<p>Parameters Set - Via function (or Promise)</p>
+<ul>
+<li><p>self._nkSessionId === 'closed'</p>
+</li>
+<li><p>self._wsSendData</p>
+</li>
+<li>self._wsResponseData</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line908">line 908</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#set-an-answer">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#set-an-answer</a></li>
+        
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/janus.md#proxy">https://github.com/NetComposer/nkmedia/blob/master/doc/janus.md#proxy</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_nk_MediaSessionStart"><span class="type-signature">(static) </span>_chn_nk_MediaSessionStart<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Starts a Media Session.</p>
+<p>Session types are listed at <a href="NkMedia.html#.nkMediaSessionType">NkMedia.nkMediaSessionType</a> and include:</p>
+<ul>
+<li>p2p</li>
+<li>echo</li>
+<li>proxy</li>
+<li>publish</li>
+<li>listen</li>
+<li>park</li>
+<li>mcu</li>
+<li>bridge</li>
+</ul>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self._cmdData</li>
+</ul>
+<p>Parameters Set - Via function (or Promise)</p>
+<ul>
+<li>self._nkSessionId</li>
+<li>self._jsepRtcDesc - with SDP from server<ul>
+<li>Answer SDP or</li>
+<li>Offer SDP</li>
+</ul>
+</li>
+<li>self._wsSendData</li>
+<li>self._wsResponseData</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line716">line 716</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="NkMedia.html#.nkMediaSessionType">NkMedia.nkMediaSessionType</a></li>
+        
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#start-a-session">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#start-a-session</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_nk_MediaSessionStop"><span class="type-signature">(static) </span>_chn_nk_MediaSessionStop<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Stop a Media Session.</p>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self.nkSessionId - MUST not be set via developer.  Only set by <a href="NkMedia.html#._chn_nk_MediaSessionStart">NkMedia._chn_nk_MediaSessionStart</a></li>
+<li>self.stopCode</li>
+<li>self.stopReason</li>
+</ul>
+<p>Parameters Set - Via function (or Promise)</p>
+<ul>
+<li><p>self._nkSessionId === 'closed'</p>
+</li>
+<li><p>self._wsSendData</p>
+</li>
+<li>self._wsResponseData</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line836">line 836</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="NkMedia.html#.nkMediaSessionType">NkMedia.nkMediaSessionType</a></li>
+        
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#stop-a-session">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#stop-a-session</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_nk_MediaSessionUpdate"><span class="type-signature">(static) </span>_chn_nk_MediaSessionUpdate<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Update a Media Session.</p>
+<p>There are multiple items that can be updated, including (but not limited to) </p>
+<ul>
+<li>use_audio  Include or not the audio - Default = true</li>
+<li>use_video  Include or not the video - Default = true</li>
+<li>nkBitrate  Maximum nkBitrate (kbps, 0:unlimited)  - Default = 0</li>
+<li>record  Perform recording of audio and video - Default = false</li>
+</ul>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self.nkSessionId - MUST not be set via developer.  Only set by <a href="NkMedia.html#._chn_nk_MediaSessionStart">NkMedia._chn_nk_MediaSessionStart</a></li>
+<li>self._cmdData<ul>
+<li>NOTE: This function overrides DataObject.session_id: self.nkSessionId;</li>
+<li>NOTE: This function overrides DataObject.update_type: 'media';</li>
+<li>NOTE: This function overrides DataObject.use_audio: ! self.nkUseAudio;</li>
+<li>NOTE: This function overrides DataObject.use_video: ! self.nkUseVideo;</li>
+<li>NOTE: This function overrides DataObject.bitrate = self.nkBitrate;</li>
+<li>NOTE: This function overrides DataObject.record = self.nkRecord</li>
+</ul>
+</li>
+</ul>
+<p>Parameters Set - Via function (or Promise)</p>
+<ul>
+<li>self._wsSendData</li>
+<li>self._wsResponseData</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line992">line 992</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#update-a-session">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#update-a-session</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._isValidNkSessionId"><span class="type-signature">(static) </span>_isValidNkSessionId<span class="signature">(NkSessionId)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Test basic things about an NkSessionId and returns 'true' or 'false'</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>NkSessionId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NkSessionId</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The NkSessionId - usually from self.nkSessionId</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line637">line 637</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>False = No - not valid.  True = valid (or look like it may be)</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomCreate"><span class="type-signature">(static) </span>_nkMediaRoomCreate<span class="signature">(CmdData, RejectOnAlreadyCreated)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Create a Conference Room</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CmdData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>room_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(Optional) Name of the room.  If not provided, one will be created.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>class</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of Conference.  Options include:</p>
+<ul>
+<li>sfu</li>
+<li>mcu</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>backend</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of Media Server.  Options include:</p>
+<ul>
+<li>nkmedia_janus</li>
+<li>nkmedia_fs</li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>RejectOnAlreadyCreated</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If the Room is already created, should we return Resolve or Reject</p>
+<ul>
+<li>true = Reject</li>
+<li>false = (Default/undefined) Resolve</li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1172">line 1172</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="NkMedia.html#.mediaServerTypes">NkMedia.mediaServerTypes</a></li>
+        
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#create-a-room">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#create-a-room</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.room_id -- Room ID</li>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomDestroy"><span class="type-signature">(static) </span>_nkMediaRoomDestroy<span class="signature">(CmdData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Destroy a Conference Room</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CmdData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>room_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(Manditory) Name of the room.  If not provided, one will be created.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1386">line 1386</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#destroy-a-room">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#destroy-a-room</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomInfo"><span class="type-signature">(static) </span>_nkMediaRoomInfo<span class="signature">(CmdData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get information about a Conference Room</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CmdData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>room_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(Manditory) Name of the room.  If not provided, one will be created.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1451">line 1451</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#get-info-about-a-room">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#get-info-about-a-room</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomList"><span class="type-signature">(static) </span>_nkMediaRoomList<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>List Conference Rooms</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1501">line 1501</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#list-rooms">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#list-rooms</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomMsgLogGet"><span class="type-signature">(static) </span>_nkMediaRoomMsgLogGet<span class="signature">(CmdData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get all messages for this conference - this should be used for an update when coming into the conference.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CmdData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>room_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(Manditory) Name of the room.  If not provided, one will be created.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of data.  Some options are:</p>
+<ul>
+<li>text</li>
+<li>notice</li>
+<li>action - This is a way to pass action data to all participants if needed.</li>
+<li>json - The text of the message is in JSON format that may include multi-media</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1636">line 1636</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._nkMediaRoomMsgLogSend"><span class="type-signature">(static) </span>_nkMediaRoomMsgLogSend<span class="signature">(CmdData)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Send a message to all parties in a conference</p>
+<p>NOTE: NC adds the following fields to the msg object:</p>
+<ul>
+<li>msg_id</li>
+<li>user</li>
+<li>session_id</li>
+<li>timestamp</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>CmdData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>room_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(Manditory) Name of the room.  If not provided, one will be created.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Type of data.  Some options are:</p>
+<ul>
+<li>text</li>
+<li>notice</li>
+<li>action - This is a way to pass action data to all participants if needed.</li>
+<li>json - The text of the message is in JSON format that may include multi-media</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text of the message</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line1557">line 1557</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md">https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Data</p>
+<ul>
+<li>Data.wsResponseData -- Response from NetComposer</li>
+<li>Data.wsSendData -- Data Sent to NetComposer</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_createPeerConnection"><span class="type-signature">(private) </span>_createPeerConnection<span class="signature">(RTCConfiguration)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates and sets up a PeerConnection.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCConfiguration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCConfiguration</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Configuration data</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_createPeerConnection">RtcMedia#_createPeerConnection</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3471">line 3471</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_getUserMedia"><span class="type-signature">(private) </span>_getUserMedia<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get User Media using self._constraints created by developer 
+   OR just use the default.</p>
+<p>Notes:</p>
+<ul>
+<li>This should never be called by normal developer.  It is private.</li>
+<li>Use <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> or <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> instead.</li>
+</ul>
+<p>Options to PreSet</p>
+<ul>
+<li>None</li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>None </li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3951">line 3951</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcAddLocalStream"><span class="type-signature">(private) </span>_pcAddLocalStream<span class="signature">(StreamToAdd)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Adds a MediaStream.  NOTE: This means there could be more than 1.<br>        If you want to make sure there is only one use <a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a>.
+        <BR> Adding streams to an existing call will trigger a Negotiation needed event.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToAdd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_pcAddLocalStream">RtcMedia#_pcAddLocalStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2884">line 2884</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcRemoveLocalStream"><span class="type-signature">(private) </span>_pcRemoveLocalStream<span class="signature">(StreamToRemove)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes the MediaStream IF present</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToRemove</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_pcRemoveLocalStream">RtcMedia#_pcRemoveLocalStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2940">line 2940</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcSetLocalStream"><span class="type-signature">(private) </span>_pcSetLocalStream<span class="signature">(StreamToSet)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets only 1 MediaStream and makes sure there is only one by deleting others if needed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2987">line 2987</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closeAll"><span class="type-signature"></span>closeAll<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Close everything, including:</p>
+<ul>
+<li>closeLocalStreams <a href="RtcMedia.html#closeLocalStreams">RtcMedia#closeLocalStreams</a></li>
+<li>closePeerConn <a href="RtcMedia.html#closePeerConn">RtcMedia#closePeerConn</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="RtcMedia.html#closeAll">RtcMedia#closeAll</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3348">line 3348</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closeLocalStreams"><span class="type-signature"></span>closeLocalStreams<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Close all local Streams</p>
+<ul>
+<li>RtcMedia._streamTracksDisableStopRemove on this._localPreviousStream</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this._localCurrentStream</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getLocalStreams</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getRemoteStreams</li>
+<li>this.localVideoElement.srcObject = null </li>
+<li>this.remoteVideoElement.srcObject = null</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#closeLocalStreams">RtcMedia#closeLocalStreams</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3371">line 3371</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closePeerConn"><span class="type-signature"></span>closePeerConn<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Closes the RTCPeerConnection (peerConn) </p>
+<ul>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getLocalStreams</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getRemoteStreams</li>
+<li>this.peerConn.close</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#closePeerConn">RtcMedia#closePeerConn</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3420">line 3420</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._streamTracksDisableStopRemove">RtcMedia._streamTracksDisableStopRemove</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getLocalFaceStream"><span class="type-signature"></span>getLocalFaceStream<span class="signature">(SendAudio, SendVideo)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get Local Camera video (face) and optionally connect to the local window video element.
+        this.localVideoElement must be set to an HTML video element before calling this.     </p>
+<p>Options to PreSet</p>
+<ul>
+<li>self.sendAudio  - <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+<li>self.sendVideo  - <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+<li>self.localVideoElement - Set it to the local HTML Video Element.  IF set, the
+ video will be put into that Video Element when gotten.  That same MediaStream is
+ available via self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>None</li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SendAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use audio.</p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SendVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+<p>Other Functions Called</p>
+<ul>
+<li>self._getUserMedia - <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3780">line 3780</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="global.html#event:onLocalFaceStream">event:onLocalFaceStream</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getLocalScreenCaptureStream"><span class="type-signature"></span>getLocalScreenCaptureStream<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets screen capture screen and returns a stream.</p>
+<p>Options to PreSet</p>
+<ul>
+<li>self.localVideoElement - Set it to the local HTML Video Element.  IF set, the
+ video will be put into that Video Element when gotten.  That same MediaStream is
+ available via self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>self.sendAudio = false;   <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a><ul>
+<li><strong>NOTE: MUST BE false or else it will error!!</strong></li>
+</ul>
+</li>
+<li>self.sendVideo = screen_constraints.video;       <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+<p>Other Functions Called</p>
+<ul>
+<li>self._getUserMedia - <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3858">line 3858</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="global.html#event:onLocalScreenCaptureStream">event:onLocalScreenCaptureStream</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="gumSetAudioVideoOptions"><span class="type-signature"></span>gumSetAudioVideoOptions<span class="signature">(SendAudio, SendVideo, OfferToRecieveAudio, OfferToRecieveVideo, VAD, IceRestart)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convience function to set values.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SendAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use audio.</p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SendVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve audio  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveAudio</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveVideo</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>VAD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn use Voice Activity Detection.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IceRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn reset Ice Negotiation each time it creates an offer or answer.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a></li>
+</ul>
+<p>See <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> for parameter details and examples!</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line679">line 679</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="initArgs"><span class="type-signature"></span>initArgs<span class="signature">(SettingsObject)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Initialize (or Reset) instance variables in bulk.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SettingsObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
+            It is a convience method for setting multple things at once and/or passing them from other sub classes.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#initArgs">RtcMedia#initArgs</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line358">line 358</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>RtcMedia.constructor</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="mediaSessionStart"><span class="type-signature"></span>mediaSessionStart<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Start a session.  All parameters used to start the session should be set prior to
+   calling this function.  </p>
+<p>NOTE: Generally a developer would NOT use this method!</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line676">line 676</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="mediaSessionStop"><span class="type-signature"></span>mediaSessionStop<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Stop a Session.  All parameters should already be set before calling this function.  If there is an
+   existing session, this should stop it.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="NkMedia.js.html">NkMedia.js</a>, <a href="NkMedia.js.html#line805">line 805</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="peerConn_AddIceCandidate"><span class="type-signature"></span>peerConn_AddIceCandidate<span class="signature">(RTCIceCandidateInit)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Used when Remote parties send trickle Ice Candidates</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCIceCandidateInit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCIceCandidateInit</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An Ice Candidate from remotes site</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#peerConn_AddIceCandidate">RtcMedia#peerConn_AddIceCandidate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3179">line 3179</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="external-WebRTC.html#.addIceCandidate">external:WebRTC.addIceCandidate</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="peerConn_Init"><span class="type-signature"></span>peerConn_Init<span class="signature">(RTCConfiguration)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Checks to see if there is a PeerConnection set up.</p>
+<ul>
+<li>If YES - then this just returns.<br> This is used often throughout the code as a check and if needed to actually create the PeerConnection</li>
+<li>IF the PeerConnection is NOT already created, this will create it.</li>
+</ul>
+<p>This way we can use it as a tester AND an init from many functions to make sure we have 
+   a valid peerConn when we need it.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCConfiguration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCConfiguration</span>
+|
+
+<span class="param-type">empty</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If RTCConfiguration is sent, 
+        it will get used to configure the PeerConnection.  If empty, we use default values.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#peerConn_Init">RtcMedia#peerConn_Init</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3326">line 3326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_createPeerConnection">RtcMedia#_createPeerConnection</a></li>
+        
+            <li><a href="https://www.w3.org/TR/webrtc/#rtcconfiguration-dictionary">WebRTC Spec</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalSdpAnswer"><span class="type-signature"></span>setLocalSdpAnswer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setLocalSdpAnswer">RtcMedia#setLocalSdpAnswer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2852">line 2852</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalSdpOffer"><span class="type-signature"></span>setLocalSdpOffer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setLocalSdpOffer">RtcMedia#setLocalSdpOffer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2828">line 2828</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalStream_To_FullSdpOffer"><span class="type-signature"></span>setLocalStream_To_FullSdpOffer<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets a MediaStream in the peerConn and does eveything required to get full SDP offer (with Ice Candidates)
+        ready to send to NetComposer</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setLocalStream_To_FullSdpOffer">RtcMedia#setLocalStream_To_FullSdpOffer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2124">line 2124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpAnswer"><span class="type-signature"></span>setRemoteSdpAnswer<span class="signature">(RemoteSdpString)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convenience Method for RtcMedia#_chn_pc_SetRemoteDescription</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">spd</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>SDP String to use.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setRemoteSdpAnswer">RtcMedia#setRemoteSdpAnswer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3105">line 3105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>RtcMedia#_chn_pc_SetRemoteDescription</li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpOffer">RtcMedia#setRemoteSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpPreAnswer">RtcMedia#setRemoteSdpPreAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpOffer">RtcMedia#setLocalSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpAnswer">RtcMedia#setLocalSdpAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpAnswer">RtcMedia#setRemoteSdpAnswer</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise -&gt; () from RtcMedia#_chn_pc_SetRemoteDescription - No return value from Promise.resolve()</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpOffer"><span class="type-signature"></span>setRemoteSdpOffer<span class="signature">(RemoteSdpString)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set Remote SDP with answer</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Remote SDP String from NetComposer</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setRemoteSdpOffer">RtcMedia#setRemoteSdpOffer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3128">line 3128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpPreAnswer"><span class="type-signature"></span>setRemoteSdpPreAnswer<span class="signature">(RemoteSdpString)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set Remote SDP with pranser</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Remote SDP String from NetComposer</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setRemoteSdpPreAnswer">RtcMedia#setRemoteSdpPreAnswer</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3151">line 3151</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRtcOfferOptions"><span class="type-signature"></span>setRtcOfferOptions<span class="signature">(OfferToRecieveAudio, OfferToRecieveVideo, VAD, IceRestart)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convienance function to set options uses with peerConn.createOffer(optional RTCOfferOptions options).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve audio  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveAudio</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveVideo</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>VAD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn use Voice Activity Detection.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IceRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn reset Ice Negotiation each time it creates an offer or answer.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a></li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="RtcMedia.html#setRtcOfferOptions">RtcMedia#setRtcOfferOptions</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line752">line 752</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.w3.org/TR/webrtc/#idl-def-rtcofferoptions">RTCOfferOptions from RFC</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WebSocketManager_old.html">WebSocketManager_old</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-tut1.html">tut1</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 11:58:46 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

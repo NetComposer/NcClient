@@ -1,4 +1,32 @@
-'use strict';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: WsMngr.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: WsMngr.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
 
 const WsMngr_Version = "WsMngr 1.0.0";
 
@@ -110,7 +138,7 @@ class WsMngr extends EventMngr {
 
 
 
-		// Setters & Getters
+		// Setters &amp; Getters
 		WsMngr._logPings					= false;	// True | False 
 		WsMngr._debug						= true;
 
@@ -211,7 +239,7 @@ class WsMngr extends EventMngr {
 
 	static createUuid() {
 		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-	    	var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
+	    	var r = Math.random()*16|0, v = c === 'x' ? r : (r&amp;0x3|0x8);
 	    	return v.toString(16);
 			});
 	}
@@ -281,8 +309,8 @@ class WsMngr extends EventMngr {
 
 
 	static isWebSocketOpen() {
-		if ( ( !! WsMngr.webSocket ) &&
-			 ( typeof WsMngr.webSocket === 'object' ) &&
+		if ( ( !! WsMngr.webSocket ) &amp;&amp;
+			 ( typeof WsMngr.webSocket === 'object' ) &amp;&amp;
 			 ( WsMngr.webSocket.readyState === WsMngr.socketStates.WS_STATE_OPEN ) ) {
 			return true;
 		} else {
@@ -291,9 +319,9 @@ class WsMngr extends EventMngr {
 	}
 
 	static isWebSocketReady() {
-		if ( ( !! WsMngr.webSocket ) &&
-			 ( typeof WsMngr.webSocket === 'object' )  &&
-			 ( WsMngr.webSocket.readyState === WsMngr.socketStates.WS_STATE_OPEN ) &&
+		if ( ( !! WsMngr.webSocket ) &amp;&amp;
+			 ( typeof WsMngr.webSocket === 'object' )  &amp;&amp;
+			 ( WsMngr.webSocket.readyState === WsMngr.socketStates.WS_STATE_OPEN ) &amp;&amp;
 			 ( WsMngr.isWebSocketLoggedIn === true ) ) {
 			return true;
 		} else {
@@ -333,7 +361,7 @@ class WsMngr extends EventMngr {
 		// console.localInfoOnly("WSKT", "WsMngr: _onWsOpen ", Event );
 		EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WsMngr: _onWsOpen", JSON.stringify( Event, null, '\t' ) ]);
 
-		EventLoggerDb.wsConnLogger("<-- onWsOpen", WsMngr.wsConnStartDate );
+		EventLoggerDb.wsConnLogger("&lt;-- onWsOpen", WsMngr.wsConnStartDate );
 
 		WsMngr._login();
 		WsMngr.sendData( null );
@@ -352,7 +380,7 @@ class WsMngr extends EventMngr {
 		// console.localInfoOnly("WSKT", "WsMngr: _onWsClose ", Event );
 		EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WsMngr: _onWsClose", JSON.stringify( Event, null, '\t' ) ]);
 
-		EventLoggerDb.wsConnLogger("<-- onWsClose", Event, WsMngr.wsConnStartDate );
+		EventLoggerDb.wsConnLogger("&lt;-- onWsClose", Event, WsMngr.wsConnStartDate );
 		EventLoggerDb.queueLogger( "toSendQueue", WsMngr.toSend );
 		EventLoggerDb.queueLogger( "sentQueue", WsMngr.sentQueue );
 		EventLoggerDb.queueLogger( "recvQueue", WsMngr.recvQueue );
@@ -375,7 +403,7 @@ class WsMngr extends EventMngr {
 		// console.localErrorOnly("WSKT", "WsMngr: _onWsError ", Event );
 		EventBus.dispatch( NcEvents.onRemoteLoggerError, ["WSKT", "WsMngr: _onWsClose", JSON.stringify( Event, null, '\t' ) ]);
 		
-		EventLoggerDb.wsConnLogger("<-- onWsError", Event, WsMngr.wsConnStartDate );
+		EventLoggerDb.wsConnLogger("&lt;-- onWsError", Event, WsMngr.wsConnStartDate );
 		EventLoggerDb.queueLogger( "toSendQueue", WsMngr.toSend );
 		EventLoggerDb.queueLogger( "sentQueue", WsMngr.sentQueue );
 		EventLoggerDb.queueLogger( "recvQueue", WsMngr.recvQueue );
@@ -397,7 +425,7 @@ class WsMngr extends EventMngr {
 		var msgDate = new Date();
 		var JsonData = JSON.parse( Event.data);
 		
-		// if( LogP_Debug && !JsonData.ping) {
+		// if( LogP_Debug &amp;&amp; !JsonData.ping) {
 		// 	console.localLogOnly("WSKT", "WsMngr: _onWsMessage ", Event );
 		// }
 
@@ -406,7 +434,7 @@ class WsMngr extends EventMngr {
 		if ( typeof JsonData === 'object' ) {
 
 			// =========== PING ============
-			if ( JsonData.class === "core" && JsonData.cmd === "ping" ) { 
+			if ( JsonData.class === "core" &amp;&amp; JsonData.cmd === "ping" ) { 
 
 				// console.localDebugOnly("WSKT", "WsMngr: _onWsMessage: Got Ping -> Sending Pong" );
 				WsMngr.sendData( { result: "ok", tid: JsonData.tid, ping: true } );
@@ -443,8 +471,8 @@ class WsMngr extends EventMngr {
 			// =========== CLASS ============
 
 
-			} else if ( ( JsonData.class === "core" ) && 
-						( JsonData.cmd === "event" ) && 
+			} else if ( ( JsonData.class === "core" ) &amp;&amp; 
+						( JsonData.cmd === "event" ) &amp;&amp; 
 						( !! JsonData.data ) ) {   
 
 				var recvObj = WsMngr._createRecvObj( JsonData );   // Create a new RecvObj - this also inserts it into the 
@@ -549,8 +577,8 @@ class WsMngr extends EventMngr {
 	//    NetComposer can arrive. 
 	//-------------------------------------------------------------------------
 	static close() {
-		if ( ( !! WsMngr.webSocket ) &&
-			 ( typeof WsMngr.webSocket === 'object' ) && 
+		if ( ( !! WsMngr.webSocket ) &amp;&amp;
+			 ( typeof WsMngr.webSocket === 'object' ) &amp;&amp; 
 			 ( WsMngr.webSocket.readyState !== WsMngr.socketStates.WS_STATE_CLOSED ) ) {
 			// console.localInfoOnly("WSKT", 'WsMngr: close: Closing WS now');
 			EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WsMngr: close: Closing WS now" ]);
@@ -600,15 +628,15 @@ class WsMngr extends EventMngr {
     	
 	  // 	var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
 			// .replace(/^\s+at\s+/gm, '')
-			// .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+			// .replace(/^Object.&lt;anonymous>\s*\(/gm, '{anonymous}()@')
 			// .split(/\r\n|\n/);
 
 	  	var stack = TheStack.stack.replace(/^\s+at\s+/gm, '')
 			.replace(/\@/gm, ' ')
-			.replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+			.replace(/^Object.&lt;anonymous>\s*\(/gm, '{anonymous}()@')
 			.split(/\r\n|\n/);
 
-		var shiftNum = (( !!StackShiftAmount) && ( typeof(StackShiftAmount) === "number")) ? StackShiftAmount : 1;
+		var shiftNum = (( !!StackShiftAmount) &amp;&amp; ( typeof(StackShiftAmount) === "number")) ? StackShiftAmount : 1;
 
 		if ( stack[0] === "Error") { stack.shift(); }	// Handle differences in Chrome vs Safari and Firefox
 		if ( stack[ stack.length - 1 ] === "") { stack.pop(); }	// Handle differences in Chrome vs Safari and Firefox
@@ -981,7 +1009,7 @@ class WsMngr extends EventMngr {
 		//--------------------------------------------------------
 		static handleEvent( WsEventObj ) {
 
-			if ( ( WsEventObj.wsRecvData.class === "core" ) && ( WsEventObj.wsRecvData.cmd === "event") && ( !!WsEventObj.wsRecvData.data ) ) {		// This seems to be an Event from NetComposer
+			if ( ( WsEventObj.wsRecvData.class === "core" ) &amp;&amp; ( WsEventObj.wsRecvData.cmd === "event") &amp;&amp; ( !!WsEventObj.wsRecvData.data ) ) {		// This seems to be an Event from NetComposer
 
 				var comboName1 = "";
 				var comboName2 = "";
@@ -1060,9 +1088,9 @@ WsMngr.init();
 
 
 (function (root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object') {
+	if(typeof exports === 'object' &amp;&amp; typeof module === 'object') {
 		module.exports = factory();
-	} else if(typeof define === 'function' && define.amd) {
+	} else if(typeof define === 'function' &amp;&amp; define.amd) {
 		define("WebSocketManager_old", [], factory);
 	} else if(typeof exports === 'object'){
 		exports.WebSocketManager_old = factory();
@@ -1183,7 +1211,7 @@ WsMngr.init();
 
 
 		//=========================================================================
-		// PUBLIC: addEventListener & removeEventListener
+		// PUBLIC: addEventListener &amp; removeEventListener
 		//=========================================================================
 		// Many things can subscribe to get events from EventListeners.
 		// When an event arrives it is for notification, but there are NO functions
@@ -1222,8 +1250,8 @@ WsMngr.init();
 
 
 		this.isWebSocketOpen = function() {
-			if ( ( !!self.webSocket ) && 
-				( typeof( self.webSocket ) === 'object' ) && 
+			if ( ( !!self.webSocket ) &amp;&amp; 
+				( typeof( self.webSocket ) === 'object' ) &amp;&amp; 
 				self.webSocket.readyState === self.WS_STATE_OPEN ) {
 				return true;
 			} else {
@@ -1233,9 +1261,9 @@ WsMngr.init();
 		};
 
 		this.isWebSocketReady = function() {
-			if ( ( !!self.webSocket ) &&
-				( typeof( self.webSocket ) === 'object' )  && 
-				self.webSocket.readyState === self.WS_STATE_OPEN &&
+			if ( ( !!self.webSocket ) &amp;&amp;
+				( typeof( self.webSocket ) === 'object' )  &amp;&amp; 
+				self.webSocket.readyState === self.WS_STATE_OPEN &amp;&amp;
 				self.isWebSocketLoggedIn === true ) {
 				return true;
 			} else {
@@ -1300,7 +1328,7 @@ WsMngr.init();
 		//    NetComposer can arrive. 
 		//-------------------------------------------------------------------------
 		this.close = function() {
-			if ( ( !! self.webSocket ) && ( self.webSocket.readyState !== self.WS_STATE_CLOSED ) ) {
+			if ( ( !! self.webSocket ) &amp;&amp; ( self.webSocket.readyState !== self.WS_STATE_CLOSED ) ) {
 				// console.localInfoOnly("WSKT", 'WebSocketManager_old: close: Closing WS now');
 				EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WebSocketManager_old: close: Closing WS now" ]);
 
@@ -1345,7 +1373,7 @@ WsMngr.init();
 			// console.localInfoOnly("WSKT", "WebSocketManager_old: _onWsOpen ", evt );
 			EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WebSocketManager_old: _onWsOpen", JSON.stringify( evt, null, '\t' ) ]);
 
-			EventLoggerDb.wsConnLogger("<-- onWsOpen", self.wsConnStartDate );
+			EventLoggerDb.wsConnLogger("&lt;-- onWsOpen", self.wsConnStartDate );
 
 			self._login();
 			self.sendData( null );
@@ -1364,7 +1392,7 @@ WsMngr.init();
 			// console.localInfoOnly("WSKT", "WebSocketManager_old: _onWsClose ", evt );
 			EventBus.dispatch( NcEvents.onRemoteLoggerInfo, ["WSKT", "WebSocketManager_old: _onWsClose", JSON.stringify( evt, null, '\t' ) ]);
 
-			EventLoggerDb.wsConnLogger("<-- onWsClose", evt, self.wsConnStartDate );
+			EventLoggerDb.wsConnLogger("&lt;-- onWsClose", evt, self.wsConnStartDate );
 			EventLoggerDb.queueLogger( "toSendQueue", self.toSend );
 			EventLoggerDb.queueLogger( "sentQueue", self.sentQueue );
 			EventLoggerDb.queueLogger( "recvQueue", self.recvQueue );
@@ -1387,7 +1415,7 @@ WsMngr.init();
 			// console.localErrorOnly("WSKT", "WebSocketManager_old: _onWsError ", evt );
 			EventBus.dispatch( NcEvents.onRemoteLoggerError, ["WSKT", "WebSocketManager_old: _onWsClose", JSON.stringify( evt, null, '\t' ) ]);
 			
-			EventLoggerDb.wsConnLogger("<-- onWsError", evt, self.wsConnStartDate );
+			EventLoggerDb.wsConnLogger("&lt;-- onWsError", evt, self.wsConnStartDate );
 			EventLoggerDb.queueLogger( "toSendQueue", self.toSend );
 			EventLoggerDb.queueLogger( "sentQueue", self.sentQueue );
 			EventLoggerDb.queueLogger( "recvQueue", self.recvQueue );
@@ -1411,7 +1439,7 @@ WsMngr.init();
 				sentData.wsSendData.subclass + " / " + 
 				sentData.wsSendData.cmd;
 
-			if (( !! sentData.data ) && ( sentData.data.session_id )) { retVal = retVal + "session_id = " + sentData.data.session_id; }
+			if (( !! sentData.data ) &amp;&amp; ( sentData.data.session_id )) { retVal = retVal + "session_id = " + sentData.data.session_id; }
 
 			return retVal;
 		};
@@ -1432,7 +1460,7 @@ WsMngr.init();
 			var msgDate = new Date();
 			var JsonData = JSON.parse( Event.data);
 			
-			// if( LogP_Debug && !JsonData.ping) {
+			// if( LogP_Debug &amp;&amp; !JsonData.ping) {
 			// 	console.localLogOnly("WSKT", "WebSocketManager_old: _onWsMessage ", Event );
 			// }
 
@@ -1441,7 +1469,7 @@ WsMngr.init();
 			if ( typeof(JsonData) === 'object' ) {
 
 				// =========== PING ============
-				if ( JsonData.class === "core" && JsonData.cmd === "ping" ) { 
+				if ( JsonData.class === "core" &amp;&amp; JsonData.cmd === "ping" ) { 
 
 					// console.localDebugOnly("WSKT", "WebSocketManager_old: _onWsMessage: Got Ping -> Sending Pong" );
 					self.sendData( { result: "ok", tid: JsonData.tid, ping: true } );
@@ -1478,7 +1506,7 @@ WsMngr.init();
 				// =========== CLASS ============
 
 
-				} else if (( JsonData.class === "core" ) && ( JsonData.cmd === "event" ) && ( !!JsonData.data ) ) {   
+				} else if (( JsonData.class === "core" ) &amp;&amp; ( JsonData.cmd === "event" ) &amp;&amp; ( !!JsonData.data ) ) {   
 
 					var recvObj = self._createRecvObj( JsonData );   // Create a new RecvObj - this also inserts it into the 
 
@@ -1541,8 +1569,8 @@ WsMngr.init();
 
 		this.sendData = function( StoreData, PutFirst ) {
 
-			if (( typeof(StoreData) === 'object' ) &&  (StoreData !== null ) ) {		// Just push StoreData into 
-				if ( ( !!PutFirst ) && ( PutFirst === true ) ) {
+			if (( typeof(StoreData) === 'object' ) &amp;&amp;  (StoreData !== null ) ) {		// Just push StoreData into 
+				if ( ( !!PutFirst ) &amp;&amp; ( PutFirst === true ) ) {
 					self.toSend.unshift( StoreData ); 	// Put at the FRONT of the queue
 				} else {
 					self.toSend.push( StoreData ); 	// Put at the END of the queue
@@ -1861,7 +1889,7 @@ WsMngr.init();
 
 		createUuid:function() {
 			return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-		    	var r = Math.random()*16|0, v = c === 'x' ? r : (r&0x3|0x8);
+		    	var r = Math.random()*16|0, v = c === 'x' ? r : (r&amp;0x3|0x8);
 		    	return v.toString(16);
 				});
 		},
@@ -1966,15 +1994,15 @@ WsMngr.init();
 	    	
 		  // 	var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
 				// .replace(/^\s+at\s+/gm, '')
-				// .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+				// .replace(/^Object.&lt;anonymous>\s*\(/gm, '{anonymous}()@')
 				// .split(/\r\n|\n/);
 
 		  	var stack = TheStack.stack.replace(/^\s+at\s+/gm, '')
 				.replace(/\@/gm, ' ')
-				.replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
+				.replace(/^Object.&lt;anonymous>\s*\(/gm, '{anonymous}()@')
 				.split(/\r\n|\n/);
 
-			var shiftNum = (( !!StackShiftAmount) && ( typeof(StackShiftAmount) === "number")) ? StackShiftAmount : 1;
+			var shiftNum = (( !!StackShiftAmount) &amp;&amp; ( typeof(StackShiftAmount) === "number")) ? StackShiftAmount : 1;
 
 			if ( stack[0] === "Error") { stack.shift(); }	// Handle differences in Chrome vs Safari and Firefox
 			if ( stack[ stack.length - 1 ] === "") { stack.pop(); }	// Handle differences in Chrome vs Safari and Firefox
@@ -2308,7 +2336,7 @@ WsMngr.init();
 		//--------------------------------------------------------
 		handleEvent:function( WsEventObj ) {
 
-			if ( ( WsEventObj.wsRecvData.class === "core" ) && ( WsEventObj.wsRecvData.cmd === "event") && ( !!WsEventObj.wsRecvData.data ) ) {		// This seems to be an Event from NetComposer
+			if ( ( WsEventObj.wsRecvData.class === "core" ) &amp;&amp; ( WsEventObj.wsRecvData.cmd === "event") &amp;&amp; ( !!WsEventObj.wsRecvData.data ) ) {		// This seems to be an Event from NetComposer
 
 				var comboName1 = "";
 				var comboName2 = "";
@@ -2374,3 +2402,26 @@ WsMngr.init();
 
 
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WebSocketManager_old.html">WebSocketManager_old</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-tut1.html">tut1</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 11:58:45 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
