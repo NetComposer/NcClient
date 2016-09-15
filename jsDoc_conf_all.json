@@ -17,6 +17,7 @@
     },
     "opts": {
         "destination": "./docs",          // same as -d ./out/
+        "readme": "./www/js/README.md",          // same as -d ./out/
         "recurse": true,                  // same as -r
         "private": true,
         "access": "all",
