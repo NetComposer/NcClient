@@ -1,0 +1,387 @@
+<html>
+<head>
+	<title>NetComposer Command Tester</title>
+</head>
+
+<script src="./js/WebSocketManagerCls.js" type="text/javascript"></script>
+<script src="./js/RemoteLogger.js" type="text/javascript"></script>
+
+<script src="./js/GumRtcStreamHelper.js" type="text/javascript"></script>
+<script src="./js/EventBus.js" type="text/javascript"></script>
+<script src="./js/EventLoggerDb.js" type="text/javascript"></script>
+<script src="./js/WsLib.js" type="text/javascript"></script>
+
+<script src="./js/adapter.js" type="text/javascript"></script>
+<script src="./js/getScreenId.js" type="text/javascript"></script>
+
+
+<H1>NetComposer Command Tester</H1>
+
+<P>
+<B>Login Data</B>  <button onclick="updateLoginObj();"><B>Update Login Data</B></button><BR>
+Username:  <input type="text" id="ws_username" value="james@sipstorm.net">
+Password: <input type="text" id="ws_password" value="anything">
+Client Id: <input type="text" id="ws_clientId" value="rtc_james_03"><br>
+
+<P>
+<B>Class Data</B><BR>
+Class:  <input type="text" id="ws_class" onchange="updateLocalCmdData()" value="media"><br>
+SubClass:  <input type="text" id="ws_subclass" onchange="updateLocalCmdData()" value="room"><br>
+Command: <input type="text" id="ws_cmd" onchange="updateLocalCmdData()" value="list"> <br>
+<textarea rows="8" cols="60" onchange="updateLocalCmdData()" id="ws_data" >
+{  
+   "user":"james",
+   "pass":"howdy"
+}
+</textarea>
+<BR>
+<button onclick="sendViaWebSocket();"><B>SEND Data to Server</B></button>
+<BR>
+<button onclick="remoteLogging();"> Set Remote Log Data (change, then send it)</button>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<button onclick="showLogs();"> - Show Logs Data - </button>
+<BR>
+SessionId: <input type="text" id="sessionId" size="40" value="gets put here"> <br>
+<BR>
+
+<textarea rows="12" cols="60" id="ws_data_response" ></textarea>
+
+<HR>
+Media: Room: 
+Name: <input type="text" id="room_name" value="cool_room"><br>
+<button onclick="mediaRoomCreate();">Create</button>
+<button onclick="mediaRoomDestroy();">Destroy</button>
+<button onclick="mediaRoomList();">List</button>
+<button onclick="mediaRoomInfo();">Info</button>
+<HR>
+Core: User: 
+Name: <input type="text" id="core_user" value="james@sipstorm.net"><br>
+<button onclick="coreUserList();">List</button>
+<button onclick="coreUserGet();">Get</button>
+<HR>
+Core: Event: 
+<!-- Name: <input type="text" id="core_user" value="james@vovidco.com"><br> -->
+<button onclick="coreEventGetSubscriptions();">Get Subscriptions</button>
+
+<script type="text/javascript">
+
+	'use strict';
+
+	var portNumber = 9010;
+
+	//--------------------------------------------------------
+	//  JUNK for JS Lint Complaining 
+	//--------------------------------------------------------
+	var WebSocketManager = window.WebSocketManager;
+	var console = window.console;
+	var EventLoggerDb = window.EventLoggerDb;
+
+	var neverUseThisItIsJustForJsLintFooling = function() {
+		sendViaWebSocket();
+		updateLocalCmdData();
+		updateLoginObj();
+		showLogs();
+		mediaRoomCreate();
+		mediaRoomDestroy();
+		mediaRoomList();
+		mediaRoomInfo();
+		coreUserList();
+		coreUserGet();
+		remoteLogging();
+		coreEventGetSubscriptions();
+		neverUseThisItIsJustForJsLintFooling();
+	};
+
+
+	//==========================================================================
+	// Var declarations     
+	//==========================================================================
+
+	var rtcHelper; 
+
+	var wsObj = {
+		class: "not_set",
+		subclass: "not_set",
+		cmd: "not_set",
+		data: {
+	   		type: "not_set"
+		}
+	};
+
+
+	//====================================================
+
+
+	//==========================================================================
+	// Primary Functions     
+	//==========================================================================
+
+	//--------------------------------------------------------
+	//  sendViaWebSocket - Send the data 
+	//--------------------------------------------------------
+    var sendViaWebSocket = function() {
+
+    	updateLocalCmdData();
+
+		WebSocketManager.sendDataViaPromise(wsObj.class, wsObj.subclass, wsObj.cmd, wsObj.data).then(
+			function( Data ) {
+				console.log("HTML: sendViaWebSocket: Data = ", JSON.stringify(Data) );
+				document.getElementById("ws_data_response").value = "Success:\n" + JSON.stringify(Data, null, "\t");
+	        }        	
+		).catch(
+			function( error ) {
+				console.error("HTML: sendViaWebSocket: ERROR = ", error );
+				document.getElementById("ws_data_response").value = "ERROR:\n" + JSON.stringify(error, null, "\t");
+			}
+		);
+	};
+
+
+
+
+	//==========================================================================
+	// Updaters    
+	//==========================================================================
+
+	//--------------------------------------------------------
+	//  updateLocalCmdData 
+	//--------------------------------------------------------
+    var updateLocalCmdData = function() {
+
+		wsObj.class = document.getElementById("ws_class").value;
+		wsObj.subclass = document.getElementById("ws_subclass").value;
+		wsObj.cmd = document.getElementById("ws_cmd").value;
+		wsObj.data = JSON.parse( document.getElementById("ws_data").value );
+
+    };
+
+
+	//--------------------------------------------------------
+	//  updateLocalCmdData 
+	//--------------------------------------------------------
+	var updateLoginObj = function() {
+
+		var meta = {
+			client_id: document.getElementById("ws_clientId").value
+		};
+
+		var loginData = {
+			user: document.getElementById("ws_username").value,
+			pass: document.getElementById("ws_password").value,
+			meta: meta
+		};
+
+		WebSocketManager.updateLoginObj( loginData );
+	};
+
+
+
+	//==========================================================================
+	// Tester Buttons    
+	//==========================================================================
+
+	//--------------------------------------------------------
+	//  mediaRoomCreate 
+	//--------------------------------------------------------
+	var mediaRoomCreate = function() {
+		var data = {
+			id: document.getElementById("room_name").value,
+			room_audio_code: "opus",
+			room_bitrate: 10000,
+			room_video_codec: "vp8"
+		};
+
+		document.getElementById("ws_class").value = "media";
+		document.getElementById("ws_subclass").value = "room";
+		document.getElementById("ws_cmd").value = "create";
+		document.getElementById("ws_data").value = JSON.stringify( data, null, "\t" );
+
+		sendViaWebSocket();
+	};
+
+	//--------------------------------------------------------
+	//  mediaRoomDestroy 
+	//--------------------------------------------------------
+	var mediaRoomDestroy = function() {
+		var data = {
+			id: document.getElementById("room_name").value
+		};
+
+		document.getElementById("ws_class").value = "media";
+		document.getElementById("ws_subclass").value = "room";
+		document.getElementById("ws_cmd").value = "destroy";
+		document.getElementById("ws_data").value = JSON.stringify( data, null, "\t" );
+
+		sendViaWebSocket();
+	};
+
+	//--------------------------------------------------------
+	//  mediaRoomList 
+	//--------------------------------------------------------
+	var mediaRoomList = function() {
+		document.getElementById("ws_class").value = "media";
+		document.getElementById("ws_subclass").value = "room";
+		document.getElementById("ws_cmd").value = "list";
+		document.getElementById("ws_data").value = "{\n}"; 
+
+		sendViaWebSocket();
+	};
+
+	//--------------------------------------------------------
+	//  mediaRoomInfo 
+	//--------------------------------------------------------
+	var mediaRoomInfo = function() {
+		var data = {
+			id: document.getElementById("room_name").value
+		};
+
+		document.getElementById("ws_class").value = "media";
+		document.getElementById("ws_subclass").value = "room";
+		document.getElementById("ws_cmd").value = "info";
+		document.getElementById("ws_data").value = JSON.stringify( data, null, "\t" );
+
+		sendViaWebSocket();
+	};
+
+
+
+	//--------------------------------------------------------
+	//  coreUserList 
+	//--------------------------------------------------------
+	var coreUserList = function() {
+
+		document.getElementById("ws_class").value = "core";
+		document.getElementById("ws_subclass").value = "user";
+		document.getElementById("ws_cmd").value = "list";
+		document.getElementById("ws_data").value = "{\n}"; 
+
+		sendViaWebSocket();
+	};
+
+	//--------------------------------------------------------
+	//  coreUserGet 
+	//--------------------------------------------------------
+	var coreUserGet = function() {
+		var data = {
+			user: document.getElementById("core_user").value
+		};
+
+		document.getElementById("ws_class").value = "core";
+		document.getElementById("ws_subclass").value = "user";
+		document.getElementById("ws_cmd").value = "get";
+		document.getElementById("ws_data").value = JSON.stringify( data, null, "\t" );
+
+		sendViaWebSocket();
+	};
+
+
+
+
+
+	//--------------------------------------------------------
+	//  coreEventGetSubscriptions 
+	//--------------------------------------------------------
+	var coreEventGetSubscriptions = function() {
+
+		document.getElementById("ws_class").value = "core";
+		document.getElementById("ws_subclass").value = "event";
+		document.getElementById("ws_cmd").value = "get_subscriptions";
+		document.getElementById("ws_data").value = "{\n}"; 
+
+		sendViaWebSocket();
+	};
+
+
+
+	//--------------------------------------------------------
+	//  remoteLogging 
+	//--------------------------------------------------------
+	var remoteLogging = function() {
+
+		document.getElementById("ws_class").value = "core";
+		document.getElementById("ws_subclass").value = "session";
+		document.getElementById("ws_cmd").value = "log";
+		document.getElementById("ws_data").value = '{\n\t"source":"rtc_james_03",\n\t"level":"4",\n\t"message":"test",\n\t"meta":{\n\t\t"fun":"for",\n\t\t"all":"here"\n\t}\n}'; 
+
+	};
+
+
+
+
+	//==========================================================================
+	// Other    
+	//==========================================================================
+
+	//--------------------------------------------------------
+	//  showLogs 
+	//--------------------------------------------------------
+	var showLogs = function() {
+		var theLogs = EventLoggerDb.showSimpleLogs(true, true);
+		console.log( "Logs:\n" + theLogs );
+	};
+
+
+
+
+
+
+
+
+
+          
+	function manageClass_Server( data ) {
+		console.log("HTML: index.html - I got Class -Server- data !!! " + JSON.stringify(data), data);
+		// WebSocketManager.respondOk( data, {} );
+
+		WebSocketManager.respondAck( data );
+
+		setTimeout( WebSocketManager.respondOk, 2500, data, { no: "response"} );
+	}
+
+
+	window.onload = function() {
+
+		WebSocketManager.setConnectData( window.location.hostname, portNumber, 
+			document.getElementById("ws_username").value,			// UserNameString, 
+			document.getElementById("ws_password").value,			// UserPasswordString, 
+			document.getElementById("ws_clientId").value			// DeviceIdString, 
+		);
+
+
+		// WebSocketManager = new WebSocketManager("media2.netcomposer.io", 9010, loginData );
+		// WebSocketManager = new WsConnection("localhost", 9010, loginData );
+
+		var myWsOpen = function( evt ) { console.log("HTML: myWsOpen function called", evt ); };
+		var myWsClose = function( evt ) { console.log("HTML: myWsClose function called", evt ); };
+		var myWsError = function( evt ) { console.log("HTML: myWsError function called", evt ); };
+
+		var myLoginOk = function( evt ) { console.log("HTML: onLoginSuccess function called", evt ); };
+		var myLoginError = function( evt ) { console.log("HTML: onLoginError function called", evt ); };
+		var myWsConnectTimeOut = function( evt ) { console.log("\n*** HTML: myWsConnectTimeOut function called ***\n", evt ); };
+
+
+		WebSocketManager.addEventListener("onWsOpen", myWsOpen ); 
+		WebSocketManager.addEventListener("onWsClose", myWsClose ); 
+		WebSocketManager.addEventListener("onWsError", myWsError ); 
+		WebSocketManager.addEventListener("onLoginSuccess", myLoginOk ); 
+		WebSocketManager.addEventListener("onLoginError", myLoginError ); 
+
+		WebSocketManager.addEventListener("onWsConnectTimeOut", myWsConnectTimeOut ); 
+
+
+		WebSocketManager.addClassManager( "server", manageClass_Server );
+
+		WebSocketManager.logPings(true);
+
+		rtcHelper = new window.GumRtcStreamHelper( WebSocketManager, true );
+
+	};
+
+	window.onunload = function() {
+	};
+
+
+</script>
+
+
+</html>

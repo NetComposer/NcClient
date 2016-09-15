@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Constants.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Constants.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>'use strict';
+
+// Constants.js
+ 
+
+//#########################################################################
+// Event Listing - Constants  
+//#########################################################################
+
+/**
+ * Events used throughout.  They are kept here to make sure we do not overlap, etc.
+ */
+const NcEvents = {
+
+	//--------------------------------------------------------
+	//  WebSocket Events 
+	//--------------------------------------------------------
+
+	/**
+     * WebSocket Open.
+     *
+     * @event onWsOpen
+     * @type {Event}
+     * @property {number} timeStamp I think this is how long it took to connect in MS.
+     * @property {object} currentTarget Details about the target.
+     * @property {string} type "open".
+     *
+     */
+	onWsOpen: "onWsOpen",
+
+	/**
+     * WebSocket Close.
+     *
+     * @event onWsClose
+     * @type {Event}
+     */
+	onWsClose: "onWsClose",
+
+	/**
+     * WebSocket Error.
+     *
+     * @event onWsError
+     * @type {Event}
+     */
+	onWsError: "onWsError",
+
+
+	/**
+     * Successful Login to NetComposer.
+     *
+     * @event onWsLoginSuccess
+     * @type {Event}
+     */
+	onWsLoginSuccess: "onWsLoginSuccess",
+
+	/**
+     * Login Error to NetComposer.
+     *
+     * @event onWsLoginError
+     * @type {Event}
+     */
+	onWsLoginError: "onWsLoginError",
+
+	/**
+     * When SessionId changes = A new login happened.
+     *
+     * @event onWsSessionIdChanged
+     * @type {Event}
+     */
+	onWsSessionIdChanged: "onWsSessionIdChanged",
+
+	//--------------------------------------------------------
+	//  Remote Logger 
+	//--------------------------------------------------------
+	onRemoteLoggerInfo: "onRemoteLoggerInfo",
+	onRemoteLoggerError: "onRemoteLoggerError",
+
+
+
+};
+Object.freeze( NcEvents );
+
+
+
+// const NcErrorCode = {
+
+//           internal_error:               1001,
+//           normal:                       1002,
+//           anormal_termination:          1003,
+//           invalid_state:                     1004,
+//           timeout:                      1005,
+//           not_implemented:              1006,
+
+//           process_not_found:            1010,
+//           process_down:                 1011,
+//           registered_down:              1012,
+//           user_stop:                         101,
+
+//           service_not_found:            1020,
+
+//           unauthorized:                 1030,
+//           not_authenticated:            1031,
+//           already_authenticated:        1032,
+//           user_not_found:               1033,
+//           duplicated_session_id:        1034,
+//           invalid_session_id:           1035,
+
+//           operation_error:              1040,
+//           unknown_command:              1041,
+//           unknown_class:                     1042,
+//           incompatible_operation:  1043,
+//           unknown_operation:            1044,
+//           invalid_operation:            1045,
+//           syntax_error:                 1046,
+//           missing_field:                     1047,
+//           invalid_parameters:           1048,
+//           missing_parameters:           1049,
+
+//           session_timeout:              1060,
+//           session_stop:                 1061,
+//           session_not_found:            1062,
+
+//           no_mediaserver:               2001,
+//           unknown_session_type:         2002,
+
+//           missing_offer:                     2010,
+//           duplicated_offer:             2011,
+//           offer_not_set:                     2012,
+//           offer_already_set:            2013,
+//           duplicated_answer:            2014,
+//           answer_not_set:               2015,
+//           answer_already_set:           2016,
+
+//           call_not_found:               2020,
+//           call_rejected:                     2021,
+//           no_destination:               2022,
+//           no_answer:                         2023,
+//           already_answered:             2024,
+//           originator_cancel:            2025,
+//           peer_hangup:                  2026,
+
+//           room_not_found:               2030,
+//           room_already_exists:          2031,
+//           room_destroyed:               2032,
+//           no_participants:              2033,
+//           unknown_publisher:            2034,
+//           invalid_publisher:            2035,
+//           publisher_stopped:            2036
+
+// };
+
+// Object.freeze( NcErrorCode );
+
+
+
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 10:21:57 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

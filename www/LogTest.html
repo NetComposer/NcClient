@@ -1,0 +1,296 @@
+<html>
+<head>
+	<title>Logging Test</title>
+</head>
+
+<script src="./js/WebSocketManagerCls.js" type="text/javascript"></script>
+<script src="./js/RemoteLogger.js" type="text/javascript"></script>
+<script src="./js/PromiseData.js" type="text/javascript"></script>
+<script src="./js/Constants.js" type="text/javascript"></script>
+<script src="./js/DebugData.js" type="text/javascript"></script>
+
+<script src="./js/GumRtcStreamHelper.js" type="text/javascript"></script>
+<script src="./js/EventBus.js" type="text/javascript"></script>
+<script src="./js/EventLoggerDb.js" type="text/javascript"></script>
+<script src="./js/WsLib.js" type="text/javascript"></script>
+
+
+
+<H1>Logging Test</H1>
+
+<H3>NetComposer Login Data: </H3>
+<button id="btnUpdateLogin" onclick="updateLoginObj();"><B>Login to WebSocket</B></button>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<button onclick="showLogs();"> - Show Logs Data - </button>
+<BR>
+Username:  <input type="text" id="ws_username" value="james@vovidco.com"><br>
+Password: <input type="text" id="ws_password" value="anything"><br>
+Client Id: <input type="text" id="ws_clientId" value="rtc_james_03">
+
+<HR>
+SessionId: <input type="text" id="sessionId" size="40" value="session_id will be put here later"> <br>
+
+<H3>Configuration</H3>
+
+Please note: You have to look in the developer console to see these in the browser.
+<HR>
+Console Functionality:  
+<BR> &nbsp; &nbsp; &nbsp; &nbsp;
+<button id="btnRemote" onclick="useRemoteLogger();">Replace with RLog.Console</button> 
+<BR> &nbsp; &nbsp; &nbsp; &nbsp;
+<button id="btnConsole" onclick="useLocalLogger();">Restore Window.Console</button> 
+<BR> &nbsp; &nbsp; &nbsp; &nbsp;
+Print All Log Levels: <button id="btnUdpateEcho" onclick="showAllLogLevels()">Print with and w/o Labels</button> 
+
+<P>
+Set Display/Remote Levels: 
+
+<br> &nbsp; &nbsp; &nbsp;
+Console Log Level: <select id="consoleLevels" onchange="setConsoleLevel()">
+  <option value="OFF">OFF</option>
+  <option value="ALERT">ALERT</option>
+  <option value="ERROR">ERROR</option>
+  <option value="WARN">WARN</option>
+  <option value="INFO">INFO</option>
+  <option value="LOG">LOG</option>
+  <option value="DEBUG" selected="true">DEBUG</option>
+</select>
+
+
+<br> &nbsp; &nbsp; &nbsp;
+Remote Log Level: <select id="remoteLevels" onchange="setRemoteLevel()">
+  <option value="OFF">OFF</option>
+  <option value="ALERT">ALERT</option>
+  <option value="ERROR">ERROR</option>
+  <option value="WARN">WARN</option>
+  <option value="INFO">INFO</option>
+  <option value="LOG">LOG</option>
+  <option value="DEBUG" selected="true">DEBUG</option>
+</select>
+
+<P>
+
+Show Stack Levels:
+<br> &nbsp; &nbsp; &nbsp;
+All: <button id="fullStack" onclick="showAllStackLevels()">Show All Stack Levels</button> 
+<br> &nbsp; &nbsp; &nbsp;
+One: <button id="oneStack" onclick="showOneStackLevels()">Show One Stack Level</button> 
+<br> &nbsp; &nbsp; &nbsp;
+Print fun1( fun2( fun3( log ))): <button id="btnUdpateEcho" onclick="fun1()">Multi-Layer Stack</button> 
+<P>
+<FONT COLOR="RED"><I><B>NOTE: </B> You will only get multiple lines if you are using Remote Logger Console.  Set it with the button above! </I></FONT>
+<P>
+<FONT COLOR="RED"><I><B>Remember: </B> Nothing will print to console if the Console Log Level (pulldown above) is set lower than LOG !!! This is expected behavior! </I></FONT>
+
+<HR>
+Show the Logs
+<P>
+
+ALERT: <button id="btn_ALERT" onclick="console.alert( document.getElementById('txt_ALERT').value )">ALERT -> </button> 
+<input type="text" id="txt_ALERT" value="This is an ALERT - You can change it here!">
+<br>
+
+ERROR: <button id="btn_ERROR" onclick="console.error( document.getElementById('txt_ERROR').value )">ERROR -> </button> 
+<input type="text" id="txt_ERROR" value="This is an ERROR - You can change it here!">
+<br>
+
+WARN: <button id="btn_WARN" onclick="console.warn( document.getElementById('txt_WARN').value )">WARN -> </button> 
+<input type="text" id="txt_WARN" value="This is an WARN - You can change it here!">
+<br>
+
+INFO: <button id="btn_INFO" onclick="console.info( document.getElementById('txt_INFO').value )">INFO -> </button> 
+<input type="text" id="txt_INFO" value="This is an INFO - You can change it here!">
+<br>
+
+LOG: <button id="btn_LOG" onclick="console.log( document.getElementById('txt_LOG').value )">LOG -> </button> 
+<input type="text" id="txt_LOG" value="This is an LOG - You can change it here!">
+<br>
+
+DEBUG: <button id="btn_DEBUG" onclick="console.debug( document.getElementById('txt_DEBUG').value )">DEBUG -> </button> 
+<input type="text" id="txt_DEBUG" value="This is an DEBUG - You can change it here!">
+
+<p>
+
+<FONT COLOR="RED"><I><B>Remember: </B> If the Console Log Level (pulldown above) is set lower than DEBUG, things may not get printed to the logs.  This is as expected!</I></FONT>
+
+Other Tests:
+<BR>
+<button id="btn_TRACE" onclick="console.trace()">console.trace()</button> 
+<BR>
+<button id="btn_GROUP" onclick="console.group('Group')">console.group()</button> 
+<BR>
+<button id="btn_GROUPEND" onclick="console.groupEnd()">console.groupEnd()</button> 
+<BR>
+
+<script type="text/javascript">
+
+	'use strict';
+
+	//==========================================================================
+	// Var declarations     
+	//==========================================================================
+
+	var RemoteLogger = window.RemoteLogger; 
+	var console = window.console;
+	var WebSocketManager = window.WebSocketManager;
+
+	var portNumber = 9010;
+
+	//--------------------------------------------------------
+	//  JUNK for JS Lint Complaining 
+	//--------------------------------------------------------
+
+	var neverUseThisItIsJustForJsLintFooling = function() {
+		neverUseThisItIsJustForJsLintFooling();
+		setConsoleLevel();
+		setRemoteLevel();
+		showAllLogLevels();
+		fun1();
+		useRemoteLogger();
+		showOneStackLevels();
+		updateLoginObj();
+		showLogs();
+	};
+
+
+	//==========================================================================
+	// Primary Functions     
+	//==========================================================================
+
+		// RemoteLogger.replaceConsole();
+		// RemoteLogger.restoreConsole();
+		// RemoteLogger.setPrintFullStack(true);
+
+
+	//--------------------------------------------------------
+	//  showLogs - Great Debugging Tool! 
+	//--------------------------------------------------------
+	var showLogs = function() {
+		var theLogs = window.EventLoggerDb.showSimpleLogs(false, false);
+		console.log("HTML", "Logs:\n" + theLogs );
+	};
+
+
+    var useRemoteLogger = function() {
+		RemoteLogger.replaceConsole();
+		document.getElementById('btnRemote').style.background = "green";
+		document.getElementById('btnRemote').style.color = "white";
+		document.getElementById('btnRemote').innerHTML = "Using Remote Logger Console";
+
+		document.getElementById('btnConsole').style.background = "";
+		document.getElementById('btnConsole').style.color = "black";
+		document.getElementById('btnConsole').innerHTML = "Click Here to use Regular Window.Console";
+	};
+
+    var useLocalLogger = function() {
+		RemoteLogger.restoreConsole();
+
+		document.getElementById('btnConsole').style.background = "green";
+		document.getElementById('btnConsole').style.color = "white";
+		document.getElementById('btnConsole').innerHTML = "Using Regular Window.Console";
+
+		document.getElementById('btnRemote').style.background = "";
+		document.getElementById('btnRemote').style.color = "black";
+		document.getElementById('btnRemote').innerHTML = "Click Here to use Remote Logger Console";
+	};
+
+    var showAllStackLevels = function() {
+		RemoteLogger.setPrintFullStack(true);
+		document.getElementById('fullStack').style.background = "green";
+		document.getElementById('fullStack').style.color = "white";
+		document.getElementById('fullStack').innerHTML = "Showing ALL Stack Levels";
+
+		document.getElementById('oneStack').style.background = "";
+		document.getElementById('oneStack').style.color = "black";
+		document.getElementById('oneStack').innerHTML = "Click Here to show One Stack Level";
+	};
+
+    var showOneStackLevels = function() {
+		RemoteLogger.setPrintFullStack(false);
+		document.getElementById('oneStack').style.background = "green";
+		document.getElementById('oneStack').style.color = "white";
+		document.getElementById('oneStack').innerHTML = "Showing ONE Stack Level";
+
+		document.getElementById('fullStack').style.background = "";
+		document.getElementById('fullStack').style.color = "black";
+		document.getElementById('fullStack').innerHTML = "Click Here to show All Stack Levels";
+	};
+
+
+
+
+    var setConsoleLevel = function() {
+		RemoteLogger.setConsoleLevel( RemoteLogger[ document.getElementById('consoleLevels').value ] );
+	};
+
+    var setRemoteLevel = function() {
+		RemoteLogger.setRemoteLevel( RemoteLogger[ document.getElementById('remoteLevels').value ] );
+	};
+
+    var showAllLogLevels = function() {
+
+		// With Labels "HTML"
+		console.alert( "HTML", "ALERT: This is an alert !! Something really bad happened!! Also showing other things sent to log ", "2", 4, "24323432", { a:"g", b:"wer"});
+		console.error( "HTML", "ERROR: An Error is this.  Something bad or unexpected happen, but it is not as bad as alert");
+		console.warn( "HTML", "WARN: A warning is like this");
+		console.info( "HTML", "INFO: In the Chrome Console you may see an (i) ");
+		console.log( "HTML", "LOG: Most things are just logged using this ");
+		console.debug( "HTML", "DEBUG: debug is for lots of information - like TRACE ");
+
+		// Without Labels "HTML"
+		console.alert( "ALERT: This is an alert !! Something really bad happened!! Also showing other things sent to log ", "2", 4, "24323432", { a:"g", b:"wer"});
+		console.error( "ERROR: An Error is this.  Something bad or unexpected happen, but it is not as bad as alert");
+		console.warn( "WARN: A warning is like this");
+		console.info( "INFO: In the Chrome Console you may see an (i) ");
+		console.log( "LOG: Most things are just logged using this ");
+		console.debug( "DEBUG: debug is for lots of information - like TRACE ");
+
+	};
+
+
+    var fun1 = function() {
+    	fun2();
+    }; 
+
+    var fun2 = function() {
+    	fun3();
+    }; 
+
+    var fun3 = function() {
+		console.log("HTML", "I am in fun3 -- do you see the multiple stack trace?");
+    }; 
+
+
+	//--------------------------------------------------------
+	//  updateLoginObj - Send Command NC with new Login User Credentials
+	//--------------------------------------------------------
+	var updateLoginObj = function() {
+
+		WebSocketManager.updateLoginObj( window.location.hostname, portNumber, 
+			document.getElementById("ws_username").value,			// UserNameString, 
+			document.getElementById("ws_password").value,			// UserPasswordString, 
+			document.getElementById("ws_clientId").value			// DeviceIdString, 
+		 );
+
+		document.getElementById('btnUpdateLogin').innerHTML = "<B>Change Login Credentials</B>";
+
+	};
+
+
+	window.onload = function() {
+	
+		useLocalLogger();
+		showAllStackLevels();
+
+	};
+
+	window.onunload = function() {
+
+		//  Do stuff here
+	};
+
+
+</script>
+
+
+</html>

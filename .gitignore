@@ -1,8 +1,1 @@
-log
-deps
-.DS_Store
-ebin
-ws_test.sublime-workspace
-www/docs
-www/js/out
-node_modules
+NcClient.sublime-project

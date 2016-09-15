@@ -1,0 +1,1198 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ver",
+				"versions"
+			],
+			[
+				"Tr",
+				"TrueFalse"
+			],
+			[
+				"my",
+				"mySelfPromiseData"
+			],
+			[
+				"Remote",
+				"RemoteLogger"
+			],
+			[
+				"pub",
+				"publisherId"
+			],
+			[
+				"dbgE",
+				"dbgExit"
+			],
+			[
+				"Message",
+				"logMessage"
+			],
+			[
+				"cond",
+				"confAudioCodec"
+			],
+			[
+				"conf",
+				"confBitrate"
+			],
+			[
+				"def",
+				"defaultValues"
+			],
+			[
+				"cmd",
+				"cmdData"
+			],
+			[
+				"roo",
+				"roomId"
+			],
+			[
+				"Setting",
+				"SettingsObject"
+			],
+			[
+				"J",
+				"JsonTab"
+			],
+			[
+				"room",
+				"room_id"
+			],
+			[
+				"Js",
+				"jsonData"
+			],
+			[
+				"nkR",
+				"nkRemoteAudioMuted"
+			],
+			[
+				"Rt",
+				"RtcMedia"
+			],
+			[
+				"stop",
+				"stopReason"
+			],
+			[
+				"loca",
+				"localDescription"
+			],
+			[
+				"Messag",
+				"warnMessage"
+			],
+			[
+				"sup",
+				"superEvents"
+			],
+			[
+				"ev",
+				"eventNames"
+			],
+			[
+				"jso",
+				"JsonTab"
+			],
+			[
+				"tar",
+				"target"
+			],
+			[
+				"Debu",
+				"DebugData"
+			],
+			[
+				"media",
+				"MediaStreamEvent"
+			],
+			[
+				"Data",
+				"DebugData"
+			],
+			[
+				"dbgR",
+				"dbgResolve"
+			],
+			[
+				"dbg",
+				"dbgExitPd"
+			],
+			[
+				"erro",
+				"errorMessage"
+			],
+			[
+				"dbgEn",
+				"dbgEnterPd"
+			],
+			[
+				"Mess",
+				"errorMessage"
+			],
+			[
+				"MEss",
+				"dbgMessage"
+			],
+			[
+				"Deb",
+				"DebugData"
+			],
+			[
+				"The",
+				"TheObject"
+			],
+			[
+				"warn",
+				"warnMessage"
+			],
+			[
+				"Ice",
+				"IceRestart"
+			],
+			[
+				"Offer",
+				"OfferToRecieveVideo"
+			],
+			[
+				"offer",
+				"offerToReceiveVideo"
+			],
+			[
+				"Send",
+				"SendAudio"
+			],
+			[
+				"Stre",
+				"StreamToSet"
+			],
+			[
+				"publ",
+				"publishStream"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"dbgD",
+				"dbgDo"
+			],
+			[
+				"dbgDo",
+				"dbgDoPd"
+			],
+			[
+				"info",
+				"infoSetupData"
+			],
+			[
+				"_pri",
+				"_printSetupData"
+			],
+			[
+				"Full",
+				"fullDebugData"
+			],
+			[
+				"initD",
+				"initDates"
+			],
+			[
+				"_fu",
+				"_functionModuleName"
+			],
+			[
+				"dela",
+				"delayReloveRject"
+			],
+			[
+				"_dat",
+				"_dateExit"
+			],
+			[
+				"sub",
+				"substring"
+			],
+			[
+				"Arg",
+				"ArgsArray"
+			],
+			[
+				"_of",
+				"_rtcOfferOptions"
+			],
+			[
+				"_offerTo",
+				"_offerToReceiveVideo"
+			],
+			[
+				"print",
+				"printSetupData"
+			],
+			[
+				"pul",
+				"publishStream"
+			],
+			[
+				"p",
+				"property	@property"
+			],
+			[
+				"nam",
+				"namespace	@namespace"
+			],
+			[
+				"time",
+				"timeout	setTimeout function"
+			],
+			[
+				"c",
+				"constructor	@constructor"
+			],
+			[
+				"pr",
+				"private	@private"
+			],
+			[
+				"cla",
+				"className"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"cons",
+				"constructor"
+			],
+			[
+				"re",
+				"requires	@requires"
+			],
+			[
+				"iceCa",
+				"iceCandidatesTimeOutMs"
+			],
+			[
+				"neg",
+				"negotiationNeededTimeOutMs"
+			],
+			[
+				"mediaSer",
+				"mediaServerType"
+			],
+			[
+				"lo",
+				"localVideoElement"
+			],
+			[
+				"co",
+				"const	@const"
+			],
+			[
+				"remo",
+				"remoteAudioMuted"
+			],
+			[
+				"Event",
+				"EventBus"
+			],
+			[
+				"Sett",
+				"SettingsObject"
+			],
+			[
+				"My",
+				"MySuper"
+			],
+			[
+				"Th",
+				"TheName"
+			],
+			[
+				"vo",
+				"voiceActivityDetection"
+			],
+			[
+				"Rec",
+				"RecieveAudio"
+			],
+			[
+				"off",
+				"offerToReceiveAudio"
+			],
+			[
+				"NC",
+				"NCOMP"
+			],
+			[
+				"resp",
+				"respData"
+			],
+			[
+				"Ro",
+				"RoomName"
+			],
+			[
+				"Medi",
+				"MediaManager"
+			],
+			[
+				"und",
+				"undefined"
+			],
+			[
+				"st",
+				"stackTrace"
+			],
+			[
+				"run",
+				"runTest2"
+			],
+			[
+				"WebS",
+				"WebSocketManager"
+			],
+			[
+				"get",
+				"getMilliseconds"
+			],
+			[
+				"isW",
+				"isWebSocketLoggedIn"
+			],
+			[
+				"web",
+				"webSocketSessionId"
+			],
+			[
+				"local",
+				"localDebugOnly"
+			],
+			[
+				"rem",
+				"remoteFlag"
+			],
+			[
+				"set",
+				"setupData"
+			],
+			[
+				"ar",
+				"argsLength"
+			],
+			[
+				"Log",
+				"LogData"
+			],
+			[
+				"use",
+				"useRealConsole"
+			],
+			[
+				"other",
+				"otherCssData"
+			],
+			[
+				"na",
+				"nativeError"
+			],
+			[
+				"rep",
+				"replaceConsole"
+			],
+			[
+				"not",
+				"notice"
+			],
+			[
+				"Remo",
+				"RemoteLogger"
+			],
+			[
+				"font",
+				"fontColors"
+			],
+			[
+				"james",
+				"rtc_james_03"
+			],
+			[
+				"med",
+				"mediaServerPulldown"
+			],
+			[
+				"ha",
+				"handle"
+			],
+			[
+				"WsE",
+				"WsEventMgr"
+			],
+			[
+				"remove",
+				"removeTrack"
+			],
+			[
+				"type",
+				"typeof"
+			],
+			[
+				"sessio",
+				"session_id"
+			],
+			[
+				"ready",
+				"readyState"
+			],
+			[
+				"defa",
+				"defaults"
+			],
+			[
+				"pro",
+				"promise"
+			],
+			[
+				"Tra",
+				"TrackData"
+			],
+			[
+				"round",
+				"roundTripAlert"
+			],
+			[
+				"star",
+				"startDate"
+			],
+			[
+				"toSt",
+				"toString"
+			],
+			[
+				"typ",
+				"typeof"
+			],
+			[
+				"he",
+				"header"
+			],
+			[
+				"do",
+				"doDebug"
+			],
+			[
+				"loc",
+				"localDescription"
+			],
+			[
+				"shor",
+				"shortName"
+			],
+			[
+				"log",
+				"logObj"
+			],
+			[
+				"sdp",
+				"sdpTest"
+			],
+			[
+				"JS",
+				"JSON"
+			],
+			[
+				"err",
+				"errorVal"
+			],
+			[
+				"gu",
+				"gumSetAudioVideoOptions"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Makefile/Make.sublime-build",
+					""
+				],
+				[
+					"Packages/Makefile/Make.sublime-build",
+					"Clean"
+				],
+				[
+					"Packages/Markdown Preview/Markdown.sublime-build",
+					""
+				]
+			],
+			[
+				"Packages/Makefile/Make.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "pack",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"makr",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mak",
+				"Markmon launch"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"mar",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"markd",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"ma",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"mark",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"git",
+				"GitGutter: Compare Against Commit"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"markm",
+				"Markmon launch"
+			],
+			[
+				"emmet ch",
+				"Emmet: Go to Matching Pair"
+			],
+			[
+				" ctags",
+				"CTags: Rebuild Tags"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 521.0
+	},
+	"console":
+	{
+		"height": 54.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jgledhil/src/NcClient",
+		"/Users/jgledhil/src/NcClient/www",
+		"/Users/jgledhil/src/NcClient/www/js",
+		"/Users/jgledhil/src/NcClient/www/tutorials"
+	],
+	"file_history":
+	[
+		"/Users/jgledhil/src/NcClient/www/index.html",
+		"/Users/jgledhil/src/NcClient/NcClient.sublime-project",
+		"/Users/jgledhil/src/NcClient/.gitignore",
+		"/Users/jgledhil/src/ws_test/www/js/Constants.js",
+		"/Users/jgledhil/src/ws_test/www/js/MediaMngr.js",
+		"/Users/jgledhil/src/ws_test/www/js/SfuMngr.js",
+		"/Users/jgledhil/src/ws_test/www/Simple_Echo_RemoteLogging.html",
+		"/Users/jgledhil/src/ws_test/.jshintrc",
+		"/Users/jgledhil/src/ws_test/www/Simple_Echo.html",
+		"/Users/jgledhil/src/ws_test/www/Sfu2.html",
+		"/Users/jgledhil/src/ws_test/www/js/EchoMngr.js",
+		"/Users/jgledhil/src/ws_test/www/jsDoc_conf_all.json",
+		"/Users/jgledhil/src/ws_test/jsDoc_conf_all.json",
+		"/Users/jgledhil/src/ws_test/www/promise1.html",
+		"/Users/jgledhil/src/ws_test/www/js/NetComposerHelper.js",
+		"/Users/jgledhil/src/ws_test/www/js/WebSocketManagerCls.js",
+		"/Users/jgledhil/src/ws_test/www/SfuPub.html",
+		"/Users/jgledhil/src/ws_test/www/EchoTest.html",
+		"/Users/jgledhil/src/ws_test/www/publisher.html",
+		"/Users/jgledhil/src/ws_test/www/js/GumRtcStreamHelper.js",
+		"/Users/jgledhil/src/ws_test/server.js",
+		"/Users/jgledhil/src/ws_test/www/js/EventMngr.js",
+		"/Users/jgledhil/src/ws_test/www/js/getScreenId.js",
+		"/Users/jgledhil/src/ws_test/www/js/EventBus.js",
+		"/Users/jgledhil/src/ws_test/www/js/RtcMedia.js_250816_2137",
+		"/Users/jgledhil/src/ws_test/www/js/RTDBack.js",
+		"/Users/jgledhil/src/ws_test/www/js/MediaManager.js",
+		"/Users/jgledhil/src/ws_test/www/js/UserMedia.js",
+		"/Users/jgledhil/src/ws_test/www/js/EventLoggerDb.js",
+		"/Users/jgledhil/src/ws_test/www/js/adapter.js",
+		"/Users/jgledhil/src/ws_test/www/js/WsLib.js",
+		"/Users/jgledhil/src/ws_test/www/js/DebugData.js",
+		"/Users/jgledhil/src/ws_test/www/js/PromiseData.js",
+		"/Users/jgledhil/src/ws_test/www/js/RemoteLogger.js",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/JSHint Gutter/.jshintrc",
+		"/Users/jgledhil/src/ws_test/package.json",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
+		"/Users/jgledhil/src/ws_test/www/js/DocIt.js",
+		"/Users/jgledhil/src/ws_test/www/js/foo.md",
+		"/Users/jgledhil/src/ws_test/www/conf_all.json",
+		"/Users/jgledhil/src/ws_test/www/js/conf_all.json",
+		"/Users/jgledhil/src/ws_test/www/echo.html",
+		"/Users/jgledhil/src/ws_test/www/ws1.html",
+		"/Users/jgledhil/src/ws_test/www/js/MediaServerStream.js",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/demos/rtcSkylink.html",
+		"/Users/jgledhil/src/ws_test/www/js/RtcMedia.js_250816_2137.js",
+		"/Users/jgledhil/src/ws_test/www/index.html",
+		"/Users/jgledhil/src/ws_test/www/js/out/RtcMedia.js.html",
+		"/Users/jgledhil/src/ws_test/www/js/out/RtcMedia.html",
+		"/Users/jgledhil/src/ws_test/www/rtc2.html",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/DocBlockr/README.md",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/User/Base File.sublime-settings",
+		"/Users/jgledhil/src/ws_test/www/js/AG_Call.js",
+		"/Users/jgledhil/src/ws_test/www/LogTest.html",
+		"/Users/jgledhil/src/ws_test/www/CommandTester.html",
+		"/Users/jgledhil/src/ws_test/www/js/WebSocketManager.js",
+		"/Users/jgledhil/src/ws_test/www/js/PeerConnServerBond.js",
+		"/Users/jgledhil/src/ws_test/www/js/MediaCallManager.js",
+		"/Users/jgledhil/src/ws_test/www/rtc1.html",
+		"/Users/jgledhil/src/ws_test/www/js/WsManager.js",
+		"/Users/jgledhil/src/ws_test/www/js/WsEventMgr.js",
+		"/Users/jgledhil/src/ws_test/www/js/WsLogDb.js",
+		"/Users/jgledhil/src/ws_test/www/js/WebRtcHelper.js",
+		"/Users/jgledhil/src/ws_test/www/publisher2.html",
+		"/Users/jgledhil/src/ws_test/www/js/ObjProtoTest.js",
+		"/Users/jgledhil/src/ws_test/www/echo_simple.html",
+		"/Users/jgledhil/src/ws_test/www/js/WsClsCmdMgr.js",
+		"/Users/jgledhil/src/ws_test/www/js/publisher2.html",
+		"/Users/jgledhil/src/ws_test/www/publish.html",
+		"/Users/jgledhil/src/ws_test/www/js/WebRtcHelper_starter_code.js",
+		"/Users/jgledhil/src/ws_test/www/Echo.html",
+		"/Users/jgledhil/src/ws_test/www/js/MediaCaptureAndStreams.js",
+		"/Users/jgledhil/src/ws_test/src/ws_test.erl",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/index.html",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/src/sipstorm_sws2_protocol.erl",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/demos/oncall.html",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/demos/oncall.js",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/js/Line_v2.js",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/js/WsConnection.js",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/js/WsConnection.js",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/src/sipstorm.erl",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/js/Line.js",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/js/Line.js",
+		"/Users/jgledhil/src/netcomp/apps/ncs_media/src/ncp_media_sws2_protocol.erl",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/oncall.html",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/js/oncall.js",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/Makefile",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/jx/js/Line.js",
+		"/Users/jgledhil/src/Jaraxa/gotoolsrtc/www/framework/demo.html",
+		"/Users/jgledhil/src/netcomp/apps/ncs_media/src/ncs_media.erl",
+		"/Users/jgledhil/src/netcomp/apps/netcomp/src/netcomp_callbacks.erl",
+		"/Users/jgledhil/src/netcomp/apps/ncs_media/src/ncp_media_sws2.erl",
+		"/Users/jgledhil/src/otp_src_18.0/lib/stdlib/src/gen_server.erl",
+		"/Users/jgledhil/src/otp_src_18.0/lib/stdlib/src/gen.erl",
+		"/Users/jgledhil/src/netcomp/deps/nkpacket/src/nkpacket_protocol.erl",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/priv/www/demos/sws4.html",
+		"/Users/jgledhil/src/netcomp/.gitignore",
+		"/Users/jgledhil/src/otp_src_18.0/erts/etc/common/dialyzer.c",
+		"/Users/jgledhil/src/netcomp/apps/sipstorm/src/sipstorm_sws2_protocol_20160211.erl_old",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip.erl",
+		"/Users/jgledhil/src/Nekso/nksip/doc/api/overview.md",
+		"/Users/jgledhil/src/netcomp/netcomp.sublime-project",
+		"/Users/jgledhil/src/Nekso/nksip/doc/api/service.md",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_call_uac.erl",
+		"/Users/jgledhil/src/Nekso/nksip/nksip.sublime-project",
+		"/Users/jgledhil/src/Nekso/nksip/plugins/src/nksip_uac_auto_register.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_call_uac_make.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_call_uac_resp.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_call_uac_reply.erl",
+		"/Users/jgledhil/src/Nekso/nksip/deps/nkpacket/src/nkpacket_util.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_call_uas_make.erl",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/User/GitGutter.sublime-settings",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/GitGutter/GitGutter.sublime-settings",
+		"/Users/jgledhil/src/Nekso/nksip/test/proxy_test.erl",
+		"/Users/jgledhil/Library/Application Support/Sublime Text 3/Packages/sublime-text-markmon/sublime-text-markmon.sublime-settings",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_callbacks.erl",
+		"/Users/jgledhil/src/Nekso/nksip/include/nksip_call.hrl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_parse.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_auth.erl",
+		"/Users/jgledhil/src/Nekso/nksip/include/nksip.hrl",
+		"/Users/jgledhil/src/Nekso/nksip/Makefile",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_parse_via.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_sdp.erl",
+		"/Users/jgledhil/src/Nekso/nksip/deps/nkservice/src/nkservice.erl",
+		"/Users/jgledhil/src/Nekso/nksip/deps/nklib/src/nklib_util.erl",
+		"/Users/jgledhil/src/Nekso/nksip/src/nksip_protocol.erl",
+		"/Users/jgledhil/src/Nekso/nksip/deps/nkpacket/include/nkpacket.hrl"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"*.js,*.html,<open files>,<open folders>,-*/docs/*.html",
+			"*.js,*.html,<open files>,<open folders>,-*/out/*.html",
+			"*.js,*.html,<open files>,<open folders>",
+			"*.js,*.html,<open files>",
+			"*.js,<open files>",
+			"*.js,<open files>,<open folders>",
+			"*.js, *.html,,<open files>,<open folders>",
+			"*.js, *.html,,<open files>",
+			"*.js, *.html,<open folders>",
+			"*.js, *.html,<open files>,<open folders>",
+			"*.js, *.html,<open files>",
+			"*.js, ../*.html",
+			"*.js, *.html",
+			"*.erl, *.hlr",
+			"/Users/jgledhil/src/Nekso/nksip/doc",
+			"/Users/jgledhil/src/Nekso/nksip/docs",
+			"*.md",
+			"/Users/jgledhil/src/Nekso/nksip/src",
+			"./src/*.erl",
+			"~/src/Nekso/nksip/src/*.erl",
+			"./src/*.erl",
+			"/src/*.erl",
+			"src/*.erl",
+			"./src/*.erl,*.hrl",
+			"*.erl,*.hrl",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"_login",
+			"setConnectData",
+			"handleEvent",
+			"getStackTrace",
+			"WebSocketManager_old",
+			"JsonData",
+			"WebSocketManager_old",
+			"_isWebSocketLoggedIn",
+			"resetAfterWsCloseOrError",
+			"onWsOpen",
+			"self.",
+			"_login",
+			"evt",
+			"self.",
+			"		this._",
+			"_onWsMessage",
+			"		this._",
+			"_resetAfterWsCloseOrError",
+			"_onWsOpen",
+			"wsConnStartDate",
+			"WebSocketManager_old.userAgent",
+			"connectionId",
+			"_connectionId",
+			"_uuid",
+			"jsWebSocketSessionId",
+			"createUuid",
+			"jsWebSocketSessionId",
+			"_jsWebSocketSessionId",
+			"WsMngr.",
+			"wsConnStartDate",
+			"webSocket",
+			"self.",
+			"WS_STATE_",
+			"WS_STATE_OPEN",
+			"self.",
+			"isWebSocketOpen",
+			"self.",
+			"this.",
+			"close",
+			"this.",
+			"close",
+			"this.",
+			": function",
+			"		},",
+			":function(",
+			"this",
+			"isWebSocketReady",
+			"logPings",
+			"loginObj",
+			"webSocketSessionId",
+			"getWsSessionId",
+			"DEBUG",
+			"setDebugFlag",
+			"DEBUG",
+			"logPings",
+			"DEBUG",
+			"isWebSocketLoggedIn",
+			"host",
+			"deviceId",
+			"uuid",
+			"userName",
+			" {return this",
+			"userAgent",
+			"VERSION",
+			"MODULE",
+			"CODE_REV",
+			"webSocketSessionId",
+			"userAgent",
+			"deviceId",
+			"wsConnStartDate",
+			"webSocketSessionId",
+			"CODE_REV",
+			"VERSION",
+			"evt_cnt",
+			"recvQueue",
+			"evt_cnt",
+			"this.",
+			"sentQueue",
+			"remoteLogDb",
+			"classManagers",
+			"throw",
+			"TrueFalse",
+			"logPings",
+			"remoteLogDb",
+			"DEBUG",
+			"MOD",
+			"close",
+			"sendRemoteLogs",
+			"classManagers",
+			"new WebSocketManager",
+			"WebSocketManager",
+			"close",
+			" = ",
+			"WebSocketManager",
+			"host",
+			"remoteLogDb",
+			"uuid",
+			"CODE_REV",
+			"VERSION",
+			"EventMngr",
+			"WebSocketMngr",
+			"WsMngr",
+			"manageClass_Server",
+			"updateLoginObj",
+			"roomListenToPublisher",
+			"listenOrDelete",
+			"createCheckBoxHeader",
+			"createCheckBox",
+			"removeAllCheckBoxes",
+			"addRemoveVid",
+			"stopTest",
+			"_chn_nk_MediaSessionStop",
+			"stopTest",
+			"roomListenToPublisher",
+			"videoElements",
+			"roomPublish",
+			"localWsSendData",
+			"roomListenAll",
+			"getLocalFaceStream",
+			"roomPublish",
+			"sfuMngrInst",
+			"addEventListener",
+			"eventBasedRemoteError",
+			"onRemoteLoggerError",
+			"No Handler available for this Event",
+			"roomListenToPublisher",
+			"WebSocketManager.responseToString( Data )",
+			"_chn_pc_SetLocalDescription"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"connectionId",
+			"_webSocketSessionId",
+			"_nkMediaRoomList",
+			"_nkMediaRoomMsgLogGet",
+			"_nkMediaRoomMsgLogSend",
+			"_nkMediaRoomList",
+			"_nkMediaRoomInfo",
+			"_nkMediaRoomCreate",
+			"_nkMediaRoomDestroy",
+			"_mkMediaRoomCreate",
+			"ListenMedia",
+			"PublishMedia",
+			"EchoMedia",
+			"_chn_nk_MediaRoomMsgLogGet",
+			"_chn_nk_MediaRoomMsgLogSend",
+			"_chn_nk_MediaRoomList",
+			"_chn_nk_MediaRoomInfo",
+			"_chn_nk_MediaRoomDestroy",
+			"_chn_nk_MediaRoomCreate",
+			"_chn_nk_MediaSessionInfo",
+			"nkBitrate",
+			"nkRemoteVideoMuted",
+			"_muteLocalTracks",
+			"_chn_nk_MediaSessionUpdate",
+			"nkSessionId",
+			"_chn_nk_MediaSessionSetAnswer",
+			"= RemoteLogger.getStackTraceString\\( (new Error() ), ",
+			"closePeerConn",
+			"_chn_nk_MediaSessionStart",
+			"Callback",
+			"CbName",
+			"mySelfPromiseData.data",
+			"_chn_pc_SetLocalStream",
+			"_pcSetLocalStream",
+			"_pcRemoveLocalStream",
+			"_pcAddLocalStream",
+			"RtcMedia.pcRemoveLocalStream",
+			"_chn_pc_SetLocalStream_OneOnly",
+			"pcSetLocalStream",
+			"pcRemoveLocalStream",
+			"pcAddLocalStream",
+			"JSON.stringify( self._jsepRtcDesc )",
+			"JSON.stringify( self._rtcOfferOptions )",
+			"RtcMedia.className, self",
+			"_nkRemoteAudioMuted",
+			"nkRemoteAudioMuted",
+			"_nkRemoteVideoMuted",
+			"nkRemoteVideoMuted",
+			"_localPreviousStream",
+			"_localCurrentStream",
+			"SetLocalStreamAndTestNegotiation",
+			"_chn_pc_SetLocalStream_AND_TestNegotiation",
+			"_chn_pc__SetLocalStream_AND_TestNegotiationReject",
+			"_chn_pc__SetLocalStream_AND_TestNegotiationResolve",
+			"_chn_pc__SetLocalStream_AND_TestNegotiation",
+			"pc_SetLocalStream_TestNegotiation_CreateOffer_SetLocalDescription_WaitForIce",
+			"_chn_pc_TestNegotiationNeeded",
+			"_chn_pc_WaitForIceCompleteOrTimeout",
+			"_chn_pc_SetLocalDescription",
+			"_chn_pc_CreateAnswer",
+			"_chn_pc_CreateOffer",
+			"_chn_pc_CreateAnswer_SetLocalDescription",
+			"_chn_pc_CreateOffer_SetLocalDescription",
+			"gumSetAudioVideoOptions",
+			"peerConn_setRemoteSdpPreAnswer",
+			"peerConn_setRemoteSdpAnswer",
+			"peerConn_setRemoteSdpOffer",
+			"peerConn_LocalStream_Add",
+			"peerConn_LocalStream_Remove",
+			"peerConn_LocalStream_Set",
+			"setLocalSdpAnswer",
+			"setLocalSdpOffer",
+			"sdpAnswer",
+			"sdpOffer",
+			"peerConn_setRemotePreAnswerSdp",
+			"peerConn_setRemoteOfferSdp",
+			"peerConn_setRemoteAnswerSdp",
+			"peerConn_AddIceCandidate",
+			"_peerConn_SetRemoteDescription",
+			"_peerConn_CreateAnswer",
+			"_peerConn_SetLocalDescription",
+			"_peerConn_CreateOffer",
+			"_streamTracksDisableStopRemove",
+			"_gumSetAudioVideoOptions",
+			"_setConstraintsAndGetUserMedia",
+			"_rtcOfferOptions",
+			"_getUserMedia",
+			"_constraints",
+			"rtc_CreateOffer_SetLocalOfferDescription_WaitForIce",
+			"RtcMedia.mediaDirectionOptions",
+			"RtcMedia.videoSizeOptions",
+			"RtcMedia.defaultValues",
+			"SelfPromiseData",
+			"peerConn_AddLocalStream_CreateOffer_SetLocalDescription_WaitForIce",
+			"peerConn_AddLocalStreamCreateOfferSetLocalDescriptionWaitForIce",
+			"setConstraintsAndGetUserMedia",
+			"_gumData",
+			"this.peerConn",
+			"_peerConn",
+			"media",
+			"responseToString",
+			"WebSocketManager.MOD + \"",
+			"WebSocketManager.MOD",
+			"WebSocketManager",
+			"WebSocketManager.MOD",
+			"allowedToSendRemote",
+			"remoteLogInfo",
+			"console.localInfoOnly",
+			"console.localDebugOnly",
+			"console.localLogOnly",
+			"logIt",
+			"cmdData",
+			"GumRtcStreamHelper",
+			"WebSocketManager",
+			"EventLoggerDb",
+			"EventLoggerDbClass",
+			"EventLoggerDb",
+			"GumRtcStreamHelper.js",
+			"GumRtcStreamHelper",
+			"GumRtcStreamHelper: ",
+			"roomListenAll",
+			"setLocalOfferDescriptionWaitForIce",
+			"wsManager",
+			"localWsSendData",
+			"wsLocalSendData",
+			"WsEventMgrClass",
+			"WsEventMgr",
+			"peerConn_MuteLocalTracks"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 364.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Erlang/Erlang.sublime-build",
+	"project": "NcClient.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 67.0,
+		"last_filter": "authorize_data",
+		"selected_items":
+		[
+			[
+				"authorize_data",
+				"authorize_data"
+			]
+		],
+		"width": 431.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 245.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
