@@ -16,11 +16,11 @@
         "monospaceLinks": false
     },
     "opts": {
-        "destination": "./docs/",          // same as -d ./out/
+        "destination": "./docs/code",          // same as -d ./out/
         "recurse": true,                  // same as -r
         "private": true,
         "access": "all",
         
-        "tutorials": "./tutorials" // same as -u path/to/tutorials
+        "tutorials": "./docs/tutorials" // same as -u path/to/tutorials
     }
 }
