@@ -1,0 +1,11434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: RtcMedia</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Class: RtcMedia</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>RtcMedia</h2>
+        
+            <div class="class-description"><p>Constructs a new RtcMedia instance</p>
+<p>Create an Offer</p>
+<ul>
+<li>Get Stream from getUserMedia</li>
+<li>Set Stream</li>
+<li>pc.onnegotiationneeded</li>
+<li>pc.createOffer</li>
+<li>pc.setLocalDescription(offer)</li>
+<li>Send SDP --&gt; signalingChannel.send(JSON.stringify({ &quot;sdp&quot;: pc.localDescription }));</li>
+</ul>
+<p>Create an Answer </p>
+<ul>
+<li>Get SDP from remote site </li>
+<li>Creat (desc)</li>
+<li>pc.setRemoteDescription(desc)</li>
+<li>pc.createAnswer()</li>
+<li>pc.setLocalDescription(answer)</li>
+<li>Send SDP --&gt; signalingChannel.send(JSON.stringify({ &quot;sdp&quot;: pc.localDescription }))</li>
+</ul></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="RtcMedia"><span class="type-signature"></span>new RtcMedia<span class="signature">(SettingsObject)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Constructor</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SettingsObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
+            It is a convience method for setting multple things at once and/or passing them from other sub classes.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>name - <a href="RtcMedia.html#name">RtcMedia#name</a> use for this instance</p>
+<ul>
+<li>Default Value: Will be created if none provided</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sendAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>sendAudio - <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>sendVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>sendVideo - <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offerToReceiveAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>offerToReceiveAudio - <a href="RtcMedia.html#offerToReceiveAudio">RtcMedia#offerToReceiveAudio</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>offerToReceiveVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>offerToReceiveVideo - <a href="RtcMedia.html#offerToReceiveVideo">RtcMedia#offerToReceiveVideo</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>voiceActivityDetection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>voiceActivityDetection - <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iceRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>iceRestart - <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a></p>
+<ul>
+<li>true = yes</li>
+<li>false = no</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>singleStreamOnly</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>singleStreamOnly - <a href="RtcMedia.html#singleStreamOnly">RtcMedia#singleStreamOnly</a></p>
+<ul>
+<li>true = Make sure there is only 1 MediaStream in the PeerConn.  Unless you really know what you are doing and the media server allows for multiple streams, this should always be set true!</li>
+<li>false = Allows multiple streams to be added to the PeerConn.</li>
+<li>Default Value: true</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>mediaDirection</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>mediaDirection - <a href="RtcMedia.html#mediaDirection">RtcMedia#mediaDirection</a>.<br>  NOTE: Usually other classes set this.</p>
+<ul>
+<li>BOTH: 2 - see <a href="RtcMedia.html#.mediaDirectionOptions">RtcMedia.mediaDirectionOptions</a></li>
+<li>PUBLISH_ONLY: 1 - see <a href="RtcMedia.html#.mediaDirectionOptions">RtcMedia.mediaDirectionOptions</a></li>
+<li>LISTEN_ONLY: 0 - see <a href="RtcMedia.html#.mediaDirectionOptions">RtcMedia.mediaDirectionOptions</a></li>
+<li>Default Value: BOTH - <a href="RtcMedia.html#.mediaDirectionOptions">RtcMedia.mediaDirectionOptions</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localAudioMuted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>localAudioMuted - <a href="RtcMedia.html#localAudioMuted">RtcMedia#localAudioMuted</a></p>
+<ul>
+<li>true = Mute local audio</li>
+<li>false = Unmute local audio - let it be heard</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localVideoMuted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>localVideoMuted - <a href="RtcMedia.html#localVideoMuted">RtcMedia#localVideoMuted</a></p>
+<ul>
+<li>true = Mute local video</li>
+<li>false = Unmute local audio - let it be seen</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>trickleIce</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>trickleIce - <a href="RtcMedia.html#trickleIce">RtcMedia#trickleIce</a></p>
+<ul>
+<li>true = Get initial SDP, then send Ice Candidates in trickle fashon.</li>
+<li>false = Only send Sdp once all candidate are gathered OR timeout happens</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iceCandidatesTimeOutMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>iceCandidatesTimeOutMs - <a href="RtcMedia.html#iceCandidatesTimeOutMs">RtcMedia#iceCandidatesTimeOutMs</a> 
+  Time in MS to wait for Ice Candidates. </p>
+<ul>
+<li>Min value = 500</li>
+<li>Max value = 20000</li>
+<li>Default Value: 1000</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>negotiationNeededTimeOutMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>negotiationNeededTimeOutMs - <a href="RtcMedia.html#negotiationNeededTimeOutMs">RtcMedia#negotiationNeededTimeOutMs</a>
+  Time in MS to wait for Negotiation timeout.</p>
+<ul>
+<li>Min value = 100</li>
+<li>Max value = 1000</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>negotiationNeededTimeOutReject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>negotiationNeededTimeOutReject - <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a></p>
+<ul>
+<li>true = If negotiationNeededTimeOutMs triggers, then do a Promise.Reject(), which SHOULD cause other things to be rejected after it.</li>
+<li>false = If negotiationNeededTimeOutMs triggers, then do a Promise.Resolve() and carry on normal</li>
+<li>Default Value: false</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>localVideoElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>localVideoElement - <a href="RtcMedia.html#localVideoElement">RtcMedia#localVideoElement</a>
+  An HTML Video Element.  If provided, then the video element will be populated when local video is available.</p>
+<ul>
+<li>Default Value: none - this must be set but the developer if it is to be used.</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>remoteVideoElement</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>remoteVideoElement - <a href="RtcMedia.html#remoteVideoElement">RtcMedia#remoteVideoElement</a>
+  An HTML Video Element.  If provided, then the video element will be populated when remote video is available.</p>
+<ul>
+<li>Default Value: none - this must be set but the developer if it is to be used.</li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+<h5>Requires:</h5>
+<ul>
+    <li><a href="WebSocketManager.html">WebSocketManager</a></li>
+
+    <li><a href="DebugData.html">DebugData</a></li>
+
+    <li><a href="PromiseData.html">PromiseData</a></li>
+
+    <li><a href="RemoteLogger.html">RemoteLogger</a></li>
+
+    <li><a href="EventLoggerDb.html">EventLoggerDb</a></li>
+
+    <li><a href="WsLib.html">WsLib</a></li>
+
+    <li><a href="adapter.html">adapter</a></li>
+
+    <li><a href="getScreenId.html">getScreenId</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>B = new RtcMedia();
+or
+B = new RtcMedia( {name: "myName", sendAudio: true, sendVideo: true } );</code></pre>
+
+
+
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li><a href="WebSocketManager.html">WebSocketManager</a></li>
+        
+            <li><a href="DebugData.html">DebugData</a></li>
+        
+            <li><a href="PromiseData.html">PromiseData</a></li>
+        
+            <li><a href="RemoteLogger.html">RemoteLogger</a></li>
+        
+            <li><a href="EventLoggerDb.html">EventLoggerDb</a></li>
+        
+            <li><a href="WsLib.html">WsLib</a></li>
+        
+            <li><a href="adapter.html">adapter</a></li>
+        
+            <li><a href="getScreenId.html">getScreenId</a></li>
+        </ul>
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".counter"><span class="type-signature">(static) </span>counter<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Used for creating names and keeping track of multiple RtcMedia instances.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1501">line 1501</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".eventNames"><span class="type-signature">(static) </span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns events for this class PLUS events for parent classes if available.</p>
+<p>Events for this class are:</p>
+<ul>
+<li>onLocalFaceStream</li>
+<li>onLocalScreenCaptureStream</li>
+<li>onRemoteStream</li>
+<li>onPeerConn_NegotiationNeeded</li>
+<li>onPeerConn_IceCandidate</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1656">line 1656</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".mediaDirectionOptions"><span class="type-signature">(static, readonly) </span>mediaDirectionOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Media Direction</p>
+<p>Values are:</p>
+<ul>
+<li>2) means audio/video can send and recieve</li>
+<li>1) means audio/video can send from the broswer/client.  This is used for publish only streams </li>
+<li>0) means audio/video can only be recieved from others, not sent.  This is used for listen only streams.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1520">line 1520</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".videoSizeOptions"><span class="type-signature">(static, readonly) </span>videoSizeOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>This is used with <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a>.  If you pass in a string that can be matched up with 
+        a value in <a href="RtcMedia.html#.videoSizeOptions">RtcMedia.videoSizeOptions</a>, then the return value will be used for
+        video critera.</p>
+<p>Values are:</p>
+<ul>
+<li>'720p': { &quot;width&quot;: 1280, &quot;height&quot;: 720, &quot;ratio&quot;: &quot;16:9&quot; },</li>
+<li>SVGA: { &quot;width&quot;: 800, &quot;height&quot;: 600, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>VGA: { &quot;width&quot;: 640, &quot;height&quot;: 480, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>360p: { &quot;width&quot;: 640, &quot;height&quot;: 360, &quot;ratio&quot;: &quot;16:9&quot; }, </li>
+<li>CIF: { &quot;width&quot;: 352, &quot;height&quot;: 288, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>QVGA: { &quot;width&quot;: 320, &quot;height&quot;: 240, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>QVGA: { &quot;width&quot;: 320, &quot;height&quot;: 240, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>QCIF: { &quot;width&quot;: 176, &quot;height&quot;: 144, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+<li>QQVGA: { &quot;width&quot;: 160, &quot;height&quot;: 120, &quot;ratio&quot;: &quot;4:3&quot; }, </li>
+</ul>
+<pre class="prettyprint source lang-js"><code>RtcMedia.videoSizeOptions.VGA;
+// Returns -->  VGA Object { &quot;width&quot;: 640, &quot;height&quot;: 480, &quot;ratio&quot;: &quot;4:3&quot; }
+
+var rtcMedia = new RtcMedia();
+rtcMedia.sendVideo = RtcMedia.videoSizeOptions.VGA;
+
+rtcMedia.sendVideo;
+// Returns --> Object {width: 640, height: 480, ratio: &quot;4:3&quot;}</code></pre>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1562">line 1562</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_constraints"><span class="type-signature">(private, readonly) </span>_constraints<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns contstraints used for getUserMedia.  These are set elsewher.</p>
+<p>The two values used in constraints are</p>
+<ul>
+<li>this.sendAudio - <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+<li>this.sendVideo - <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line713">line 713</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+        
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="_rtcOfferOptions"><span class="type-signature">(private, readonly) </span>_rtcOfferOptions<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get Options uses with peerConn.createOffer(optional RTCOfferOptions options)</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line774">line 774</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.w3.org/TR/webrtc/#idl-def-rtcofferoptions">RTCOfferOptions from RFC</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="eventNames"><span class="type-signature"></span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns a list of Event Names for this class and parents.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1639">line 1639</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="iceCandidatesTimeOutMs"><span class="type-signature"></span>iceCandidatesTimeOutMs<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Time in MS to wait before timing out waiting for Ice Candidates.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1036">line 1036</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="iceRestart"><span class="type-signature"></span>iceRestart<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set true if you want restart Ice candidates each time you get user media.  Default = false.</p>
+<ul>
+<li>true = Reset and get Ice Candidates every time an offer or answer is processed.</li>
+<li>false = Only do Ice Candidates the first time.</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line629">line 629</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localAudioMuted"><span class="type-signature"></span>localAudioMuted<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get local audio muted.</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line929">line 929</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localCurrentStream"><span class="type-signature"></span>localCurrentStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get Latest Stream from getUserMedia.  There is no Set for this.  It is only set via getUserMedia.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line853">line 853</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localDescription"><span class="type-signature">(readonly) </span>localDescription<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the local JSEP Destription.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1242">line 1242</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localPreviousStream"><span class="type-signature"></span>localPreviousStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Get the previous Stream from getUserMedia.  We keep the current (most recent getUserMedia) and one previous version of the streams.
+        This would allow you to get/use the latest 2 Streams from getUserMedia.  There is no Set for this.  It is only set via getUserMedia.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line869">line 869</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localStream"><span class="type-signature">(readonly) </span>localStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the local stream - Convienance for  this._peerConn.getLocalStreams()[0]</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1257">line 1257</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#publishStream">RtcMedia#publishStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localVideoElement"><span class="type-signature"></span>localVideoElement<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Local Video Element from HTML to put video in.  If this is set, the Video Element source
+        will automatically be set when media is ready.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1138">line 1138</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="localVideoMuted"><span class="type-signature"></span>localVideoMuted<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/get local video muted.</p>
+<ul>
+<li>true = Yes - Mute.</li>
+<li>false = No - Unmute</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line969">line 969</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="mediaDirection"><span class="type-signature">(private) </span>mediaDirection<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Meida Direction.
+  NOTE: Usually other classes set this.</p>
+<p>Values </p>
+<ul>
+<li>BOTH: 2</li>
+<li>PUBLISH_ONLY: 1</li>
+<li>LISTEN_ONLY: 0</li>
+<li>Default Value: BOTH</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line891">line 891</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>The name for this instance.  Stored in internal DB</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line406">line 406</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="negotiationNeededTimeOutMs"><span class="type-signature"></span>negotiationNeededTimeOutMs<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Time in MS to wait to determine if negotiation is needed.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1072">line 1072</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="negotiationNeededTimeOutReject"><span class="type-signature"></span>negotiationNeededTimeOutReject<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>If NegotiaionNeeded times out, should we reject or resolve the promise?  True = Reject.  False = Resolve.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1108">line 1108</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="offerToReceiveAudio"><span class="type-signature"></span>offerToReceiveAudio<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn SDP Offer to recieve audio.</p>
+<ul>
+<li>true = yes - Request to recieve audio from remote side.</li>
+<li>false = no - Request to NOT recieve audio from remote side.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line558">line 558</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="offerToReceiveVideo"><span class="type-signature"></span>offerToReceiveVideo<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn SDP Offer to recieve video. </p>
+<ul>
+<li>true = yes - Request to recieve video from remote side.</li>
+<li>false = no - Request to NOT recieve video from remote side.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line581">line 581</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="peerConn"><span class="type-signature">(readonly) </span>peerConn<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the WebRTC PeerConnection.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1179">line 1179</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="publishStream"><span class="type-signature"></span>publishStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set/Get the local stream for publishing.  If no stream is set by the developer,
+        the last stream gotten via getUserMedia is returned.
+    <P>
+    This is the value that gets used by Set Stream methods.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line830">line 830</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+        
+            <li><a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteDescription"><span class="type-signature">(readonly) </span>remoteDescription<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the remote JSEP Destription.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1278">line 1278</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteStream"><span class="type-signature">(readonly) </span>remoteStream<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the remote stream - Convienance for this._peerConn.getRemoteStreams()[0]</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1291">line 1291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="remoteVideoElement"><span class="type-signature"></span>remoteVideoElement<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Remote Video Element from HTML to put video in.  If this is set, the Video Element source
+        will automatically be set when media is ready.
+    This should be set by the programer before getting user media (face or screen)</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1158">line 1158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sdpAnswer"><span class="type-signature">(readonly) </span>sdpAnswer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets SDP from the answer.  It checks both local and remote descriptions.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1219">line 1219</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sdpOffer"><span class="type-signature">(readonly) </span>sdpOffer<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets SDP from the offer.  It checks both local and remote descriptions.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1196">line 1196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sendAudio"><span class="type-signature"></span>sendAudio<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Values used with getUserMedia functions.
+When creating a MediaStream via getUserMedia methods, should audio be used?  This works to set audio contrainst used in getUserMedia.</p>
+<ul>
+<li>true = yes - Ask getUserMedia to use audio.</li>
+<li>false = no - Do not get audio via getUserMedia</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line445">line 445</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sendVideo"><span class="type-signature"></span>sendVideo<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Values used with getUserMedia functions.
+When creating a MediaStream via getUserMedia methods, should video be used?  This works to set video contrainst used in getUserMedia.</p>
+<p>Value Types:</p>
+<ul>
+<li>Boolean</li>
+<li>String</li>
+<li>Object </li>
+</ul>
+<p>Boolean Values:        </p>
+<ul>
+<li>true = yes - Ask getUserMedia to use video.</li>
+<li>false = no - Do not get video via getUserMedia.</li>
+</ul>
+<p>String Values:</p>
+<ul>
+<li>String values should be the name of one of the types returned by <a href="RtcMedia.html#.videoSizeOptions">RtcMedia.videoSizeOptions</a></li>
+</ul>
+<p>Object Value:</p>
+<ul>
+<li>MUST be valid for video contrainst used in getUserMedia.  See WebRTC Spec for more details.</li>
+</ul>
+<p>Default Value:</p>
+<ul>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line503">line 503</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#gumSetAudioVideoOptions">RtcMedia#gumSetAudioVideoOptions</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="singleStreamOnly"><span class="type-signature"></span>singleStreamOnly<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Determines if peerConn can have more than one MediaStream at a given time.
+  PeerConn allows this, BUT it causes problems in most cases. This is turned off (false) by default
+  to prevent many problems.  Only set this to true if you really know what you are doing.</p>
+<ul>
+<li>true = Reset and get Ice Candidates every time an offer or answer is processed.</li>
+<li>false = Only do Ice Candidates the first time.</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line798">line 798</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="trickleIce"><span class="type-signature"></span>trickleIce<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Set true to trickel ice,  false to send sdp as a completed batch
+NOTE: This is not yet working - Only sends as a batch</p>
+<ul>
+<li>true = Yes - Trickle Ice - Send Candidates 1 at a time.  Not all services allow this.</li>
+<li>false = No - Do not trickle Ice.  Gather then all, then send in on completed SDP</li>
+<li>Default Value: false</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1012">line 1012</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="voiceActivityDetection"><span class="type-signature"></span>voiceActivityDetection<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Should peerConn use Voice Activity Detection. Set true if you want to use VAD to save bandwidth. </p>
+<ul>
+<li>true = Use Voice Activity Detection.</li>
+<li>false = Turn off Voice Activity Detection.</li>
+<li>Default Value: true</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line606">line 606</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateAnswer"><span class="type-signature">(static) </span>_chn_pc_CreateAnswer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates initial Answer SDP without Ice Canadidates.<BR>
+        After this, IceCandidates can be sent individually or wait for all IceCandidates to complete (or use timeout) and send as more complete SDP</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Uses</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this function uses other than parameters</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>offer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The sdp offer MUST be set before creating an answer.
+        This can get set using <a href="RtcMedia.html#setRtcOfferOptions">RtcMedia#setRtcOfferOptions</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Sets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Sets  (Nothing)</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_jsepRtcDesc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>self._jsepRtcDesc - private with no public getter</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Fires</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Fires (Nothing)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2545">line 2545</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="PromiseData.html">PromiseData</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpOffer">RtcMedia#setLocalSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpAnswer">RtcMedia#setLocalSdpAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpOffer">RtcMedia#setRemoteSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpAnswer">RtcMedia#setRemoteSdpAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_CreateOffer">RtcMedia._chn_pc_CreateOffer</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_CreateAnswer">RtcMedia._chn_pc_CreateAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalDescription">RtcMedia._chn_pc_SetLocalDescription</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetRemoteDescription">RtcMedia._chn_pc_SetRemoteDescription</a></li>
+        
+            <li><a href="external-WebRTC.html#.createAnswer">external:WebRTC.createAnswer</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateAnswer_SetLocalDescription"><span class="type-signature">(private, static) </span>_chn_pc_CreateAnswer_SetLocalDescription<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2400">line 2400</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateAnswer_SetLocalDescription_And_TrickleIce"><span class="type-signature">(private, static) </span>_chn_pc_CreateAnswer_SetLocalDescription_And_TrickleIce<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2435">line 2435</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateAnswer_SetLocalDescription_And_WaitForIceCompleteOrTimeout"><span class="type-signature">(private, static) </span>_chn_pc_CreateAnswer_SetLocalDescription_And_WaitForIceCompleteOrTimeout<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2414">line 2414</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateOffer"><span class="type-signature">(static) </span>_chn_pc_CreateOffer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates initial Offer SDP without Ice Canadidates.<BR>
+        After this, IceCandidates can be sent individually or wait for all IceCandidates to complete (or use timeout) and send as more complete SDP</p>
+<p>Parameters Used - Should be set before calling.</p>
+<ul>
+<li>self._rtcOfferOptions - <a href="RtcMedia.html#_rtcOfferOptions">RtcMedia#_rtcOfferOptions</a> must be set before calling this.  If not set, default values will be used.</li>
+</ul>
+<p>Parameters Set via function (or Promise)</p>
+<ul>
+<li>self._jsepRtcDesc = SdpWithoutIceCandidates</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Contains the instance to work on.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2469">line 2469</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_rtcOfferOptions">RtcMedia#_rtcOfferOptions</a></li>
+        
+            <li><a href="RtcMedia.html#setRtcOfferOptions">RtcMedia#setRtcOfferOptions</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_CreateAnswer">RtcMedia._chn_pc_CreateAnswer</a></li>
+        
+            <li><a href="external-WebRTC.html#.createOffer">external:WebRTC.createOffer</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateOffer_SetLocalDescription"><span class="type-signature">(private, static) </span>_chn_pc_CreateOffer_SetLocalDescription<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2346">line 2346</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateOffer_SetLocalDescription_And_TrickleIce"><span class="type-signature">(private, static) </span>_chn_pc_CreateOffer_SetLocalDescription_And_TrickleIce<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2382">line 2382</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_CreateOffer_SetLocalDescription_And_WaitForIceCompleteOrTimeout"><span class="type-signature">(private, static) </span>_chn_pc_CreateOffer_SetLocalDescription_And_WaitForIceCompleteOrTimeout<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2360">line 2360</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetLocalDescription"><span class="type-signature">(static) </span>_chn_pc_SetLocalDescription<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p><P>Set before calling</p>
+<ul>
+    <li> self._jsepRtcDesc - private with no public getter 
+</ul>
+<P>Set by method
+<ul>
+    <li> ??
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Uses</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this function uses other than parameters</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_jsepRtcDesc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>self._jsepRtcDesc - private with no public getter.
+        <BR>This is set by <a href="RtcMedia.html#._chn_pc_CreateAnswer">RtcMedia._chn_pc_CreateAnswer</a> or 
+        <a href="RtcMedia.html#setLocalSdpOffer">RtcMedia#setLocalSdpOffer</a> or
+        <a href="RtcMedia.html#setLocalSdpAnswer">RtcMedia#setLocalSdpAnswer</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Sets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Sets  (Nothing)</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_jsepRtcDesc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>self._jsepRtcDesc - private with no public getter</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Fires</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Fires (Nothing)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2623">line 2623</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="external-WebRTC.html#.setLocalDescription">external:WebRTC.setLocalDescription</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetLocalStream"><span class="type-signature">(static) </span>_chn_pc_SetLocalStream<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Does <a href="RtcMedia.html#_pcSetLocalStream">self._pcSetLocalStream( self.localStream )</a>.  This will usually cause a negotiationNeeded event to be triggered.
+        <P>
+        NOTE: This should usually NOT be used by itself, but rather via the on of these methods
+        <UL>
+          <LI> <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationResolve">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationResolve</a>
+          <LI> <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationReject">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationReject</a>
+        </UL></p>
+<pre class="prettyprint source"><code>    &lt;UL>
+      &lt;LI> RtcMedia.\_chn\_pc\_SetLocalStreamAndTestNegotiationResolve
+      &lt;LI> RtcMedia.\_chn\_pc\_SetLocalStreamAndTestNegotiationReject
+    &lt;/UL></code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>PreCall</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things that should be set before calling this function</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>localStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Requires <a href="RtcMedia.html#localStream">RtcMedia#localStream</a> to be set before calling</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>PostCall</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton sets</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>localStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Requires <a href="RtcMedia.html#localStream">RtcMedia#localStream</a> to be set before calling</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Triggers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton triggers</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>localStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Requires <a href="RtcMedia.html#localStream">RtcMedia#localStream</a> to be set before calling</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Uses</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this function uses other than parameters</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_rtcOfferOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><a href="RtcMedia.html#_rtcOfferOptions">RtcMedia#_rtcOfferOptions</a> must be set before calling this.  If not set, default values will be used.
+        This can get set using <a href="RtcMedia.html#setRtcOfferOptions">RtcMedia#setRtcOfferOptions</a></p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Sets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Sets  (Nothing)</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_jsepRtcDesc</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>self._jsepRtcDesc - private with no public getter</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Fires</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Fires (Nothing)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2189">line 2189</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationReject">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationReject</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationResolve">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationResolve</a></li>
+        
+            <li><a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a></li>
+        
+            <li><a href="RtcMedia.html#publishStream">RtcMedia#publishStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetLocalStreamAndTestNegotiation"><span class="type-signature">(static) </span>_chn_pc_SetLocalStreamAndTestNegotiation<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Generic version.  Calls <a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a> AND <a href="RtcMedia.html#._chn_pc_SetLocalStream">RtcMedia._chn_pc_SetLocalStream</a> together.  This sets up 
+        <a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a> first (but does not wait for it), then sets up <a href="RtcMedia.html#._chn_pc_SetLocalStream">RtcMedia._chn_pc_SetLocalStream</a>.
+        <a href="RtcMedia.html#._chn_pc_SetLocalStream">RtcMedia._chn_pc_SetLocalStream</a> SHOULD trigger a peerConn.negotiationNeeded event which will resolve the <a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a>.
+        If <a href="RtcMedia.html#._chn_pc_SetLocalStream">RtcMedia._chn_pc_SetLocalStream</a> does not trigger a peerConn.negotiationNeeded event THEN <a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a> times out.
+        <P>
+        To determine if <a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a> timesOut should trigger a Resolve or Reject, the <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a>
+        is queried. 
+        <P>
+        With this funciton call <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a> should be set by developer or else the default (or previously set) value will be used.
+        <P>
+        <B>It is MUCH better to use one of these:
+        <UL>
+          <LI> <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationResolve">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationResolve</a> or
+          <LI> <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationReject">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationReject</a>, 
+        </UL> as they set those values before calling this function.</B></p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2251">line 2251</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationResolve">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationResolve</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationReject">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationReject</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStream">RtcMedia._chn_pc_SetLocalStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetLocalStreamAndTestNegotiationReject"><span class="type-signature">(static) </span>_chn_pc_SetLocalStreamAndTestNegotiationReject<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a> = true, then calls <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiation">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiation</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2312">line 2312</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiation">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiation</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded_RejectOnTimeOut">RtcMedia._chn_pc_TestNegotiationNeeded_RejectOnTimeOut</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationResolve">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationResolve</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetLocalStreamAndTestNegotiationResolve"><span class="type-signature">(static) </span>_chn_pc_SetLocalStreamAndTestNegotiationResolve<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets <a href="RtcMedia.html#negotiationNeededTimeOutReject">RtcMedia#negotiationNeededTimeOutReject</a> = false, then calls <a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiation">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiation</a></p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2281">line 2281</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiation">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiation</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded_ResolveOnTimeOut">RtcMedia._chn_pc_TestNegotiationNeeded_ResolveOnTimeOut</a></li>
+        
+            <li><a href="RtcMedia.html#._chn_pc_SetLocalStreamAndTestNegotiationReject">RtcMedia._chn_pc_SetLocalStreamAndTestNegotiationReject</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_SetRemoteDescription"><span class="type-signature">(static) </span>_chn_pc_SetRemoteDescription<span class="signature">()</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets JSEP RtcDescription set by some other function and does self.peerConn.setRemoteDescription.
+        This MAY cause a NegotiationNeeded event to be triggered.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3039">line 3039</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#setRemoteSdpAnswer">RtcMedia#setRemoteSdpAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpOffer">RtcMedia#setRemoteSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpPreAnswer">RtcMedia#setRemoteSdpPreAnswer</a></li>
+        
+            <li><a href="external-WebRTC.html#.setRemoteDescription">external:WebRTC.setRemoteDescription</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+<h5>Requires:</h5>
+<ul>
+    <li>module:Requires</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise -&gt; () - No return value fromo Promise.resolve()</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_TestNegotiationNeeded"><span class="type-signature">(static) </span>_chn_pc_TestNegotiationNeeded<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>This is a tricky one.  Negotiation may NOT be needed, so we so this should be executed WITH XXXXX to make sure they both happen</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Uses</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this function uses other than parameters</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>negotiationNeededTimeOutMs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>self.negotiationNeededTimeOutMs</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Sets</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Sets  (Nothing)</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>Fires</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">NA</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Things this funciton Fires (Nothing)</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2721">line 2721</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="external-WebRTC.html#.onnegotiationneeded">external:WebRTC.onnegotiationneeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>Make sure this gets used in parrellel with RtcMedia._chn_pc_SetLocalStream</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_TestNegotiationNeeded_RejectOnTimeOut"><span class="type-signature">(static) </span>_chn_pc_TestNegotiationNeeded_RejectOnTimeOut<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets negotiationNeededTimeOutReject = true, then calls _chn_pc_TestNegotiationNeeded</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2801">line 2801</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_TestNegotiationNeeded_ResolveOnTimeOut"><span class="type-signature">(static) </span>_chn_pc_TestNegotiationNeeded_ResolveOnTimeOut<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets negotiationNeededTimeOutReject = false, then calls _chn_pc_TestNegotiationNeeded</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2785">line 2785</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._chn_pc_TestNegotiationNeeded">RtcMedia._chn_pc_TestNegotiationNeeded</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._chn_pc_WaitForIceCompleteOrTimeout"><span class="type-signature">(static) </span>_chn_pc_WaitForIceCompleteOrTimeout<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>This is used to wait until IceGathering is completed OR timeout is triggered.<br>        To determine if timeout or not, the next thing in the chain should look at the value of mySelfPromiseData.data</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2673">line 2673</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._muteLocalTracks"><span class="type-signature">(static) </span>_muteLocalTracks<span class="signature">(MuteAudioTF, MuteVideoTF, AllTracksTF)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Mute / Unmute Local (from camera or screen) Audio and Video Tracks.  True = mute, False = unmute</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MuteAudioTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>True = mute, False = Unmute</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MuteVideoTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>True = mute, False = Unmute</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AllTracksTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>True = All tracks, not just the first one.  False = mute just the first track</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1337">line 1337</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._muteStreamAudioTracks"><span class="type-signature">(private, static) </span>_muteStreamAudioTracks<span class="signature">(Stream, MuteAudioTF)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Mute / Unmute Audio Tracks in a MediaStream</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Stream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) Stream to Mute/Unmute</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MuteAudioTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>True = mute, False = Unmute</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1980">line 1980</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._muteStreamVideoTracks"><span class="type-signature">(private, static) </span>_muteStreamVideoTracks<span class="signature">(Stream, MuteVideoTF)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Mute / Unmute Video Tracks in a MediaStream</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Stream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) Stream to Mute/Unmute</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>MuteVideoTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>True = mute, False = Unmute</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2004">line 2004</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="._streamTracksDisableStopRemove"><span class="type-signature">(private, static) </span>_streamTracksDisableStopRemove<span class="signature">(MediaStreamToEffect)</span><span class="type-signature"> &rarr; {null}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Cleans up a media stream by doing the following.</p>
+<ul>
+<li>track.enabled = false;</li>
+<li>track.stop();</li>
+<li>MediaStreamToEffect.removeTrack( track );</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>MediaStreamToEffect</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1849">line 1849</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#closePeerConn">RtcMedia#closePeerConn</a></li>
+        
+            <li><a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".copyStreamTracks"><span class="type-signature">(static) </span>copyStreamTracks<span class="signature">(FromStream, ToStream, AudioTrackTF, VideoTrackTF)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Will only copy/replace the first Track of Audio and/or Video</p>
+<pre class="prettyprint source"><code>- there should only be 1 track per audio/video for these apps</code></pre>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>FromStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) The Stream where Track(s) come FROM</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>ToStream</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) The Stream where Track(s) go TO</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>AudioTrackTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) Should the AudioTrack be copied</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>VideoTrackTF</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) Should the VideoTrack be copied</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1949">line 1949</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#.setStreamTrack">RtcMedia.setStreamTrack</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>void</p>
+</div>
+
+
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".printTracks"><span class="type-signature">(static) </span>printTracks<span class="signature">(Tracks)</span><span class="type-signature"> &rarr; {string}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Rturns a string with track details.  Used for debuging.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>Tracks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;MediaStreamTrack></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1874">line 1874</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".setStreamTrack"><span class="type-signature">(static) </span>setStreamTrack<span class="signature">(StreamToSet, TrackToSet)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set/Replace Track[0] in a Stream</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) MediaStream - The Stream where the Track will be put</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>TrackToSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStreamTrack</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>(M) MediaStreamTrack - The Track</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line1900">line 1900</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#.copyStreamTracks">RtcMedia.copyStreamTracks</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_createPeerConnection"><span class="type-signature">(private) </span>_createPeerConnection<span class="signature">(RTCConfiguration)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Creates and sets up a PeerConnection.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCConfiguration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCConfiguration</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Configuration data</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3471">line 3471</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_getUserMedia"><span class="type-signature">(private) </span>_getUserMedia<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get User Media using self._constraints created by developer 
+   OR just use the default.</p>
+<p>Notes:</p>
+<ul>
+<li>This should never be called by normal developer.  It is private.</li>
+<li>Use <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> or <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> instead.</li>
+</ul>
+<p>Options to PreSet</p>
+<ul>
+<li>None</li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>None </li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3951">line 3951</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        
+            <li><a href="RtcMedia.html#getLocalScreenCaptureStream">RtcMedia#getLocalScreenCaptureStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcAddLocalStream"><span class="type-signature">(private) </span>_pcAddLocalStream<span class="signature">(StreamToAdd)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Adds a MediaStream.  NOTE: This means there could be more than 1.<br>        If you want to make sure there is only one use <a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a>.
+        <BR> Adding streams to an existing call will trigger a Negotiation needed event.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToAdd</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2884">line 2884</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_pcSetLocalStream">RtcMedia#_pcSetLocalStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcRemoveLocalStream"><span class="type-signature">(private) </span>_pcRemoveLocalStream<span class="signature">(StreamToRemove)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Deletes the MediaStream IF present</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToRemove</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2940">line 2940</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="_pcSetLocalStream"><span class="type-signature">(private) </span>_pcSetLocalStream<span class="signature">(StreamToSet)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets only 1 MediaStream and makes sure there is only one by deleting others if needed.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>StreamToSet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">MediaStream</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A MediaStream gotten by any means.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2987">line 2987</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closeAll"><span class="type-signature"></span>closeAll<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Close everything, including:</p>
+<ul>
+<li>closeLocalStreams <a href="RtcMedia.html#closeLocalStreams">RtcMedia#closeLocalStreams</a></li>
+<li>closePeerConn <a href="RtcMedia.html#closePeerConn">RtcMedia#closePeerConn</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3348">line 3348</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closeLocalStreams"><span class="type-signature"></span>closeLocalStreams<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Close all local Streams</p>
+<ul>
+<li>RtcMedia._streamTracksDisableStopRemove on this._localPreviousStream</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this._localCurrentStream</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getLocalStreams</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getRemoteStreams</li>
+<li>this.localVideoElement.srcObject = null </li>
+<li>this.remoteVideoElement.srcObject = null</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3371">line 3371</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="closePeerConn"><span class="type-signature"></span>closePeerConn<span class="signature">()</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Closes the RTCPeerConnection (peerConn) </p>
+<ul>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getLocalStreams</li>
+<li>RtcMedia._streamTracksDisableStopRemove on this.peerConn.getRemoteStreams</li>
+<li>this.peerConn.close</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3420">line 3420</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#._streamTracksDisableStopRemove">RtcMedia._streamTracksDisableStopRemove</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getLocalFaceStream"><span class="type-signature"></span>getLocalFaceStream<span class="signature">(SendAudio, SendVideo)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Get Local Camera video (face) and optionally connect to the local window video element.
+        this.localVideoElement must be set to an HTML video element before calling this.     </p>
+<p>Options to PreSet</p>
+<ul>
+<li>self.sendAudio  - <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+<li>self.sendVideo  - <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+<li>self.localVideoElement - Set it to the local HTML Video Element.  IF set, the
+ video will be put into that Video Element when gotten.  That same MediaStream is
+ available via self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>None</li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SendAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use audio.</p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SendVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+<p>Other Functions Called</p>
+<ul>
+<li>self._getUserMedia - <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3780">line 3780</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="global.html#event:onLocalFaceStream">event:onLocalFaceStream</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getLocalScreenCaptureStream"><span class="type-signature"></span>getLocalScreenCaptureStream<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Gets screen capture screen and returns a stream.</p>
+<p>Options to PreSet</p>
+<ul>
+<li>self.localVideoElement - Set it to the local HTML Video Element.  IF set, the
+ video will be put into that Video Element when gotten.  That same MediaStream is
+ available via self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a></li>
+</ul>
+<p>PreSet by this function - overrides/changes values.</p>
+<ul>
+<li>self.sendAudio = false;   <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a><ul>
+<li><strong>NOTE: MUST BE false or else it will error!!</strong></li>
+</ul>
+</li>
+<li>self.sendVideo = screen_constraints.video;       <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul>
+<p>Sets durring function and available after</p>
+<ul>
+<li>self.localCurrentStream - <a href="RtcMedia.html#localCurrentStream">RtcMedia#localCurrentStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+<li>self.localPreviousStream - <a href="RtcMedia.html#localPreviousStream">RtcMedia#localPreviousStream</a> via <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+<p>Other Functions Called</p>
+<ul>
+<li>self._getUserMedia - <a href="RtcMedia.html#_getUserMedia">RtcMedia#_getUserMedia</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3858">line 3858</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<h5>Fires:</h5>
+<ul>
+    <li><a href="global.html#event:onLocalScreenCaptureStream">event:onLocalScreenCaptureStream</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="gumSetAudioVideoOptions"><span class="type-signature"></span>gumSetAudioVideoOptions<span class="signature">(SendAudio, SendVideo, OfferToRecieveAudio, OfferToRecieveVideo, VAD, IceRestart)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convience function to set values.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SendAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use audio.</p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendAudio">RtcMedia#sendAudio</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>SendVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should getUserMedia use video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#sendVideo">RtcMedia#sendVideo</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve audio  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveAudio</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveVideo</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>VAD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn use Voice Activity Detection.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IceRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn reset Ice Negotiation each time it creates an offer or answer.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a></li>
+</ul>
+<p>See <a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a> for parameter details and examples!</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line679">line 679</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#getLocalFaceStream">RtcMedia#getLocalFaceStream</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="initArgs"><span class="type-signature"></span>initArgs<span class="signature">(SettingsObject)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Initialize (or Reset) instance variables in bulk.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>SettingsObject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
+            It is a convience method for setting multple things at once and/or passing them from other sub classes.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line358">line 358</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>RtcMedia.constructor</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="peerConn_AddIceCandidate"><span class="type-signature"></span>peerConn_AddIceCandidate<span class="signature">(RTCIceCandidateInit)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Used when Remote parties send trickle Ice Candidates</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCIceCandidateInit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCIceCandidateInit</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An Ice Candidate from remotes site</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3179">line 3179</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="external-WebRTC.html#.addIceCandidate">external:WebRTC.addIceCandidate</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="peerConn_Init"><span class="type-signature"></span>peerConn_Init<span class="signature">(RTCConfiguration)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Checks to see if there is a PeerConnection set up.</p>
+<ul>
+<li>If YES - then this just returns.<br> This is used often throughout the code as a check and if needed to actually create the PeerConnection</li>
+<li>IF the PeerConnection is NOT already created, this will create it.</li>
+</ul>
+<p>This way we can use it as a tester AND an init from many functions to make sure we have 
+   a valid peerConn when we need it.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RTCConfiguration</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RTCConfiguration</span>
+|
+
+<span class="param-type">empty</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>If RTCConfiguration is sent, 
+        it will get used to configure the PeerConnection.  If empty, we use default values.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3326">line 3326</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="RtcMedia.html#_createPeerConnection">RtcMedia#_createPeerConnection</a></li>
+        
+            <li><a href="https://www.w3.org/TR/webrtc/#rtcconfiguration-dictionary">WebRTC Spec</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalSdpAnswer"><span class="type-signature"></span>setLocalSdpAnswer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2852">line 2852</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalSdpOffer"><span class="type-signature"></span>setLocalSdpOffer<span class="signature">(mySelfPromiseData)</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mySelfPromiseData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="PromiseData.html">PromiseData</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The Standard Input (and output) for most Promise so they can be chained together</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2828">line 2828</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setLocalStream_To_FullSdpOffer"><span class="type-signature"></span>setLocalStream_To_FullSdpOffer<span class="signature">()</span><span class="type-signature"> &rarr; {Promise(PromiseData)}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Sets a MediaStream in the peerConn and does eveything required to get full SDP offer (with Ice Candidates)
+        ready to send to NetComposer</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line2124">line 2124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise.resolve( mySelfPromiseData ) so they can be chained together</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise(PromiseData)</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpAnswer"><span class="type-signature"></span>setRemoteSdpAnswer<span class="signature">(RemoteSdpString)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convenience Method for RtcMedia#_chn_pc_SetRemoteDescription</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">spd</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>SDP String to use.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3105">line 3105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>RtcMedia#_chn_pc_SetRemoteDescription</li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpOffer">RtcMedia#setRemoteSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpPreAnswer">RtcMedia#setRemoteSdpPreAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpOffer">RtcMedia#setLocalSdpOffer</a></li>
+        
+            <li><a href="RtcMedia.html#setLocalSdpAnswer">RtcMedia#setLocalSdpAnswer</a></li>
+        
+            <li><a href="RtcMedia.html#setRemoteSdpAnswer">RtcMedia#setRemoteSdpAnswer</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Promise -&gt; () from RtcMedia#_chn_pc_SetRemoteDescription - No return value from Promise.resolve()</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpOffer"><span class="type-signature"></span>setRemoteSdpOffer<span class="signature">(RemoteSdpString)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set Remote SDP with answer</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Remote SDP String from NetComposer</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3128">line 3128</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRemoteSdpPreAnswer"><span class="type-signature"></span>setRemoteSdpPreAnswer<span class="signature">(RemoteSdpString)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Set Remote SDP with pranser</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>RemoteSdpString</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Remote SDP String from NetComposer</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line3151">line 3151</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setRtcOfferOptions"><span class="type-signature"></span>setRtcOfferOptions<span class="signature">(OfferToRecieveAudio, OfferToRecieveVideo, VAD, IceRestart)</span><span class="type-signature"> &rarr; {void}</span></h4>
+
+    
+
+
+
+<div class="description">
+    <p>Convienance function to set options uses with peerConn.createOffer(optional RTCOfferOptions options).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveAudio</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve audio  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveAudio</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>OfferToRecieveVideo</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn SDP Offer to recieve video.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See RtcMedia#offerToRecieveVideo</li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>VAD</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn use Voice Activity Detection.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#voiceActivityDetection">RtcMedia#voiceActivityDetection</a></li>
+</ul></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>IceRestart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>[Optional] Should peerConn reset Ice Negotiation each time it creates an offer or answer.  </p>
+<ul>
+<li>If not provided, the default (or preiously set) value will be used.  </li>
+<li>See <a href="RtcMedia.html#iceRestart">RtcMedia#iceRestart</a></li>
+</ul></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="RtcMedia.js.html">RtcMedia.js</a>, <a href="RtcMedia.js.html#line752">line 752</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li><a href="https://www.w3.org/TR/webrtc/#idl-def-rtcofferoptions">RTCOfferOptions from RFC</a></li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">void</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 11:30:48 GMT-0500 (CDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
