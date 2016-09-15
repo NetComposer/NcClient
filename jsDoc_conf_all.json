@@ -1,0 +1,26 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "source": {
+        "include": [ "www/js/" ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+    "opts": {
+        "destination": "./www/docs/",          // same as -d ./out/
+        "recurse": true,                  // same as -r
+        "private": true,
+        "access": "all",
+        
+        "tutorials": "./www/tutorials" // same as -u path/to/tutorials
+    }
+}
