@@ -1,10 +1,10 @@
 'use strict';
 
 
-const SfuMngr_Version = `SfuMngr 1.0.0`;
+const SfuMngr_Version = `RoomMngr 1.0.0`;
 
 /**
- * Constructs a new SfuMngr instance
+ * Constructs a new RoomMngr instance
  * 
  * @extends {MediaMngr}
  * 
@@ -14,7 +14,7 @@ const SfuMngr_Version = `SfuMngr 1.0.0`;
  * @param {string} SettingsObject.roomId (Optional) Name of the room.  If not provided, one will be created.
  * @param {string} SettingsObject.roomId (Optional) Name of the room.  If not provided, one will be created.
  * 
- * @return {SfuMngr} SfuMngr
+ * @return {RoomMngr} RoomMngr
  * 
  * @see RtcMedia
  * @see MediaMngr
@@ -24,17 +24,16 @@ const SfuMngr_Version = `SfuMngr 1.0.0`;
  * @requires {@link RtcMedia}
  * @requires {@link NkMedia}
  * @requires {@link MediaMngr}
- * @requires {@link WebSocketManager}
+ * @requires {@link WsMngr}
  * @requires {@link DebugData}
  * @requires {@link PromiseData}
  * @requires {@link RemoteLogger}
  * @requires {@link EventLoggerDb}
- * @requires {@link EventBus}
- * @requires {@link WsLib}
+ * @requires {@link EventMngr}
  * @requires {@link adapter}
  * @requires {@link getScreenId}
  */
-class SfuMngr extends EventMngr {
+class RoomMngr extends EventMngr {
 
 	/**
 	 * Constructs a new instance 
@@ -42,14 +41,14 @@ class SfuMngr extends EventMngr {
     constructor( Name, ConfName ) {
     	super();
 
-		var dbg = new DebugData( SfuMngr.className, this, "constructor", Name, ConfName ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "constructor", Name, ConfName ).dbgEnter( true );
 
     	this._roomId = null;
     	this._confName = ( typeof ConfName === 'string' ) ? ConfName : null;				// Used for conference name if provided
-    	this._name = ( typeof Name === 'string' ) ? Name : SfuMngr.createNewName(); 		// Instance Name - NOT used for conference name
+    	this._name = ( typeof Name === 'string' ) ? Name : RoomMngr.createNewName(); 		// Instance Name - NOT used for conference name
     	this._joinMethod = null;
 
-    	SfuMngr.dbAdd( this );
+    	RoomMngr.dbAdd( this );
 
 		dbg.dbgExit( );
     }
@@ -68,14 +67,14 @@ class SfuMngr extends EventMngr {
 	//--------------------------------------------------------
 	//  version(s), className, toString & Versions
 	//--------------------------------------------------------
-	get className() { return SfuMngr.className; }
-	toString() { return '[object SfuMngr]'; }
+	get className() { return RoomMngr.className; }
+	toString() { return '[object RoomMngr]'; }
 
-    static get className() { return "SfuMngr"; }
-	static toString() { return `[object SfuMngr]`; }
+    static get className() { return "RoomMngr"; }
+	static toString() { return `[object RoomMngr]`; }
 
-	get version() { return SfuMngr.version; }
-	get versions() { return SfuMngr.versions; }
+	get version() { return RoomMngr.version; }
+	get versions() { return RoomMngr.versions; }
     static get version() { return SfuMngr_Version; }
     static get versions() { return `${SfuMngr_Version} --> ${super.versions}`; }  // there is no super for this.
 
@@ -181,7 +180,7 @@ class SfuMngr extends EventMngr {
 
 
 	createRoom() {
-		var dbg = new DebugData( SfuMngr.className, this, "createRoom" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "createRoom" ).dbgEnter( true );
 
 		var cmdData = {
 			class: 'sfu',
@@ -192,9 +191,9 @@ class SfuMngr extends EventMngr {
 			cmdData.room_id = this.confName;
 		}
 
-		cmdData.bitrate = ( typeof this.roomBitrate === 'number' ) ? this.roomBitrate : SfuMngr.defaultValues.confBitrate;
-		cmdData.audio_codec = ( typeof this.roomAudioCodec === 'number' ) ? this.roomAudioCodec : SfuMngr.defaultValues.confAudioCodec;
-		cmdData.video_codec = ( typeof this.roomVideoCodec === 'number' ) ? this.roomVideoCodec : SfuMngr.defaultValues.confVideoCodec;
+		cmdData.bitrate = ( typeof this.roomBitrate === 'number' ) ? this.roomBitrate : RoomMngr.defaultValues.confBitrate;
+		cmdData.audio_codec = ( typeof this.roomAudioCodec === 'number' ) ? this.roomAudioCodec : RoomMngr.defaultValues.confAudioCodec;
+		cmdData.video_codec = ( typeof this.roomVideoCodec === 'number' ) ? this.roomVideoCodec : RoomMngr.defaultValues.confVideoCodec;
 
 		dbg.infoMessage( 'Calling NkMedia._nkMediaRoomCreate', cmdData, false);
 
@@ -204,9 +203,9 @@ class SfuMngr extends EventMngr {
 			.then( 
 	        	function( Data ) {
 	        		self._roomId = Data.data.room_id;
-	        		self._joinMethod = SfuMngr.joinMethods.create;
+	        		self._joinMethod = RoomMngr.joinMethods.create;
 
-    		    	SfuMngr.dbUpdate( self );
+    		    	RoomMngr.dbUpdate( self );
 
 	        		dbg.dbgExit( Data );
 	        		return Data;
@@ -222,7 +221,7 @@ class SfuMngr extends EventMngr {
 
 
 	joinRoom() {
-		var dbg = new DebugData( SfuMngr.className, this, "joinRoom" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "joinRoom" ).dbgEnter( true );
 		var cmdData = {
 			room_id: this.confName
 		};
@@ -242,8 +241,8 @@ class SfuMngr extends EventMngr {
 			.then( 
 	        	function( Data ) {
 	        		self._roomId = Data.data.room_id;
-	        		self._joinMethod = SfuMngr.joinMethods.join;
-    		    	SfuMngr.dbUpdate( self );
+	        		self._joinMethod = RoomMngr.joinMethods.join;
+    		    	RoomMngr.dbUpdate( self );
 
 	        		dbg.dbgExit( Data );
 	        		return Data;
@@ -260,7 +259,7 @@ class SfuMngr extends EventMngr {
 
 
 	destroyRoom() {
-		var dbg = new DebugData( SfuMngr.className, this, "destroyRoom" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "destroyRoom" ).dbgEnter( true );
 		var cmdData = {
 			room_id: this.roomId
 		};
@@ -280,7 +279,7 @@ class SfuMngr extends EventMngr {
 			.then( 
 	        	function( Data ) {
 	        		self._roomId = null;
-    		    	SfuMngr.dbDelete( self );
+    		    	RoomMngr.dbDelete( self );
 	        		dbg.dbgExit( Data );
 	        		return Data;
 	        	}    		
@@ -295,7 +294,7 @@ class SfuMngr extends EventMngr {
 
 
 	roomInfo() {
-		var dbg = new DebugData( SfuMngr.className, this, "roomInfo" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "roomInfo" ).dbgEnter( true );
 		var cmdData = {
 			room_id: this.roomId
 		};
@@ -326,7 +325,7 @@ class SfuMngr extends EventMngr {
 
 
 	sendMessage( MsgObject ) {
-		var dbg = new DebugData( SfuMngr.className, this, "sendMessage" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "sendMessage" ).dbgEnter( true );
 		var cmdData = {
 			room_id: this.roomId,
 			msg: MsgObject
@@ -370,11 +369,11 @@ class SfuMngr extends EventMngr {
 
 
 	listRooms() {
-		return SfuMngr.listRooms();
+		return RoomMngr.listRooms();
 	}
 
 	static listRooms() {
-		var dbg = new DebugData( SfuMngr.className, this, "listRooms" ).dbgEnter( true );
+		var dbg = new DebugData( RoomMngr.className, this, "listRooms" ).dbgEnter( true );
 
     	return NkMedia._nkMediaRoomList( )
 			.then( 
@@ -403,17 +402,17 @@ class SfuMngr extends EventMngr {
 
 
 	static get counter() {
-		if ( typeof SfuMngr._counter !== 'number') {
-			SfuMngr._counter = 1;
+		if ( typeof RoomMngr._counter !== 'number') {
+			RoomMngr._counter = 1;
 		} else {
-			SfuMngr._counter = SfuMngr._counter + 1;
+			RoomMngr._counter = RoomMngr._counter + 1;
 		}
-		return SfuMngr._counter;
+		return RoomMngr._counter;
 	}
 
 
 	static createNewName() { 
-		var retVal = "SfuMngr_Instance_" + SfuMngr.counter;
+		var retVal = "SfuMngr_Instance_" + RoomMngr.counter;
 		return retVal;
 	}
 
@@ -423,44 +422,44 @@ class SfuMngr extends EventMngr {
 	//--------------------------------------------------------
 
 	static dbAdd( SfuMngrInstance ) {
-		SfuMngr._dbCreate();
+		RoomMngr._dbCreate();
 
 		if ( typeof SfuMngrInstance.name === 'string' ) {
-			SfuMngr._db.name[ SfuMngrInstance.name ] = SfuMngrInstance;
+			RoomMngr._db.name[ SfuMngrInstance.name ] = SfuMngrInstance;
 		}
 
 		if ( typeof SfuMngrInstance.confName === 'string' ) {
-			SfuMngr._db.confName[ SfuMngrInstance.confName ] = SfuMngrInstance;
+			RoomMngr._db.confName[ SfuMngrInstance.confName ] = SfuMngrInstance;
 		}
 
 		if ( typeof SfuMngrInstance.roomId === 'string' ) {
-			SfuMngr._db.roomId[ SfuMngrInstance.roomId ] = SfuMngrInstance;
+			RoomMngr._db.roomId[ SfuMngrInstance.roomId ] = SfuMngrInstance;
 		}		
 	}
 
 	static dbUpdate( SfuMngrInstance ) {
-		SfuMngr.dbAdd( SfuMngrInstance );
+		RoomMngr.dbAdd( SfuMngrInstance );
 	}
 
 	static dbDelete( SfuMngrInstance ) {
-		SfuMngr._dbCreate();
+		RoomMngr._dbCreate();
 		
 		if ( typeof SfuMngrInstance.name === 'string' ) {
-			delete SfuMngr._db.name[ SfuMngrInstance.name ];
+			delete RoomMngr._db.name[ SfuMngrInstance.name ];
 		}
 
 		if ( typeof SfuMngrInstance.confName === 'string' ) {
-			delete SfuMngr._db.confName[ SfuMngrInstance.confName ];
+			delete RoomMngr._db.confName[ SfuMngrInstance.confName ];
 		}
 
 		if ( typeof SfuMngrInstance.roomId === 'string' ) {
-			delete SfuMngr._db.roomId[ SfuMngrInstance.roomId ];
+			delete RoomMngr._db.roomId[ SfuMngrInstance.roomId ];
 		}				
 	}
 
 	static _dbCreate() {
-		if ( typeof SfuMngr._db !== 'object' ) {
-			SfuMngr._db = {
+		if ( typeof RoomMngr._db !== 'object' ) {
+			RoomMngr._db = {
 				name: {},
 				confName: {},
 				roomId: {}
@@ -469,8 +468,8 @@ class SfuMngr extends EventMngr {
 	}
 
 	static dbList() {
-		SfuMngr._dbCreate();
-		return SfuMngr._db;
+		RoomMngr._dbCreate();
+		return RoomMngr._db;
 	}
 
 
@@ -507,8 +506,8 @@ class SfuMngr extends EventMngr {
     		backend: 'nkmedia_janus'
     	};
 
-    	if ( typeof SfuMngr.roomId === 'string' ) {
-    		data.room_id = SfuMngr.roomId;
+    	if ( typeof RoomMngr.roomId === 'string' ) {
+    		data.room_id = RoomMngr.roomId;
     	} 
 
     	if ( typeof( DataObject ) === 'object' ) {
@@ -604,7 +603,7 @@ class SfuMngr extends EventMngr {
 
 		var roomBody = WsEventObj.data.body;
 
-		console.log( "SFU", "SfuMngr: handle_Media_Session_Room:\n", JSON.stringify( WsEventObj, null, "\t" ));
+		console.log( "SFU", "RoomMngr: handle_Media_Session_Room:\n", JSON.stringify( WsEventObj, null, "\t" ));
 
 		if ( roomBody.room !== this.room_id ) {
 			return; 
@@ -612,9 +611,9 @@ class SfuMngr extends EventMngr {
 
 
 
-		WebSocketManager.respondAck( WsEventObj );
+		WsMngr.respondAck( WsEventObj );
 
-		WebSocketManager.respondOk( WsEventObj, { thanks: "for that roomBody!"} );
+		WsMngr.respondOk( WsEventObj, { thanks: "for that roomBody!"} );
 
 		switch( roomBody.type ) {
 		    
@@ -637,7 +636,7 @@ class SfuMngr extends EventMngr {
 
 					// Keep list of publishers and listeners current 
 					// Notify App of new Publisher ... they should connect if they want to
-				EventBus.dispatch( "onStartedPublisher", roomBody );
+				EventMngr.dispatch( "onStartedPublisher", roomBody );
 		        break;
 		    
 		    case "stopped_publisher" :
@@ -658,7 +657,7 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 9
 					// }
-				EventBus.dispatch( "onStoppedPublisher", roomBody );
+				EventMngr.dispatch( "onStoppedPublisher", roomBody );
 		        break;
 		    
 		    case "started_listener" :
@@ -679,7 +678,7 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 13
 					// }
-				EventBus.dispatch( "onStartedListener", roomBody );
+				EventMngr.dispatch( "onStartedListener", roomBody );
 		        break;
 		    
 		    case "stopped_listener" :
@@ -699,11 +698,11 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 17
 					// }
-				EventBus.dispatch( "onStoppedListener", roomBody );
+				EventMngr.dispatch( "onStoppedListener", roomBody );
 		        break;
 
 		    default:
-				console.error( "SFU","SfuMngr: handle_Media_Session_Room: Un-handled Event.  Need to implement functionality for this.\n", JSON.stringify( WsEventObj, null, "\t" ));
+				console.error( "SFU","RoomMngr: handle_Media_Session_Room: Un-handled Event.  Need to implement functionality for this.\n", JSON.stringify( WsEventObj, null, "\t" ));
 		}						
 
 	}
@@ -720,7 +719,7 @@ class SfuMngr extends EventMngr {
 
 		var roomBody = WsEventObj.data.body;
 
-		console.log( "SFU", "SfuMngr: handle_Media_Session_Room:\n", JSON.stringify( WsEventObj, null, "\t" ));
+		console.log( "SFU", "RoomMngr: handle_Media_Session_Room:\n", JSON.stringify( WsEventObj, null, "\t" ));
 
 		if ( roomBody.room !== this.room_id ) {
 			return; 
@@ -728,9 +727,9 @@ class SfuMngr extends EventMngr {
 
 
 
-		WebSocketManager.respondAck( WsEventObj );
+		WsMngr.respondAck( WsEventObj );
 
-		WebSocketManager.respondOk( WsEventObj, { thanks: "for that roomBody!"} );
+		WsMngr.respondOk( WsEventObj, { thanks: "for that roomBody!"} );
 
 		switch( roomBody.type ) {
 		    
@@ -753,7 +752,7 @@ class SfuMngr extends EventMngr {
 
 					// Keep list of publishers and listeners current 
 					// Notify App of new Publisher ... they should connect if they want to
-				EventBus.dispatch( "onStartedPublisher", roomBody );
+				EventMngr.dispatch( "onStartedPublisher", roomBody );
 		        break;
 		    
 		    case "stopped_publisher" :
@@ -774,7 +773,7 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 9
 					// }
-				EventBus.dispatch( "onStoppedPublisher", roomBody );
+				EventMngr.dispatch( "onStoppedPublisher", roomBody );
 		        break;
 		    
 		    case "started_listener" :
@@ -795,7 +794,7 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 13
 					// }
-				EventBus.dispatch( "onStartedListener", roomBody );
+				EventMngr.dispatch( "onStartedListener", roomBody );
 		        break;
 		    
 		    case "stopped_listener" :
@@ -815,11 +814,11 @@ class SfuMngr extends EventMngr {
 					// 	},
 					// 	"tid": 17
 					// }
-				EventBus.dispatch( "onStoppedListener", roomBody );
+				EventMngr.dispatch( "onStoppedListener", roomBody );
 		        break;
 
 		    default:
-				console.error( "SFU","SfuMngr: handle_Media_Session_Room: Un-handled Event.  Need to implement functionality for this.\n", JSON.stringify( WsEventObj, null, "\t" ));
+				console.error( "SFU","RoomMngr: handle_Media_Session_Room: Un-handled Event.  Need to implement functionality for this.\n", JSON.stringify( WsEventObj, null, "\t" ));
 		}						
 
 	}
@@ -836,20 +835,20 @@ class SfuMngr extends EventMngr {
        		}
        	};
 
-    	console.debug( "SFU", `SfuMngr: nkMediaSessionStart_Publisher -> NkMedia._chn_nk_MediaSessionStart( ${cmdData} ) -> Promise( NkMediaData ) ` );
+    	console.debug( "SFU", `RoomMngr: nkMediaSessionStart_Publisher -> NkMedia._chn_nk_MediaSessionStart( ${cmdData} ) -> Promise( NkMediaData ) ` );
        	return NkMedia._chn_nk_MediaSessionStart( cmdData );	// Returns NkMedia Data 
 	}
 
 
     callSfuAsPublisher() {
 
-    	console.debug( "SFU", `SfuMngr: START callSfuAsPublisher()`);
+    	console.debug( "SFU", `RoomMngr: START callSfuAsPublisher()`);
 
     	var self = this;
 
         this.peerConn_AddLocalStream_CreateOffer_SetLocalDescription_WaitForIce( this.localStream, 0, 1000 ).then(
 			function() {
-		    	console.debug( "SFU", `SfuMngr: callSfuAsPublisher: SDP = `, self.sdpOffer );
+		    	console.debug( "SFU", `RoomMngr: callSfuAsPublisher: SDP = `, self.sdpOffer );
 
 		       	var cmdData = {
 		       		type: "publish",
@@ -866,7 +865,7 @@ class SfuMngr extends EventMngr {
         ).then(
 
         	function( Data ) {
-	        	console.log( "SFU", "SfuMngr: callSfuAsPublisher:  RESOLVE  2  *** ", Data.response.data.answer.sdp, Data.response.data.session_id );
+	        	console.log( "SFU", "RoomMngr: callSfuAsPublisher:  RESOLVE  2  *** ", Data.response.data.answer.sdp, Data.response.data.session_id );
 	        	var sdp = Data.response.data.answer.sdp;
 	        	var ncSessionId = Data.response.data.session_id;
 
@@ -876,18 +875,18 @@ class SfuMngr extends EventMngr {
         	}
     	).then(
         	function( ) {
-	        	console.log( "SFU", "SfuMngr: callSfuAsPublisher:   RESOLVE  3  *** " );
+	        	console.log( "SFU", "RoomMngr: callSfuAsPublisher:   RESOLVE  3  *** " );
 	        	if ( !! self.remoteVideoElement ) {
 		        	self.remoteVideoElement.srcObject = self.remoteStream;
 	        	}
         	}
     	).catch(
 			function(error) {
-	        	console.error( "SFU", "SfuMngr: callSfuAsPublisher: error: ", JSON.stringify( error, null, "\t"), error, error.stack);
+	        	console.error( "SFU", "RoomMngr: callSfuAsPublisher: error: ", JSON.stringify( error, null, "\t"), error, error.stack);
 			}
     	);
 
-    	console.debug( "SFU", `SfuMngr: END callSfuAsPublisher()`);
+    	console.debug( "SFU", `RoomMngr: END callSfuAsPublisher()`);
 
     }
 

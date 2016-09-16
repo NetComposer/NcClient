@@ -3,13 +3,11 @@
 	<title>NetComposer Command Tester</title>
 </head>
 
-<script src="./js/WebSocketManagerCls.js" type="text/javascript"></script>
+<script src="./js/WsMngr.js" type="text/javascript"></script>
 <script src="./js/RemoteLogger.js" type="text/javascript"></script>
 
 <script src="./js/GumRtcStreamHelper.js" type="text/javascript"></script>
-<script src="./js/EventBus.js" type="text/javascript"></script>
 <script src="./js/EventLoggerDb.js" type="text/javascript"></script>
-<script src="./js/WsLib.js" type="text/javascript"></script>
 
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
@@ -72,8 +70,6 @@ Core: Event:
 	//--------------------------------------------------------
 	//  JUNK for JS Lint Complaining 
 	//--------------------------------------------------------
-	var WebSocketManager = window.WebSocketManager;
-	var console = window.console;
 	var EventLoggerDb = window.EventLoggerDb;
 
 	var neverUseThisItIsJustForJsLintFooling = function() {
@@ -123,7 +119,7 @@ Core: Event:
 
     	updateLocalCmdData();
 
-		WebSocketManager.sendDataViaPromise(wsObj.class, wsObj.subclass, wsObj.cmd, wsObj.data).then(
+		WsMngr.sendDataViaPromise(wsObj.class, wsObj.subclass, wsObj.cmd, wsObj.data).then(
 			function( Data ) {
 				console.log("HTML: sendViaWebSocket: Data = ", JSON.stringify(Data) );
 				document.getElementById("ws_data_response").value = "Success:\n" + JSON.stringify(Data, null, "\t");
@@ -171,7 +167,7 @@ Core: Event:
 			meta: meta
 		};
 
-		WebSocketManager.updateLoginObj( loginData );
+		WsMngr.updateLoginObj( loginData );
 	};
 
 
@@ -331,25 +327,25 @@ Core: Event:
           
 	function manageClass_Server( data ) {
 		console.log("HTML: index.html - I got Class -Server- data !!! " + JSON.stringify(data), data);
-		// WebSocketManager.respondOk( data, {} );
+		// WsMngr.respondOk( data, {} );
 
-		WebSocketManager.respondAck( data );
+		WsMngr.respondAck( data );
 
-		setTimeout( WebSocketManager.respondOk, 2500, data, { no: "response"} );
+		setTimeout( WsMngr.respondOk, 2500, data, { no: "response"} );
 	}
 
 
 	window.onload = function() {
 
-		WebSocketManager.setConnectData( window.location.hostname, portNumber, 
+		WsMngr.setConnectData( window.location.hostname, portNumber, 
 			document.getElementById("ws_username").value,			// UserNameString, 
 			document.getElementById("ws_password").value,			// UserPasswordString, 
 			document.getElementById("ws_clientId").value			// DeviceIdString, 
 		);
 
 
-		// WebSocketManager = new WebSocketManager("media2.netcomposer.io", 9010, loginData );
-		// WebSocketManager = new WsConnection("localhost", 9010, loginData );
+		// WsMngr = new WsMngr("media2.netcomposer.io", 9010, loginData );
+		// WsMngr = new WsConnection("localhost", 9010, loginData );
 
 		var myWsOpen = function( evt ) { console.log("HTML: myWsOpen function called", evt ); };
 		var myWsClose = function( evt ) { console.log("HTML: myWsClose function called", evt ); };
@@ -360,20 +356,20 @@ Core: Event:
 		var myWsConnectTimeOut = function( evt ) { console.log("\n*** HTML: myWsConnectTimeOut function called ***\n", evt ); };
 
 
-		WebSocketManager.addEventListener("onWsOpen", myWsOpen ); 
-		WebSocketManager.addEventListener("onWsClose", myWsClose ); 
-		WebSocketManager.addEventListener("onWsError", myWsError ); 
-		WebSocketManager.addEventListener("onLoginSuccess", myLoginOk ); 
-		WebSocketManager.addEventListener("onLoginError", myLoginError ); 
+		WsMngr.addEventListener("onWsOpen", myWsOpen ); 
+		WsMngr.addEventListener("onWsClose", myWsClose ); 
+		WsMngr.addEventListener("onWsError", myWsError ); 
+		WsMngr.addEventListener("onLoginSuccess", myLoginOk ); 
+		WsMngr.addEventListener("onLoginError", myLoginError ); 
 
-		WebSocketManager.addEventListener("onWsConnectTimeOut", myWsConnectTimeOut ); 
+		WsMngr.addEventListener("onWsConnectTimeOut", myWsConnectTimeOut ); 
 
 
-		WebSocketManager.addClassManager( "server", manageClass_Server );
+		WsMngr.addClassManager( "server", manageClass_Server );
 
-		WebSocketManager.logPings(true);
+		WsMngr.logPings(true);
 
-		rtcHelper = new window.GumRtcStreamHelper( WebSocketManager, true );
+		rtcHelper = new window.GumRtcStreamHelper( WsMngr, true );
 
 	};
 

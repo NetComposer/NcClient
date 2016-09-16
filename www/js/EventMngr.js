@@ -200,11 +200,6 @@ class EventMngr {
 
 
 
-
-
-
-
-
 	static addEventListener(type, callback, scope) {
 		var args = [];
 		var numOfArgs = arguments.length;

@@ -4,11 +4,11 @@ const NkMedia_Version = "NkMedia 1.0.0";
 // const NkMedia_EventPrefix = "NkMedia_";
 
 /**
- * Constructs a new SfuMngr NkMedia
+ * Constructs a new NkMedia
  * @class
  * @extends {RtcMedia}
  * 
- * @requires WebSocketManager This is information about it
+ * @requires WsMngr This is information about it
  * 
  * @param  {object}		SettingsObject	Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
  * 			It is a convience method for setting multple things at once and/or passing them from other sub classes or parents.
@@ -26,8 +26,6 @@ class NkMedia extends RtcMedia {
     constructor( SettingsObject ) {
     	super( SettingsObject );
 
-    	this._ncWsSessionId = 'not set';
-
     	// this.init();    DO NOT DO INIT HERE .. it is actually called by super() 
 
     }
@@ -39,7 +37,7 @@ class NkMedia extends RtcMedia {
 	init() {
 		var dbg = new DebugData( NkMedia.className, this, "init" ).dbgEnter( );
 
-    	this._nkSessionId = 'not set';
+    	delete this._nkSessionId;
 
     	this._mediaServerType = NkMedia.defaultValues.mediaServerType;
 
@@ -65,7 +63,10 @@ class NkMedia extends RtcMedia {
 	}
 
 
-
+	/**
+	 * Default Values 
+	 * @return {object} Of default values
+	 */
 	static get defaultValues() {
 		return {
 		mediaServerType: NkMedia.mediaServerTypes.JANUS,
@@ -82,10 +83,13 @@ class NkMedia extends RtcMedia {
 	}
 
 
+	/**
+	 * This provides the JSON data when doing a JSON.stringify function.
+	 * @return {object} Data for JSON.stringify to work on.
+	 */
 	toJSON() {
 		var jsonData = {
-			ncWsSessionId: this._ncWsSessionId,
-			nkSessionId: this._nkSessionId,
+			nkSessionId: ( !! this._nkSessionId ) ? this._nkSessionId : 'undefined',
 			nkUseVideo: this._nkUseVideo,
 			nkUseAudio: this._nkUseAudio,
 			nkBitrate: this._nkBitrate,
@@ -158,24 +162,6 @@ class NkMedia extends RtcMedia {
 	//==========================================================================
 
 	//--------------------------------------------------------
-	//  ncWsSessionId
-	//--------------------------------------------------------
-
-    set ncWsSessionId( Name ) {
-		if ( typeof Name === 'string' ) {
-			this._ncWsSessionId = Name;
-			RtcMedia.dbUpdate( this );
-		} else {
-			var throwVal = "NkMedia: set ncWsSessionId: value must be a string.  You gave " + Name ;
-			console.warn( "RTC", throwVal );
-			throw( throwVal );
-		}
-    }
-
-    get ncWsSessionId() { return this._ncWsSessionId; }
-
-
-	//--------------------------------------------------------
 	//  nkSessionId
 	//--------------------------------------------------------
 
@@ -191,8 +177,8 @@ class NkMedia extends RtcMedia {
 	/**
 	 * @readonly
 	 * @enum {number}
-	 * @example <caption>Example usage of SfuMngr.participantType.</caption>
-	 * SfuMngr.participantType.admin;
+	 * @example <caption>Example usage of RoomMngr.participantType.</caption>
+	 * RoomMngr.participantType.admin;
 	 * // returns 2
 	 */
 	static get participantType() {
@@ -367,8 +353,8 @@ class NkMedia extends RtcMedia {
 	set confRoom( ConfRoomObject ) {
 		var dbg = new DebugData( RtcMedia.className, this, "set confRoom", ConfRoomObject ).dbgDo( );
     	
-		if ( ConfRoomObject instanceof SfuMngr === false ) {
-			var myError = new Error( 'ConfRoomObject MUST be an instance of SfuMngr' );
+		if ( ConfRoomObject instanceof RoomMngr === false ) {
+			var myError = new Error( 'ConfRoomObject MUST be an instance of RoomMngr' );
     		dbg.errorMessage( myError.stack );
     		throw( myError );
 		}
@@ -458,7 +444,7 @@ class NkMedia extends RtcMedia {
     	if ( false ) {		// This should test to see if you have an NkMedia Session
 
 	    	var dataObject = {
-	    		session_id: this.nkSessionId,
+	    		session_id: this._nkSessionId,
 	    		update_type: "media",
 	    		use_audio:  AudioMutedTF,
 	    		use_video: VideoMutedTF
@@ -719,6 +705,12 @@ class NkMedia extends RtcMedia {
     	var DataObject = self._cmdData;
 		var dbg = new DebugData( NkMedia.className, self, "_chn_nk_MediaSessionStart", ncCmdStr, DataObject ).dbgEnter( true );
 
+
+
+
+    	NkMedia.init();		// Init the CLASS (not instance)
+
+
     	var errString;
 
     	if ( typeof( DataObject ) === 'undefined' ) {
@@ -736,13 +728,16 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve ) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "start", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "start", DataObject ).then(
 	        	function( Data ) {
 
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
 
 	        		self._nkSessionId = self._wsResponseData.data.session_id;
+	        		RtcMedia.dbUpdate( self );
+
+
         			dbg.dbgMessage( 'self._nkSessionId = ',  self._nkSessionId );
 
         			var rtcDescInit = {};
@@ -855,7 +850,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "stop", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "stop", DataObject ).then(
 	        	function( Data ) {
 
 	        		self._wsResponseData = Data.wsResponseData;
@@ -929,7 +924,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "set_answer", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "set_answer", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1017,7 +1012,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "update", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "update", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1083,7 +1078,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "info", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "info", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1193,7 +1188,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "create", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "create", CmdData ).then(
 
 				// Response: {
 				// 	"tid": 1001,
@@ -1289,7 +1284,7 @@ class NkMedia extends RtcMedia {
 
 		// var promise = new Promise( function(resolve, reject) {
 
-	 //    	WebSocketManager.sendDataViaPromise( "media", "room", "create", DataObject ).then(
+	 //    	WsMngr.sendDataViaPromise( "media", "room", "create", DataObject ).then(
 
 		// 		// Response: {
 		// 		// 	"tid": 1001,
@@ -1398,7 +1393,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "destroy", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "destroy", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1463,7 +1458,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "info", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "info", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1505,7 +1500,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "list", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "list", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1589,7 +1584,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "msglog_send", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "msglog_send", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1654,7 +1649,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "msglog_get", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "msglog_get", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1918,6 +1913,85 @@ class NkMedia extends RtcMedia {
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Inits the CLASS (not an instance) and registers handlers for some NC Events 
+	 * @return {void} 
+	 */
+	static init() {
+		if ( NkMedia._inited === true ) {
+			return;
+		}
+
+		NkMedia._inited = true;
+
+		// WsMngr.addClassSubclassManager( "media", "session", NkMedia.handleAllSessionEvents );
+		
+		WsMngr.addClassSubclassTypeManager( "media", "session", "stop", NkMedia.handle_MediaSession_Stop );
+
+	}
+
+	/**
+	 * Handles Session:Media:Stop Events from NC
+	 * @param  {object} WsEventObj Data from NetComposer Event
+	 * @return {void}
+	 */
+	static handle_MediaSession_Stop( WsEventObj ) {
+
+		var dbg = new DebugData( NkMedia.className, 'Static', "handle_MediaSession_Stop", WsEventObj ).dbgEnter( true );
+
+		var sessionId = WsEventObj.data.obj_id;
+		var mediaInstance = RtcMedia.dbList.byNcSessionId[ sessionId ];
+
+		// console.error( `WsEventObj: Media-Session-${WsEventObj.data.type} = `, DebugData.JsonTab( WsEventObj )  );
+		// console.error( `Name from dbList = ${RtcMedia.dbList.byNcSessionId[ sessionId ].name} WsMngr._webSocket.readyState = ${WsMngr._webSocket.readyState}` );
+
+		if ( typeof mediaInstance === 'undefined' ) {
+			dbg.warnMessage( `No current session with SessionId = ${sessionId}`, WsEventObj );
+			WsMngr.respondError( WsEventObj, 400, 'NkMedia: handle_MediaSession_Stop: No current session with that Id.' );
+			return;
+		}
+
+		mediaInstance.closeAll();
+
+		RtcMedia.dbDelete( mediaInstance );
+
+    	delete mediaInstance._nkSessionId;
+
+		// WsMngr.respondAck( WsEventObj );
+
+		WsMngr.respondOk( WsEventObj, { closed: true } );
+
+		dbg.infoMessage( `Closing and responding to Nc Event for sessionId = ${sessionId}`, WsEventObj );
+
+		// "tid": 2,
+		// "data": {
+		// 	"type": "stop",
+		// 	"subclass": "session",
+		// 	"obj_id": "a7ef9191-3ca4-9c3b-33a7-0007cb0396bd",
+		// 	"class": "media",
+		// 	"body": {
+		// 		"reason": "Janus op process down",
+		// 		"code": 2202
+		// 	}
+		// },
+		// "cmd": "event",
+		// "class": "core"
+
+		dbg.dbgExit( );
+	}
 
 }
 

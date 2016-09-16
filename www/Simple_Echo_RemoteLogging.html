@@ -3,12 +3,13 @@
 	<title>Simple Echo Demo</title>
 </head>
 
-<script src="./js/WebSocketManagerCls.js" type="text/javascript"></script>
+<!-- <script src="./js/WsMngrCls.js" type="text/javascript"></script> -->
 <script src="./js/RemoteLogger.js" type="text/javascript"></script>
 <script src="./js/PromiseData.js" type="text/javascript"></script>
 <script src="./js/Constants.js" type="text/javascript"></script>
 <script src="./js/DebugData.js" type="text/javascript"></script>
 
+<script src="./js/WsMngr.js" type="text/javascript"></script>
 <script src="./js/EventMngr.js" type="text/javascript"></script>
 <script src="./js/RtcMedia.js" type="text/javascript"></script>
 <script src="./js/NkMedia.js" type="text/javascript"></script>
@@ -16,8 +17,6 @@
 
 
 <script src="./js/EventLoggerDb.js" type="text/javascript"></script>
-<script src="./js/EventBus.js" type="text/javascript"></script>
-<script src="./js/WsLib.js" type="text/javascript"></script>
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
 
@@ -94,7 +93,6 @@ Remote Video (below)<BR>
 	//  JUNK for JS Lint Complaining 
 	//--------------------------------------------------------
 
-	var WebSocketManager = window.WebSocketManager;
 	var RemoteLogger = window.RemoteLogger; 
 
 	var neverUseThisItIsJustForJsLintFooling = function() {
@@ -137,7 +135,7 @@ Remote Video (below)<BR>
 	//--------------------------------------------------------
 	var updateLoginObj = function() {
 
-		WebSocketManager.updateLoginObj( window.location.hostname, portNumber, 
+		WsMngr.updateLoginObj( window.location.hostname, portNumber, 
 			document.getElementById("ws_username").value,			// UserNameString, 
 			document.getElementById("ws_password").value,			// UserPasswordString, 
 			document.getElementById("ws_clientId").value			// DeviceIdString, 
@@ -149,9 +147,7 @@ Remote Video (below)<BR>
 	//==========================================================================
 	window.onload = function() {
 
-		WebSocketManager = window.WebSocketManager;
-
-		WebSocketManager.setConnectData( window.location.hostname, portNumber, 
+		WsMngr.setConnectData( window.location.hostname, portNumber, 
 			document.getElementById("ws_username").value,			// UserNameString, 
 			document.getElementById("ws_password").value,			// UserPasswordString, 
 			document.getElementById("ws_clientId").value			// DeviceIdString, 

@@ -1,8 +1,6 @@
 // https://github.com/gabrielnahmias/Console.js  
 'use strict';
 
-// var WebSocketManager = window.WebSocketManager;
-// var NcEvents = window.NcEvents;
 
 
 /**
@@ -69,18 +67,18 @@
 
 		connectWithWebSocket:function( ) {
 			if ( this.isEventListenerSet === false ) {
-				WebSocketManager.addEventListener( NcEvents.onSessionIdChanged, this.onSessionIdChanged );
-				WebSocketManager.addEventListener( NcEvents.onLoginSuccess, this.onLoginSuccess );
-				WebSocketManager.addEventListener( NcEvents.onRemoteLoggerInfo, this.onRemoteLoggerInfo );
-				WebSocketManager.addEventListener( NcEvents.onRemoteLoggerError, this.onRemoteLoggerError );
+				WsMngr.addEventListener( WsMngr.eventNames.onWsSessionIdChanged, this.onWsSessionIdChanged );
+				WsMngr.addEventListener( WsMngr.eventNames.onWsLoginSuccess, this.onWsLoginSuccess );
+				WsMngr.addEventListener( WsMngr.eventNames.onRemoteLoggerInfo, this.onRemoteLoggerInfo );
+				WsMngr.addEventListener( WsMngr.eventNames.onRemoteLoggerError, this.onRemoteLoggerError );
 			}
 		},
 
-		onLoginSuccess:function( ) {
-			WebSocketManager.sendRemoteLogs();
+		onWsLoginSuccess:function( ) {
+			WsMngr.sendRemoteLogs();
 		},
 
-		onSessionIdChanged:function( Data ) {
+		onWsSessionIdChanged:function( Data ) {
 			RemoteLogger.webSocketSessionId = Data.target;
 		},
 
@@ -228,10 +226,6 @@
 
 		getRemoteLevel:function( ) {
 			return RemoteLogger.remoteLogLevel;
-		},
-
-		setWebSocketManager:function( WebSocketManagerInstance ) {
-			this.webSocketManager = WebSocketManagerInstance;
 		},
 
 		setGelfHostName:function( GelfHostName ) {
@@ -468,7 +462,7 @@
 					metaData.jsClient_wsSessionIdAtLog = RemoteLogger.webSocketSessionId;
 					metaData.jsClient_logLevels = "Console: " + RemoteLogger.consoleLogLevel + " Remote: " + RemoteLogger.remoteLogLevel;
 
-					remoteLogRetVal = window.WebSocketManager.remoteLog( SetupData.logLevel, message, metaData );
+					remoteLogRetVal = WsMngr.remoteLog( SetupData.logLevel, message, metaData );
 
 					if ( remoteLogRetVal === false ) {
 

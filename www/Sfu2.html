@@ -3,7 +3,7 @@
 	<title>SFU Pub Test</title>
 </head>
 
-<script src="./js/WebSocketManagerCls.js" type="text/javascript"></script>
+<script src="./js/WsMngrCls.js" type="text/javascript"></script>
 <script src="./js/RemoteLogger.js" type="text/javascript"></script>
 <script src="./js/PromiseData.js" type="text/javascript"></script>
 <script src="./js/Constants.js" type="text/javascript"></script>
@@ -16,12 +16,10 @@
 <script src="./js/ListenMedia.js" type="text/javascript"></script>
 <script src="./js/WsMngr.js" type="text/javascript"></script>
 
-<script src="./js/SfuMngr.js" type="text/javascript"></script>
+<script src="./js/RoomMngr.js" type="text/javascript"></script>
 
 
 <script src="./js/EventLoggerDb.js" type="text/javascript"></script>
-<script src="./js/EventBus.js" type="text/javascript"></script>
-<script src="./js/WsLib.js" type="text/javascript"></script>
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
 
@@ -257,9 +255,9 @@ Remote Videos (below)<BR>
 		 //  //      	localWsSendData.data.offer = { sdp: sfuMngr.peerConn.localDescription.sdp };
 			// 	// localWsSendData.cmd = "start";
 
-			// 	SfuMngr.confName = document.getElementById("roomName").value;
-		 //    	return SfuMngr.sfuRoomCreate( );
-		 //    	// return WebSocketManager.sendDataViaPromise( "media", "room", "create", data );
+			// 	RoomMngr.confName = document.getElementById("roomName").value;
+		 //    	return RoomMngr.sfuRoomCreate( );
+		 //    	// return WsMngr.sendDataViaPromise( "media", "room", "create", data );
 	  //       }        	
    //      ).then(		// THEN for Create Room was successful - now use the room id
 			// function( Data ) {
@@ -270,7 +268,7 @@ Remote Videos (below)<BR>
 			// 	localWsSendData.cmd = "start";
 			// 	localWsSendData.data.room_id = document.getElementById("roomName").value;
 
-		 //       	// return WebSocketManager.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+		 //       	// return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
 
 	  //       }        	
    //  	).catch(		// CATCH for Create Room was ERROR - now use the room id - Already created
@@ -282,7 +280,7 @@ Remote Videos (below)<BR>
 			// 	localWsSendData.cmd = "start";
 			// 	localWsSendData.data.room_id = document.getElementById("roomName").value;
 
-		 //       	// return WebSocketManager.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+		 //       	// return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
 
 	  //       }        	
    //      ).then(
@@ -290,7 +288,7 @@ Remote Videos (below)<BR>
    //      	function( ) {
 	  //       	console.log("*** DO Then after Create Room  *** ");
  
-		 //       	return WebSocketManager.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+		 //       	return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
    //     		}
    //      ).then(
 
@@ -321,7 +319,7 @@ Remote Videos (below)<BR>
 
   //   var stopTest = function() {
 
-  //   	WebSocketManager.sendDataViaPromise( "media", "session", "stop", { session_id: sessionId } ).then(
+  //   	WsMngr.sendDataViaPromise( "media", "session", "stop", { session_id: sessionId } ).then(
   //       	function( Data ) {
 	 //        	console.log("*** In  stopTest   RESOLVE  1  *** ", Data );
   //       	}    		
@@ -404,7 +402,7 @@ Remote Videos (below)<BR>
 
     	// var confRoom = document.getElementById( "roomName" ).value;
 
-    	// SfuMngr.sfuRoomInfo( confRoom, "Sfu.html:roomListenAll" ).then(
+    	// RoomMngr.sfuRoomInfo( confRoom, "Sfu.html:roomListenAll" ).then(
     	sfuMngr.roomInfo().then(
          	function( Response ) {
          		dbg.logMessage( "1) ", Response );
@@ -487,7 +485,7 @@ Remote Videos (below)<BR>
 	//--------------------------------------------------------
 	var updateLoginObj = function() {
 
-		WebSocketManager.updateLoginObj( window.location.hostname, portNumber, 
+		WsMngr.updateLoginObj( window.location.hostname, portNumber, 
 			document.getElementById("ws_username").value,			// UserNameString, 
 			document.getElementById("ws_password").value,			// UserPasswordString, 
 			document.getElementById("ws_clientId").value			// DeviceIdString, 
@@ -508,11 +506,11 @@ Remote Videos (below)<BR>
 
 	var manageClass_Server = function( data ) {
 		console.error("HTML: index.html - \n\n\t\tI got Class -Server- data !!! " + JSON.stringify(data), data);
-		// WebSocketManager.respondOk( data, {} );
+		// WsMngr.respondOk( data, {} );
 
-		WebSocketManager.respondAck( data );
+		WsMngr.respondAck( data );
 
-		setTimeout( WebSocketManager.respondOk, 2500, data, { no: "response"} );
+		setTimeout( WsMngr.respondOk, 2500, data, { no: "response"} );
 	};
 
 
@@ -675,15 +673,15 @@ Remote Videos (below)<BR>
 
 		this.setRemoteLevel();
 
-		WebSocketManager = window.WebSocketManager;
+		WsMngr = window.WsMngr;
 
-		WebSocketManager.setConnectData( window.location.hostname, portNumber, 
+		WsMngr.setConnectData( window.location.hostname, portNumber, 
 			document.getElementById("ws_username").value,			// UserNameString, 
 			document.getElementById("ws_password").value,			// UserPasswordString, 
 			document.getElementById("ws_clientId").value			// DeviceIdString, 
 		);
 
-		WebSocketManager.addClassManager( "server", manageClass_Server );
+		WsMngr.addClassManager( "server", manageClass_Server );
 
 		// mediaManager = new window.MediaManager( );
 
@@ -693,7 +691,7 @@ Remote Videos (below)<BR>
 		mediaMngr.localVideoElement = window.localVideo;	// Tell EchoMedia about video element
 		mediaMngr.remoteVideoElement = window.remoteVideo;	// Tell EchoMedia about video element
 
-		sfuMngr = new SfuMngr( "myName", "foo@bar.com");
+		sfuMngr = new RoomMngr( "myName", "foo@bar.com");
 
 		mediaMngr.confRoom = sfuMngr;
 

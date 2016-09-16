@@ -21,13 +21,11 @@ const ListenMedia_Version = "ListenMedia 1.0.0";
  * @requires {@link RtcMedia}
  * @requires {@link NkMedia}
  * @requires {@link MediaMngr}
- * @requires {@link WebSocketManager}
+ * @requires {@link WsMngr}
  * @requires {@link DebugData}
  * @requires {@link PromiseData}
  * @requires {@link RemoteLogger}
  * @requires {@link EventLoggerDb}
- * @requires {@link EventBus}
- * @requires {@link WsLib}
  * @requires {@link adapter}
  * @requires {@link getScreenId}
  */

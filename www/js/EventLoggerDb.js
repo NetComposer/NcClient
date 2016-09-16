@@ -36,7 +36,21 @@
  * @class  EventLoggerDb
  * 
  */
-var console = window.console;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 (function (root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -96,7 +110,7 @@ var console = window.console;
 
 			if ( args === "" ) return args;
 
-			var cloneOjb = WsLib.cloneObj4Log( args, smallLength );
+			var cloneOjb = this.cloneObj4Log( args, smallLength );
 			retVal = JSON.stringify( cloneOjb );
 
 			return ( retVal.length <= bigLength ) ? retVal : retVal.substring(1, bigLength) + "...";
@@ -110,6 +124,57 @@ var console = window.console;
 				return "";
 			}
 		},
+
+
+		cloneObj4Log: function(obj, maxIndividualLength ) {
+		    var copy;
+		    var maxILen = (( !!maxIndividualLength) && (maxIndividualLength >= 20 )) ? maxIndividualLength : 20;
+
+		    // Handle the 3 simple types, and null or undefined
+		    if ( ( typeof(obj) != 'undefined' ) && ( null !== obj )) {
+		    	if ( ( typeof(obj) == 'boolean') || ( typeof(obj) == 'number') ) {
+		    		return obj;
+		    	} else if ( typeof(obj) == 'string' ) {
+		    		return ( obj.length < maxILen ) ? obj : obj.substring(0, maxILen) + "...";
+		    	}
+		    } else if ( typeof(obj) == 'undefined' ) {
+		    	return "undefined";
+		    } else if ( null === obj ) {
+		    	return "null";
+		    }
+
+		    // if (null !== obj && "boolean" === typeof obj) return obj;
+
+		    // if (null == obj || "object" != typeof obj) return ( obj.length < maxILen ) ? obj : obj.substring(0, maxILen) + "...";
+
+		    // Handle Date
+		    if (obj instanceof Date) {
+		        copy = new Date();
+		        copy.setTime(obj.getTime());
+		        return copy;
+		    }
+
+		    // Handle Array
+		    if (obj instanceof Array) {
+		        copy = [];
+		        for (var i = 0, len = obj.length; i < len; i++) {
+		            copy[i] = this.cloneObj4Log(obj[i], maxIndividualLength);
+		        }
+		        return copy;
+		    }
+
+		    // Handle Object
+		    if (obj instanceof Object) {
+		        copy = {};
+		        for (var attr in obj) {
+		            // if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+		            if (( typeof(obj[attr]) !==  'function') && ( attr !== '__proto__')) copy[attr] = this.cloneObj4Log(obj[attr], maxIndividualLength);
+		        }
+		        return copy;
+		    }
+
+		    throw new Error("Unable to copy obj! Its type isn't supported. Type = " + (typeof(obj))  );
+		},	// close function 
 
 
 

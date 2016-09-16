@@ -33,12 +33,11 @@ const RtcMedia_Version = "RtcMedia 1.0.0";
  * B = new RtcMedia( {name: "myName", sendAudio: true, sendVideo: true } );
  * 
  * @class
- * @requires {@link WebSocketManager}
+ * @requires {@link WsMngr}
  * @requires {@link DebugData}
  * @requires {@link PromiseData}
  * @requires {@link RemoteLogger}
  * @requires {@link EventLoggerDb}
- * @requires {@link WsLib}
  * @requires {@link adapter}
  * @requires {@link getScreenId}
  *
@@ -222,6 +221,8 @@ class RtcMedia extends EventMngr {
 
 		this._closed = false;
 
+		this._rtcId = RtcMedia.createUuid();
+
 		this._sendAudio = RtcMedia.defaultValues.sendAudio; 		
 		this._sendVideo = RtcMedia.defaultValues.sendVideo; 
 		this._offerToReceiveAudio = RtcMedia.defaultValues.offerToReceiveAudio; 
@@ -306,7 +307,7 @@ class RtcMedia extends EventMngr {
 	toJSON() {
 		var jsonData = {
 			name: this._name,
-
+			rtcId: this._rtcId,
 			sendAudio: this.sendAudio,
 			sendVideo: this.sendVideo,
 			localAudioMuted: this.localAudioMuted,
@@ -424,7 +425,14 @@ class RtcMedia extends EventMngr {
     	return this._name; 
     }
 
-
+    /**
+     * RTC UUID created at init time.  Can not change it!
+     *
+     * @readOnly
+     */
+    get rtcId() { 
+    	return this._rtcId; 
+    }
 
 	//--------------------------------------------------------
 	//  sendAudio
@@ -1784,8 +1792,19 @@ class RtcMedia extends EventMngr {
 	static dbAdd( RtcMediaInstance ) {
 		RtcMedia._dbCreate();
 
-		if ( typeof RtcMediaInstance.name === 'string' ) {
+		if ( (typeof RtcMediaInstance.name === 'string' ) && 
+			 ( typeof RtcMedia._db.byName[ RtcMediaInstance.name ] === 'undefined' ) ) {
 			RtcMedia._db.byName[ RtcMediaInstance.name ] = RtcMediaInstance;
+		}
+
+		if ( (typeof RtcMediaInstance._nkSessionId === 'string' ) && 
+			 ( typeof RtcMedia._db.byNcSessionId[ RtcMediaInstance._nkSessionId ] === 'undefined' ) ) {
+			RtcMedia._db.byNcSessionId[ RtcMediaInstance._nkSessionId ] = RtcMediaInstance;
+		}
+
+		if ( (typeof RtcMediaInstance._rtcId === 'string' ) && 
+			 ( typeof RtcMedia._db.byRtcId[ RtcMediaInstance._rtcId ] === 'undefined' ) ) {
+			RtcMedia._db.byRtcId[ RtcMediaInstance._rtcId ] = RtcMediaInstance;
 		}
 
 	}
@@ -1796,10 +1815,22 @@ class RtcMedia extends EventMngr {
 
 	static dbDelete( RtcMediaInstance ) {
 		RtcMedia._dbCreate();
-		
-		if ( typeof RtcMediaInstance.name === 'string' ) {
+
+		if ( (typeof RtcMediaInstance.name === 'string' ) && 
+			 ( typeof RtcMedia._db.byName[ RtcMediaInstance.name ] !== 'undefined' ) ) {
 			delete RtcMedia._db.byName[ RtcMediaInstance.name ];
 		}
+
+		if ( (typeof RtcMediaInstance._nkSessionId === 'string' ) && 
+			 ( typeof RtcMedia._db.byNcSessionId[ RtcMediaInstance._nkSessionId ] !== 'undefined' ) ) {
+			delete RtcMedia._db.byNcSessionId[ RtcMediaInstance._nkSessionId ];
+		}
+
+		if ( (typeof RtcMediaInstance._rtcId === 'string' ) && 
+			 ( typeof RtcMedia._db.byRtcId[ RtcMediaInstance._rtcId ] !== 'undefined' ) ) {
+			delete RtcMedia._db.byRtcId[ RtcMediaInstance._rtcId ];
+		}
+
 
 	}
 
@@ -1807,14 +1838,40 @@ class RtcMedia extends EventMngr {
 		if ( typeof RtcMedia._db !== 'object' ) {
 			RtcMedia._db = {
 				byName: {},
-				byNcSessionId: {}
+				byRtcId: {},
+				byNcSessionId: {},
 			};
 		}
 	}
 
-	static dbList() {
+	static get dbList() {
 		RtcMedia._dbCreate();
-		return RtcMedia._db;
+		return RtcMedia._db;		
+	}
+
+
+	static get dbListString() {
+		RtcMedia._dbCreate();
+
+		var list = {
+				byName: [],
+				byRtcId: [],
+				byNcSessionId: [],
+			};
+
+		Object.keys( RtcMedia.dbList.byName ).forEach( function( key ) {
+			list.byName.push( key );
+		});
+
+		Object.keys( RtcMedia.dbList.byNcSessionId ).forEach( function( key ) {
+			list.byNcSessionId.push( key );
+		});
+
+		Object.keys( RtcMedia.dbList.byRtcId ).forEach( function( key ) {
+			list.byRtcId.push( key );
+		});
+
+		return DebugData.JsonTab( list );		
 	}
 
 
@@ -1847,7 +1904,7 @@ class RtcMedia extends EventMngr {
 	 * @see  RtcMedia#_getUserMedia
 	 */
 	static _streamTracksDisableStopRemove( MediaStreamToEffect ) {		// Returns Nothing
-		var dbg = new DebugData( RtcMedia.className, 'static', "_streamTracksDisableStopRemove", MediaStreamToEffect ).dbgEnter( true );
+		var dbg = new DebugData( RtcMedia.className, 'Static', "_streamTracksDisableStopRemove", MediaStreamToEffect ).dbgEnter( true );
 
 		MediaStreamToEffect.getTracks().forEach(
 			function( track ) {
@@ -1898,7 +1955,7 @@ class RtcMedia extends EventMngr {
 	 * @see  RtcMedia.copyStreamTracks
 	 */
 	static setStreamTrack( StreamToSet, TrackToSet ) {
-		var dbg = new DebugData( RtcMedia.className, 'static', "setStreamTrack", StreamToSet, TrackToSet ).dbgEnter();
+		var dbg = new DebugData( RtcMedia.className, 'Static', "setStreamTrack", StreamToSet, TrackToSet ).dbgEnter();
 
 		if ( !!TrackToSet ) { 
 			if ( TrackToSet.kind === 'audio' ) {
@@ -3792,7 +3849,7 @@ class RtcMedia extends EventMngr {
 		if ( typeof SendVideo !== 'undefined' ) { this.sendVideo = SendVideo; }
 
 		// Make a copy
-		var gumConstraintsCopy = WsLib.cloneObj( this._constraints );
+		var gumConstraintsCopy = JSON.parse( JSON.stringify( this._constraints ));
 		
 		var self = this;
 
@@ -3820,6 +3877,8 @@ class RtcMedia extends EventMngr {
 				}
 			);
 		});
+
+		RtcMedia.dbAdd( this );
 
 		dbg.dbgExitPd();
 		return promise;
@@ -3881,7 +3940,7 @@ class RtcMedia extends EventMngr {
 				self.sendVideo = screen_constraints.video;
 
 				// Make a copy
-				var gumConstraintsCopy = WsLib.cloneObj( self._constraints );
+				var gumConstraintsCopy = JSON.parse( JSON.stringify( this._constraints ));
 
 		        self._getUserMedia( gumConstraintsCopy ).then(
 					function(stream) {
@@ -3910,6 +3969,8 @@ class RtcMedia extends EventMngr {
 	        });
 
 		});
+
+		RtcMedia.dbAdd( this );
 
 		dbg.dbgExitPd();
 		return promise;

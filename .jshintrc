@@ -94,6 +94,7 @@
         "RTCSessionDescription": true,
         "RemoteLogger": true,
         "WebSocketManager": true,
+        "WsMngr": true,
         "DebugData": true,
         "NcErrorCode": true,
         "NcEvents": true,
@@ -103,11 +104,12 @@
         "McuMedia": true,
         "BridgeMedia": true,
         "NkMedia": true,
-        "SfuMngr": true,
+        "RoomMngr": true,
         "PromiseData": true,
         "EventMngr": true,
         "EventLoggerDb": true,
         "EventBus": true
+
 
 
     }        // additional predefined global variables

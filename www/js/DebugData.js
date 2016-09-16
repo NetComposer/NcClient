@@ -3,7 +3,7 @@
 /**
  * Object for Debug Print Data
  * @param  {string}	FunctionModulelName 	Should be something like -- RtcMedia.className, NkMedia.className, etc.
- * @param  {class}	CallingClassInstance 	A class instance like -- an instance of RtcMedia, NkMedia, MediaMngr, EchoMedia, SfuMngr, etc.
+ * @param  {class}	CallingClassInstance 	A class instance like -- an instance of RtcMedia, NkMedia, MediaMngr, EchoMedia, RoomMngr, etc.
  * @param  {string}	FunctionName 	The name of the function
  * @param  {anything}	ArgsArray 	This includes any other data provided.  It can be many different arguments.
  */
@@ -49,6 +49,8 @@ class DebugData {
     			} else {
 	    			console.warn("DebugData: Passed an argument of 'undefined' ... this should be checked! ", err.stack );
     			}
+            } else if ( arggg === null ) {
+                argsString = argsString + 'null';
     		} else if ( arggg.toString() === '[object Object]' ) {
 	    		argsString = argsString + JSON.stringify( arggg ).substring( 0, 30 ) + ', ';
     		} else if ( typeof arggg === 'object') {
