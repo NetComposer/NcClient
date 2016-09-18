@@ -14,7 +14,7 @@ class DebugData {
     	this._functionModuleName = FunctionModulelName;
     	this._callingClassInstance = CallingClassInstance;
     	this._modClassName = ( typeof CallingClassInstance === 'object') ? CallingClassInstance.className : CallingClassInstance;
-    	this._processDebug = RemoteLogger.isDebugOn();
+    	this._processDebug = RemoteLogMngr.isDebugOn();
     	this._moduleName = this._getModuleName();
     	this._actionsDb = [];
     	this._state = DebugData.states.UNSET;
@@ -27,7 +27,7 @@ class DebugData {
     	this._fullDebugData = false;
     	this._printSetupData = DebugData.debugSetupData;
 
-    	this._pStack = RemoteLogger.getStackTraceString( ( new Error() ), "\n\tPromise Enter Stack ->  at " );
+    	this._pStack = RemoteLogMngr.getStackTraceString( ( new Error() ), "\n\tPromise Enter Stack ->  at " );
     	this._printStack = false;
     	this._printArgDetails = false;
     	this._suppressArgsWarn = false;
@@ -119,27 +119,27 @@ class DebugData {
     }
 
     static get debugSetupData() {
-		return {logLevel: RemoteLogger.DEBUG, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.DEBUG, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get infoSetupData() {
-		return {logLevel: RemoteLogger.INFO, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.INFO, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get logSetupData() {
-		return {logLevel: RemoteLogger.LOG, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.LOG, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get warnSetupData() {
-		return {logLevel: RemoteLogger.WARN, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.WARN, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get errorSetupData() {
-		return {logLevel: RemoteLogger.ERROR, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.ERROR, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get alertSetupData() {
-		return {logLevel: RemoteLogger.ALERT, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
+		return {logLevel: RemoteLogMngr.ALERT, stackShiftAmount: 3, forceSendRemote: false, allowedToSendRemote: true };
     }
 
     static get states() {
@@ -494,12 +494,12 @@ class DebugData {
 
 		PrintData = PrintData.concat( DebugData.JsonTab( RestOfThings ) );
 
-		// if ( ( this._fullDebugData ) || ( DebugData._fullDebugData ) || ( this._printSetupData.logLevel <= RemoteLogger.WARN ) ) {
+		// if ( ( this._fullDebugData ) || ( DebugData._fullDebugData ) || ( this._printSetupData.logLevel <= RemoteLogMngr.WARN ) ) {
 		if ( ( this._fullDebugData ) || ( DebugData._fullDebugData ) ) {
 			PrintData = PrintData.concat( `\n${this._modClassName} Data: ${JSON.stringify( this._callingClassInstance, null, '\t' )}` );
 		}
 
-		RemoteLogger.logIt.apply( this, PrintData );
+		RemoteLogMngr.logIt.apply( this, PrintData );
 	}
 
 	_getModuleName( ) {
@@ -560,7 +560,7 @@ class DebugData {
 		if ( typeof TheObject.toJSON !== 'undefined' ) { return TheObject; }  
 		
 		if ( TheObject instanceof Error ) { 
-			return RemoteLogger.getStackTraceString( TheObject, `\n\tERROR ${TheObject} ->  at ` );
+			return RemoteLogMngr.getStackTraceString( TheObject, `\n\tERROR ${TheObject} ->  at ` );
 		}
 
 		var theStringVal = TheObject.toString();

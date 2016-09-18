@@ -27,7 +27,7 @@ const SfuMngr_Version = `RoomMngr 1.0.0`;
  * @requires {@link WsMngr}
  * @requires {@link DebugData}
  * @requires {@link PromiseData}
- * @requires {@link RemoteLogger}
+ * @requires {@link RemoteLogMngr}
  * @requires {@link EventLoggerDb}
  * @requires {@link EventMngr}
  * @requires {@link adapter}

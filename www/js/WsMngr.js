@@ -237,7 +237,7 @@ class WsMngr {
 
 			/**
 		     * Used to send INFO Messages to the Remote Log.  We CANNOT just do console.log, because 
-		     *   it is recursive with RemoteLogger and WsMngr!
+		     *   it is recursive with RemoteLogMngr and WsMngr!
 		     *
 		     * @event onRemoteLoggerInfo
 		     * @type {Event}
@@ -247,7 +247,7 @@ class WsMngr {
 
 			/**
 		     * Used to send ERROR Messages to the Remote Log.  We CANNOT just do console.log, because 
-		     *   it is recursive with RemoteLogger and WsMngr!
+		     *   it is recursive with RemoteLogMngr and WsMngr!
 		     *
 		     * @event onRemoteLoggerError
 		     * @type {Event}
@@ -1380,8 +1380,6 @@ class WsMngr {
 
 		};
 
-
-
 		// Insert this Object into the recvQueue ... 
 		WsMngr._recvQueue[JsonData.tid] = recvObj;
 		WsMngr._logDb.push(recvObj);		// Put in the logging Array (DB like) 
@@ -1578,8 +1576,6 @@ class WsMngr {
 				throw( "WsMngr: handleEvent: Error: This event is not valid: ", WsEventObj.wsRecvData );
 			}
 		}
-
-
 
 
 }

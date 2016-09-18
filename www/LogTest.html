@@ -4,9 +4,8 @@
 </head>
 
 <script src="./js/WsMngr.js" type="text/javascript"></script>
-<script src="./js/RemoteLogger.js" type="text/javascript"></script>
+<script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
 <script src="./js/PromiseData.js" type="text/javascript"></script>
-<script src="./js/Constants.js" type="text/javascript"></script>
 <script src="./js/DebugData.js" type="text/javascript"></script>
 
 <script src="./js/GumRtcStreamHelper.js" type="text/javascript"></script>
@@ -151,9 +150,9 @@ Other Tests:
 	// Primary Functions     
 	//==========================================================================
 
-		// RemoteLogger.replaceConsole();
-		// RemoteLogger.restoreConsole();
-		// RemoteLogger.setPrintFullStack(true);
+		// RemoteLogMngr.replaceConsole();
+		// RemoteLogMngr.restoreConsole();
+		// RemoteLogMngr.setPrintFullStack(true);
 
 
 	//--------------------------------------------------------
@@ -166,7 +165,7 @@ Other Tests:
 
 
     var useRemoteLogger = function() {
-		RemoteLogger.replaceConsole();
+		RemoteLogMngr.replaceConsole();
 		document.getElementById('btnRemote').style.background = "green";
 		document.getElementById('btnRemote').style.color = "white";
 		document.getElementById('btnRemote').innerHTML = "Using Remote Logger Console";
@@ -177,7 +176,7 @@ Other Tests:
 	};
 
     var useLocalLogger = function() {
-		RemoteLogger.restoreConsole();
+		RemoteLogMngr.restoreConsole();
 
 		document.getElementById('btnConsole').style.background = "green";
 		document.getElementById('btnConsole').style.color = "white";
@@ -189,7 +188,7 @@ Other Tests:
 	};
 
     var showAllStackLevels = function() {
-		RemoteLogger.setPrintFullStack(true);
+		RemoteLogMngr.setPrintFullStack(true);
 		document.getElementById('fullStack').style.background = "green";
 		document.getElementById('fullStack').style.color = "white";
 		document.getElementById('fullStack').innerHTML = "Showing ALL Stack Levels";
@@ -200,7 +199,7 @@ Other Tests:
 	};
 
     var showOneStackLevels = function() {
-		RemoteLogger.setPrintFullStack(false);
+		RemoteLogMngr.setPrintFullStack(false);
 		document.getElementById('oneStack').style.background = "green";
 		document.getElementById('oneStack').style.color = "white";
 		document.getElementById('oneStack').innerHTML = "Showing ONE Stack Level";
@@ -214,11 +213,11 @@ Other Tests:
 
 
     var setConsoleLevel = function() {
-		RemoteLogger.setConsoleLevel( RemoteLogger[ document.getElementById('consoleLevels').value ] );
+		RemoteLogMngr.setConsoleLevel( RemoteLogMngr[ document.getElementById('consoleLevels').value ] );
 	};
 
     var setRemoteLevel = function() {
-		RemoteLogger.setRemoteLevel( RemoteLogger[ document.getElementById('remoteLevels').value ] );
+		RemoteLogMngr.setRemoteLevel( RemoteLogMngr[ document.getElementById('remoteLevels').value ] );
 	};
 
     var showAllLogLevels = function() {

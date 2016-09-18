@@ -24,7 +24,7 @@ const EchoMedia_Version = "EchoMedia 1.0.0";
  * @requires {@link WsMngr}
  * @requires {@link DebugData}
  * @requires {@link PromiseData}
- * @requires {@link RemoteLogger}
+ * @requires {@link RemoteLogMngr}
  * @requires {@link EventLoggerDb}
  * @requires {@link adapter}
  * @requires {@link getScreenId}

@@ -3,10 +3,9 @@
 	<title>SFU Pub Test</title>
 </head>
 
-<script src="./js/WsMngrCls.js" type="text/javascript"></script>
-<script src="./js/RemoteLogger.js" type="text/javascript"></script>
+<script src="./js/WsMngr.js" type="text/javascript"></script>
+<script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
 <script src="./js/PromiseData.js" type="text/javascript"></script>
-<script src="./js/Constants.js" type="text/javascript"></script>
 <script src="./js/DebugData.js" type="text/javascript"></script>
 
 <script src="./js/EventMngr.js" type="text/javascript"></script>
@@ -200,11 +199,11 @@ Remote Videos (below)<BR>
 	};
 
     var setConsoleLevel = function() {
-		RemoteLogger.setConsoleLevel( RemoteLogger[ document.getElementById('consoleLevels').value ] );
+		RemoteLogMngr.setConsoleLevel( RemoteLogMngr[ document.getElementById('consoleLevels').value ] );
 	};
 
     var setRemoteLevel = function() {
-		RemoteLogger.setRemoteLevel( RemoteLogger[ document.getElementById('remoteLevels').value ] );
+		RemoteLogMngr.setRemoteLevel( RemoteLogMngr[ document.getElementById('remoteLevels').value ] );
 	};
 
 
@@ -669,7 +668,7 @@ Remote Videos (below)<BR>
 	//==========================================================================
 	window.onload = function() {
 
-		RemoteLogger.replaceConsole();		// Remote Logging overrides console.xxxx
+		RemoteLogMngr.replaceConsole();		// Remote Logging overrides console.xxxx
 
 		this.setRemoteLevel();
 

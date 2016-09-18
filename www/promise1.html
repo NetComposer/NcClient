@@ -3,7 +3,7 @@
 	<title>Promise Tester</title>
 </head>
 
-<script src="./js/RemoteLogger.js" type="text/javascript"></script>
+<script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
 
 <H1>Promise Tester</H1>
 
@@ -43,7 +43,7 @@ Callback Test: <input type="checkbox" id="tf" checked onclick="setTf()">
     //--------------------------------------------------------
 
     var console = window.console;
-    var RemoteLogger = window.RemoteLogger; 
+    var RemoteLogMngr = window.RemoteLogMngr; 
 
     var neverUseThisItIsJustForJsLintFooling = function() {
         neverUseThisItIsJustForJsLintFooling();
@@ -93,7 +93,7 @@ Callback Test: <input type="checkbox" id="tf" checked onclick="setTf()">
     }
 
     function D1( Name, Age, MaleFemale ) {
-        var funStack = RemoteLogger.getStackTraceString( (new Error() ), "\n\tPromise Stack ->  at ");
+        var funStack = RemoteLogMngr.getStackTraceString( (new Error() ), "\n\tPromise Stack ->  at ");
 
         var name = Name;
         var age = Age;
@@ -173,7 +173,7 @@ Callback Test: <input type="checkbox" id="tf" checked onclick="setTf()">
 
     function modFun( CurrentFromMod, PreviousFromMod ) {
         var stackTrace;
-        stackTrace = RemoteLogger.getStackTrace();
+        stackTrace = RemoteLogMngr.getStackTrace();
 
         if ( (!!PreviousFromMod ) && ( PreviousFromMod !== "" ) ) {
             PreviousFromMod.push( [ CurrentFromMod, stackTrace ] );
