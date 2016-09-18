@@ -32,11 +32,11 @@ const NkMedia_Version = "NkMedia 1.0.0";
 // const NkMedia_EventPrefix = "NkMedia_";
 
 /**
- * Constructs a new SfuMngr NkMedia
+ * Constructs a new NkMedia
  * @class
  * @extends {RtcMedia}
  * 
- * @requires WebSocketManager This is information about it
+ * @requires WsMngr This is information about it
  * 
  * @param  {object}		SettingsObject	Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
  * 			It is a convience method for setting multple things at once and/or passing them from other sub classes or parents.
@@ -54,8 +54,6 @@ class NkMedia extends RtcMedia {
     constructor( SettingsObject ) {
     	super( SettingsObject );
 
-    	this._ncWsSessionId = 'not set';
-
     	// this.init();    DO NOT DO INIT HERE .. it is actually called by super() 
 
     }
@@ -67,7 +65,7 @@ class NkMedia extends RtcMedia {
 	init() {
 		var dbg = new DebugData( NkMedia.className, this, "init" ).dbgEnter( );
 
-    	this._nkSessionId = 'not set';
+    	delete this._nkSessionId;
 
     	this._mediaServerType = NkMedia.defaultValues.mediaServerType;
 
@@ -93,7 +91,10 @@ class NkMedia extends RtcMedia {
 	}
 
 
-
+	/**
+	 * Default Values 
+	 * @return {object} Of default values
+	 */
 	static get defaultValues() {
 		return {
 		mediaServerType: NkMedia.mediaServerTypes.JANUS,
@@ -110,10 +111,13 @@ class NkMedia extends RtcMedia {
 	}
 
 
+	/**
+	 * This provides the JSON data when doing a JSON.stringify function.
+	 * @return {object} Data for JSON.stringify to work on.
+	 */
 	toJSON() {
 		var jsonData = {
-			ncWsSessionId: this._ncWsSessionId,
-			nkSessionId: this._nkSessionId,
+			nkSessionId: ( !! this._nkSessionId ) ? this._nkSessionId : 'undefined',
 			nkUseVideo: this._nkUseVideo,
 			nkUseAudio: this._nkUseAudio,
 			nkBitrate: this._nkBitrate,
@@ -186,24 +190,6 @@ class NkMedia extends RtcMedia {
 	//==========================================================================
 
 	//--------------------------------------------------------
-	//  ncWsSessionId
-	//--------------------------------------------------------
-
-    set ncWsSessionId( Name ) {
-		if ( typeof Name === 'string' ) {
-			this._ncWsSessionId = Name;
-			RtcMedia.dbUpdate( this );
-		} else {
-			var throwVal = "NkMedia: set ncWsSessionId: value must be a string.  You gave " + Name ;
-			console.warn( "RTC", throwVal );
-			throw( throwVal );
-		}
-    }
-
-    get ncWsSessionId() { return this._ncWsSessionId; }
-
-
-	//--------------------------------------------------------
 	//  nkSessionId
 	//--------------------------------------------------------
 
@@ -219,8 +205,8 @@ class NkMedia extends RtcMedia {
 	/**
 	 * @readonly
 	 * @enum {number}
-	 * @example &lt;caption>Example usage of SfuMngr.participantType.&lt;/caption>
-	 * SfuMngr.participantType.admin;
+	 * @example &lt;caption>Example usage of RoomMngr.participantType.&lt;/caption>
+	 * RoomMngr.participantType.admin;
 	 * // returns 2
 	 */
 	static get participantType() {
@@ -395,8 +381,8 @@ class NkMedia extends RtcMedia {
 	set confRoom( ConfRoomObject ) {
 		var dbg = new DebugData( RtcMedia.className, this, "set confRoom", ConfRoomObject ).dbgDo( );
     	
-		if ( ConfRoomObject instanceof SfuMngr === false ) {
-			var myError = new Error( 'ConfRoomObject MUST be an instance of SfuMngr' );
+		if ( ConfRoomObject instanceof RoomMngr === false ) {
+			var myError = new Error( 'ConfRoomObject MUST be an instance of RoomMngr' );
     		dbg.errorMessage( myError.stack );
     		throw( myError );
 		}
@@ -486,7 +472,7 @@ class NkMedia extends RtcMedia {
     	if ( false ) {		// This should test to see if you have an NkMedia Session
 
 	    	var dataObject = {
-	    		session_id: this.nkSessionId,
+	    		session_id: this._nkSessionId,
 	    		update_type: "media",
 	    		use_audio:  AudioMutedTF,
 	    		use_video: VideoMutedTF
@@ -747,6 +733,12 @@ class NkMedia extends RtcMedia {
     	var DataObject = self._cmdData;
 		var dbg = new DebugData( NkMedia.className, self, "_chn_nk_MediaSessionStart", ncCmdStr, DataObject ).dbgEnter( true );
 
+
+
+
+    	NkMedia.init();		// Init the CLASS (not instance)
+
+
     	var errString;
 
     	if ( typeof( DataObject ) === 'undefined' ) {
@@ -764,13 +756,16 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve ) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "start", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "start", DataObject ).then(
 	        	function( Data ) {
 
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
 
 	        		self._nkSessionId = self._wsResponseData.data.session_id;
+	        		RtcMedia.dbUpdate( self );
+
+
         			dbg.dbgMessage( 'self._nkSessionId = ',  self._nkSessionId );
 
         			var rtcDescInit = {};
@@ -883,7 +878,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "stop", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "stop", DataObject ).then(
 	        	function( Data ) {
 
 	        		self._wsResponseData = Data.wsResponseData;
@@ -957,7 +952,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "set_answer", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "set_answer", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1045,7 +1040,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "update", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "update", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1111,7 +1106,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "session", "info", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "info", DataObject ).then(
 	        	function( Data ) {
 	        		self._wsResponseData = Data.wsResponseData;
 	        		self._wsSendData = Data.wsSendData;
@@ -1221,7 +1216,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "create", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "create", CmdData ).then(
 
 				// Response: {
 				// 	"tid": 1001,
@@ -1317,7 +1312,7 @@ class NkMedia extends RtcMedia {
 
 		// var promise = new Promise( function(resolve, reject) {
 
-	 //    	WebSocketManager.sendDataViaPromise( "media", "room", "create", DataObject ).then(
+	 //    	WsMngr.sendDataViaPromise( "media", "room", "create", DataObject ).then(
 
 		// 		// Response: {
 		// 		// 	"tid": 1001,
@@ -1426,7 +1421,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "destroy", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "destroy", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1491,7 +1486,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "info", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "info", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1533,7 +1528,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "list", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "list", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1617,7 +1612,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "msglog_send", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "msglog_send", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1682,7 +1677,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function( resolve, reject) {
 
-	    	WebSocketManager.sendDataViaPromise( "media", "room", "msglog_get", CmdData ).then(
+	    	WsMngr.sendDataViaPromise( "media", "room", "msglog_get", CmdData ).then(
 	        	function( Data ) {
 		     		dbg.infoMessage( `Resolved`, Data.wsResponseData );
 		     		dbg.dbgResolve( Data );
@@ -1947,6 +1942,85 @@ class NkMedia extends RtcMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * Inits the CLASS (not an instance) and registers handlers for some NC Events 
+	 * @return {void} 
+	 */
+	static init() {
+		if ( NkMedia._inited === true ) {
+			return;
+		}
+
+		NkMedia._inited = true;
+
+		// WsMngr.addClassSubclassManager( "media", "session", NkMedia.handleAllSessionEvents );
+		
+		WsMngr.addClassSubclassTypeManager( "media", "session", "stop", NkMedia.handle_MediaSession_Stop );
+
+	}
+
+	/**
+	 * Handles Session:Media:Stop Events from NC
+	 * @param  {object} WsEventObj Data from NetComposer Event
+	 * @return {void}
+	 */
+	static handle_MediaSession_Stop( WsEventObj ) {
+
+		var dbg = new DebugData( NkMedia.className, 'Static', "handle_MediaSession_Stop", WsEventObj ).dbgEnter( true );
+
+		var sessionId = WsEventObj.data.obj_id;
+		var mediaInstance = RtcMedia.dbList.byNcSessionId[ sessionId ];
+
+		// console.error( `WsEventObj: Media-Session-${WsEventObj.data.type} = `, DebugData.JsonTab( WsEventObj )  );
+		// console.error( `Name from dbList = ${RtcMedia.dbList.byNcSessionId[ sessionId ].name} WsMngr._webSocket.readyState = ${WsMngr._webSocket.readyState}` );
+
+		if ( typeof mediaInstance === 'undefined' ) {
+			dbg.warnMessage( `No current session with SessionId = ${sessionId}`, WsEventObj );
+			WsMngr.respondError( WsEventObj, 400, 'NkMedia: handle_MediaSession_Stop: No current session with that Id.' );
+			return;
+		}
+
+		mediaInstance.closeAll();
+
+		RtcMedia.dbDelete( mediaInstance );
+
+    	delete mediaInstance._nkSessionId;
+
+		// WsMngr.respondAck( WsEventObj );
+
+		WsMngr.respondOk( WsEventObj, { closed: true } );
+
+		dbg.infoMessage( `Closing and responding to Nc Event for sessionId = ${sessionId}`, WsEventObj );
+
+		// "tid": 2,
+		// "data": {
+		// 	"type": "stop",
+		// 	"subclass": "session",
+		// 	"obj_id": "a7ef9191-3ca4-9c3b-33a7-0007cb0396bd",
+		// 	"class": "media",
+		// 	"body": {
+		// 		"reason": "Janus op process down",
+		// 		"code": 2202
+		// 	}
+		// },
+		// "cmd": "event",
+		// "class": "core"
+
+		dbg.dbgExit( );
+	}
+
 }
 
 
@@ -1971,13 +2045,13 @@ class NkMedia extends RtcMedia {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventBus.html">EventBus</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RemoteLogger.html">RemoteLogger</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="SfuMngr.html">SfuMngr</a></li><li><a href="WebSocketManager.html">WebSocketManager</a></li><li><a href="WebSocketManager_old.html">WebSocketManager_old</a></li><li><a href="WsLib.html">WsLib</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-tut1.html">tut1</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#NcEvents">NcEvents</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="adapter.html">adapter</a></li><li><a href="DebugData.html">DebugData</a></li><li><a href="EchoMedia.html">EchoMedia</a></li><li><a href="EventLoggerDb.html">EventLoggerDb</a></li><li><a href="getScreenId.html">getScreenId</a></li><li><a href="ListenMedia.html">ListenMedia</a></li><li><a href="NkMedia.html">NkMedia</a></li><li><a href="PromiseData.html">PromiseData</a></li><li><a href="PublishMedia.html">PublishMedia</a></li><li><a href="RoomMngr.html">RoomMngr</a></li><li><a href="RtcMedia.html">RtcMedia</a></li><li><a href="WsMngr.html">WsMngr</a></li></ul><h3>Events</h3><ul><li><a href="global.html#event:nkEvent1">nkEvent1</a></li><li><a href="global.html#event:nkEvent2">nkEvent2</a></li><li><a href="global.html#event:onLocalFaceStream">onLocalFaceStream</a></li><li><a href="global.html#event:onLocalScreenCaptureStream">onLocalScreenCaptureStream</a></li><li><a href="global.html#event:onPeerConn_IceCandidate">onPeerConn_IceCandidate</a></li><li><a href="global.html#event:onPeerConn_NegotiationNeeded">onPeerConn_NegotiationNeeded</a></li><li><a href="global.html#event:onRemoteLoggerError">onRemoteLoggerError</a></li><li><a href="global.html#event:onRemoteLoggerInfo">onRemoteLoggerInfo</a></li><li><a href="global.html#event:onRemoteStream">onRemoteStream</a></li><li><a href="global.html#event:onWsClose">onWsClose</a></li><li><a href="global.html#event:onWsError">onWsError</a></li><li><a href="global.html#event:onWsLoginError">onWsLoginError</a></li><li><a href="global.html#event:onWsLoginSuccess">onWsLoginSuccess</a></li><li><a href="global.html#event:onWsOpen">onWsOpen</a></li><li><a href="global.html#event:onWsSessionIdChanged">onWsSessionIdChanged</a></li></ul><h3>Tutorials</h3><ul><li><a href="tutorial-EchoTest.html">EchoTest</a></li><li><a href="tutorial-RemoteLogger.html">RemoteLogger</a></li></ul><h3>Global</h3><ul><li><a href="global.html#admin">admin</a></li><li><a href="global.html#BOTH">BOTH</a></li><li><a href="global.html#CIF">CIF</a></li><li><a href="global.html#LISTEN_ONLY">LISTEN_ONLY</a></li><li><a href="global.html#listener">listener</a></li><li><a href="global.html#PUBLISH_ONLY">PUBLISH_ONLY</a></li><li><a href="global.html#publisher">publisher</a></li><li><a href="global.html#QCIF">QCIF</a></li><li><a href="global.html#QQVGA">QQVGA</a></li><li><a href="global.html#QVGA">QVGA</a></li><li><a href="global.html#360p">360p</a></li><li><a href="global.html#720p">720p</a></li><li><a href="global.html#SVGA">SVGA</a></li><li><a href="global.html#VGA">VGA</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Thu Sep 15 2016 15:55:25 GMT-0500 (CDT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Sep 17 2016 22:08:32 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: ListenMedia</title>
+    <title>JSDoc: Class: WsMngr</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: ListenMedia</h1>
+    <h1 class="page-title">Class: WsMngr</h1>
 
     
 
@@ -28,9 +28,7 @@
 
 <header>
     
-        <h2>ListenMedia</h2>
-        
-            <div class="class-description"><p>Constructs a new ListenMedia instance</p></div>
+        <h2>WsMngr</h2>
         
     
 </header>
@@ -41,15 +39,16 @@
         
 
     
-    <h2>Constructor</h2>
-    
 
-    <h4 class="name" id="ListenMedia"><span class="type-signature"></span>new ListenMedia<span class="signature">(SettingsObject)</span><span class="type-signature"> &rarr; {<a href="ListenMedia.html">ListenMedia</a>}</span></h4>
+    <h4 class="name" id="WsMngr"><span class="type-signature"></span>new WsMngr<span class="signature">()</span><span class="type-signature"></span></h4>
 
     
 
 
 
+<div class="description">
+    <p>WebSocket Manager</p>
+</div>
 
 
 
@@ -57,55 +56,6 @@
 
 
 
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>SettingsObject</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>[Optional] Object with name/value pairs of parameters to be set.  You can use this to set an value (including those not in the class).
-            It is a convience method for setting multple things at once and/or passing them from other sub classes or parents.</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -141,52 +91,19 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="ListenMedia.js.html">ListenMedia.js</a>, <a href="ListenMedia.js.html#line32">line 32</a>
+        <a href="WsMngr.js.html">WsMngr.js</a>, <a href="WsMngr.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
     
 
     
-    <dt class="tag-see">See:</dt>
-    <dd class="tag-see">
-        <ul>
-            <li><a href="RtcMedia.html">RtcMedia</a></li>
-        
-            <li>MediaMngr</li>
-        
-            <li><a href="NkMedia.html">NkMedia</a></li>
-        </ul>
-    </dd>
-    
 
     
 </dl>
 
 
 
-<h5>Requires:</h5>
-<ul>
-    <li><a href="RtcMedia.html">RtcMedia</a></li>
-
-    <li><a href="NkMedia.html">NkMedia</a></li>
-
-    <li>MediaMngr</li>
-
-    <li><a href="WsMngr.html">WsMngr</a></li>
-
-    <li><a href="DebugData.html">DebugData</a></li>
-
-    <li><a href="PromiseData.html">PromiseData</a></li>
-
-    <li>RemoteLogMngr</li>
-
-    <li><a href="EventLoggerDb.html">EventLoggerDb</a></li>
-
-    <li><a href="adapter.html">adapter</a></li>
-
-    <li><a href="getScreenId.html">getScreenId</a></li>
-</ul>
 
 
 
@@ -197,29 +114,6 @@
 
 
 
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    <p>ListenMedia</p>
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="ListenMedia.html">ListenMedia</a></span>
-
-
-    </dd>
-</dl>
-
-    
 
 
 
@@ -227,42 +121,7 @@
     </div>
 
     
-        <h3 class="subsection-title">Extends</h3>
 
-        
-
-
-    <ul>
-        <li>MediaMngr</li>
-    </ul>
-
-
-    
-
-    
-        <h3 class="subsection-title">Requires</h3>
-
-        <ul>
-            <li><a href="RtcMedia.html">RtcMedia</a></li>
-        
-            <li><a href="NkMedia.html">NkMedia</a></li>
-        
-            <li>MediaMngr</li>
-        
-            <li><a href="WsMngr.html">WsMngr</a></li>
-        
-            <li><a href="DebugData.html">DebugData</a></li>
-        
-            <li><a href="PromiseData.html">PromiseData</a></li>
-        
-            <li>RemoteLogMngr</li>
-        
-            <li><a href="EventLoggerDb.html">EventLoggerDb</a></li>
-        
-            <li><a href="adapter.html">adapter</a></li>
-        
-            <li><a href="getScreenId.html">getScreenId</a></li>
-        </ul>
     
 
     
@@ -271,6 +130,145 @@
 
     
 
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".eventNames"><span class="type-signature">(static) </span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns events for this class PLUS events for parent classes if available.</p>
+<p>Events for this class are:</p>
+<ul>
+<li>onWsOpen</li>
+<li>onWsClose</li>
+<li>onWsError</li>
+<li>onWsSessionIdChanged</li>
+<li>onWsLoginSuccess</li>
+<li>onWsLoginError</li>
+<li>onRemoteLoggerInfo</li>
+<li>onRemoteLoggerError</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="WsMngr.js.html">WsMngr.js</a>, <a href="WsMngr.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="eventNames"><span class="type-signature"></span>eventNames<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Returns a list of Event Names for this class and parents.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="WsMngr.js.html">WsMngr.js</a>, <a href="WsMngr.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
     
 
     
