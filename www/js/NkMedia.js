@@ -428,11 +428,12 @@ class NkMedia extends RtcMedia {
 	//  muteAudioVideo - Both Local and Remote, Audio and Video
 	//--------------------------------------------------------
     muteAudioVideo( AudioMutedTF, VideoMutedTF ) {
-		console.debug( "NKMD", `NkMedia: START muteAudioVideo( ${AudioMutedTF}, ${VideoMutedTF} )` );
+		var dbg = new DebugData( NkMedia.className, this, "muteAudioVideo", AudioMutedTF, VideoMutedTF ).dbgEnter( true );
 
     	if ( ( AudioMutedTF === this.audioMuted) && ( VideoMutedTF === this.videoMuted ) ) {
     		// There is no change here .. do nothing and return true
-			console.debug( "NKMD", "NkMedia: END muteAudioVideo: No Changes " );
+
+			dbg.dbgMessage( "NkMedia: END muteAudioVideo: No Changes " );
     		return true;
     	}
 
@@ -461,10 +462,10 @@ class NkMedia extends RtcMedia {
 
 	    	NkMedia._chn_nk_MediaSessionUpdate( dataObject ).then(
 		       	function( Data ) {
-					console.info( "NKMD", "NkMedia: muteAudioVideo: Both Local and Server --> True ", Data );
-					console.debug( "NKMD", "NkMedia: END muteAudioVideo: " );
+					dbg.infoMessage( "NkMedia: muteAudioVideo: Both Local and Server --> True ", Data );
 			    	this.nkUseAudio = AudioMutedTF;
 			    	this.nkUseVideo = VideoMutedTF;
+					dbg.dbgExit( true );
 		       		return true;
 				}    		
 			).catch(
@@ -472,8 +473,8 @@ class NkMedia extends RtcMedia {
 		       		// Change things back to the way they were on Error
 			    	this.localAudioMuted = oldLocalAudioMutedTF;
 			    	this.localVideoMuted = oldLocalVideoMutedTF;
-					console.warn( "NKMD", "NkMedia: muteAudioVideo: FALSE ", Data );
-					console.debug( "NKMD", "NkMedia: END muteAudioVideo: " );
+					dbg.warnMessage( "NkMedia: muteAudioVideo: FALSE ", Data );
+					dbg.dbgExit( false );
 		       		return false;
 				}    		
 			);
@@ -485,8 +486,8 @@ class NkMedia extends RtcMedia {
 	    	this.localVideoMuted = VideoMutedTF;
 	    	this.nkUseVideo = VideoMutedTF;
 
-			console.info( "NKMD", "NkMedia: muteAudioVideo: Local Only --> True " );
-			console.debug( "NKMD", "NkMedia: END muteAudioVideo: Local Only " );
+			dbg.infoMessage( "NkMedia: muteAudioVideo: Local Only --> True " );
+			dbg.dbgExit( true );
        		return true;
     	}
 
@@ -1579,7 +1580,7 @@ class NkMedia extends RtcMedia {
     	if ( !! CmdData.msg.msg_id ||  !!CmdData.msg.user ||  !!CmdData.msg.session_id  ||  !!CmdData.msg.timestamp ) {
     		var errString = "NkMedia: _nkMediaRoomMsgLogSend: You provided a msg.key name that is restricted.  Your value will be overwriten." +
     			" Restricted Keys are: msg_id, user, session_id and timestamp.  You provided " + DebugData.JsonTab( CmdData.msg );
-    		console.warn( errString );
+    		dbg.warnMessage( errString );
     	}
 
 		var promise = new Promise( function( resolve, reject) {

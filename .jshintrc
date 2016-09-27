@@ -108,8 +108,8 @@
         "PromiseData": true,
         "EventMngr": true,
         "EventLoggerDb": true,
+        "RemoteLogMngr": true,
         "EventBus": true
-
 
 
     }        // additional predefined global variables

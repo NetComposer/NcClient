@@ -122,8 +122,8 @@ Remote Video (below)<BR>
 	//  startEcho
 	//--------------------------------------------------------
 	var startEcho = function() {
-		updateLoginObj();
-		mediaMngr.callEcho();
+		updateLoginObj(); 
+		mediaMngr.callEcho().catch( function( err ) { console.error( "Major Error in Starting Echo!", err.stack);});
 	};
 
 	//--------------------------------------------------------

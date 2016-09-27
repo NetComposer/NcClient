@@ -551,7 +551,9 @@ class DebugData {
 
 	static _getObjectCopyForPrint( TheObject ) {
 
-		if ( typeof TheObject === 'undefined' ) { return ''; }
+        if ( typeof TheObject === 'undefined' ) { return ''; }
+		
+        if ( TheObject === null ) { return 'null'; }
 
 		if ( typeof TheObject === 'function' ) { return TheObject.toString().substring(0,40) + "..."; }
 

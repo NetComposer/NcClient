@@ -2249,7 +2249,15 @@ class RtcMedia extends EventMngr {
 
 		var dbg = new DebugData( RtcMedia.className, self, "_chn_pc_SetLocalStream", publishStream ).dbgEnterPd( true );
 
-		var promise = new Promise( function(resolve) {
+		var promise = new Promise( function(resolve, reject) {
+
+			var theError; 
+
+			if ( typeof publishStream === 'undefined' || publishStream === null ) {
+				theError = new Error( "publishStream in undefined or null.  It must be set before calling this functoin!" );
+				dbg.warnMessage( theError.stack );
+				reject( theError );
+			}
 
 			self.peerConn_Init();	// Just returns if there is already a _peerConn - otherwise creates it.
 
@@ -3940,7 +3948,7 @@ class RtcMedia extends EventMngr {
 				self.sendVideo = screen_constraints.video;
 
 				// Make a copy
-				var gumConstraintsCopy = JSON.parse( JSON.stringify( this._constraints ));
+				var gumConstraintsCopy = JSON.parse( JSON.stringify( self._constraints ));
 
 		        self._getUserMedia( gumConstraintsCopy ).then(
 					function(stream) {
