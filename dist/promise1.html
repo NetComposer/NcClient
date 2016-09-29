@@ -1,0 +1,352 @@
+<html>
+
+<head>
+	<title>Promise Tester</title>
+	<link href="data:image/x-icon;base64,R0lGODlhEAAQAPEAAAAAAP///wAAAAAAACH5BAkFAAIAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAAC55QkIiIiIoQQAgghAAACACAAACAAgiAAAiAAgiAAAiAAgiAAAiAAgiAAAAACgEAgAAgAAoBAIAAIAAIAACAAAAACAAAgAAgAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgACAAIAAAACAAAAAgAAAAIAAgACAAIAAgACAgICAAICAAAAAgACAAIAAAACAgACAgACAAIAAgACAgIAAgIAAgIAAgACAAAAAgAAAAICAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQggBABAAAAEAgAAIggAIgAAIggAIgAAIggAIgAAIggAAAAQAgUAAEAAEAIFAABAABAAAQAAAAAQAAEAAEAAEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgIAAgAAAAIAAAACAAAAAgICAAIAAgACAAICAgIAAgICAAACAAIAAgAAAAICAAICAgIAAgACAAICAgACAgACAgICAAIAAAACAAAAAgIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQggAgAAACAAAAiAIAiAAAiAIAiAAAiAIAiAAAiAIAgAACAACgQAgAAgAAoEAIAAIAAKAAAAACAAAgAAgAAgAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgACAAAAAgAAAAIAAAACAgIAAgACAAIAAgICAgACAgICAAIAAgACAAAAAgIAAgICAgACAAIAAgICAAICAAICAgIAAgAAAAIAAAACAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgAABABAAAAIgCAIgAAIgCAIgAAIgCAIgAAIgCAIAAAQAAQCAUAAEAAEAgFAABAABAIBAAAQAAAAAUAAEAAAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgIAAAACAAAAAgAAAAICAgICAAIAAgACAgICAAICAgICAgACAAIAAAACAgACAgICAgIAAgACAgIAAgIAAgICAgICAAAAAgAAAAICAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgAgAAACACAAgiAAAiAAgiAAAiAAgiAAAiAAgiAAACAACAQCgAAgAAgEAoAAIAAIBAIAACAAAAACgAAgAAAAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAAIAAAACAAAAAgICAgIAAgACAAICAgIAAgICAgICAAIAAgAAAAICAAICAgICAgACAAICAgACAgACAgICAgIAAAACAAAAAgIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgABABAAAAEIgiAIgAAIggAIgAAIgiAIgAAIggAAgAAQCAQCAUAAEAgEAAFAABAIBAIAQAAAAAQAAUAAAAAEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAgAAAAIAAAACAgICAgICAAIAAgICAgACAgICAgICAgACAAAAAgIAAgICAgICAgIAAgICAAICAAICAgICAgIAAAIAAAACAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAggAgAAACCAIgiAAAiAIAiAAAiAIgiAAAiAIAgAAAiAQCAQCgAAgEAgAAoAAIBAIBAKAAAAACAACgAAAAAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgACAAAAAgAAAAICAgICAgIAAgACAgICAAICAgICAgICAAIAAAACAgACAgICAgICAgACAgIAAgIAAgICAgICAgIAAgAAAAICAAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgAABABAACEIgiAIgCAIgAAIgCAIgiAIgCAIAAAIgCAQCAQCAUAgEAAEAAFAIBAIBAIBAAAQAAQAAQAAEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgIAAAACAAAAAgICAgICAgICAAICAgIAAgICAgICAgICAgAAAAICAAICAgICAgICAgICAgACAgACAgICAgICAgICAAAAAgIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgAgAAACCCEIgiAAgiAAAiAAgiAIgiAAgiAAACAAgiAQCAQCgEAgAAgAAoBAIBAIBAIAACAACAACAAAgEAgEAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAAIAAAACAgICAgICAgIAAgICAgACAgICAgICAgICAAAAAgIAAgICAgICAgICAgICAAICAAICAgICAgICAgIAAAACAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgABABBACCEIggAIggAIgAAIgiAIggAIggAAgAAIgiAQCAQAgUAAEAAEAIFAIBAIBAAAQAAQAAQAAEAgEAgEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAgAAAAICAgICAgICAgACAgICAAICAgICAgICAgIAAAACAgACAgICAgICAgICAAIAAgIAAgICAgICAgICAgAAAAICAAICAgICAgICAgIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAggAgABCCCEIAiAIAiAAAiAIgiAIAiAIAgAAAiAIgiAQCAACgQAgAAgAAoFAIBAIAAKAACAACAAAgEAgEAgAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgACAAAAAgICAgICAgICAAICAgIAAgICAgICAgICAgACAAICAAICAgICAgICAgIAAAACAgACAgICAgICAgICAAIAAgIAAgICAgICAgICAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgAABBBCCCEIgCAIgAAIgCAIgiAIgCAIAAAIgCAIgiAQAAQCAUAAEAAEAoFAIBAABAIBQAAQAAAAgUAgEAAAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgIAAAACAgICAgICAgIAAgACAgACAgICAgICAgICAAIAAgIAAgICAgICAgICAgAAAAICAAICAgICAgICAgIAAgACAgACAgICAgICAgICAAIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgAggBBCCCEAgiAAAiAAgiAIgiAAgiAAACAAgiAIgiAACAQCgAAgAAgEAoFAIAAIBAKAACAAAAACgUAgAAAAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAAICAgICAgICAgACAAICAAICAgICAgICAgIAAgACAgACAgICAgICAgICAAAAAgIAAgICAgICAgICAgACAAICAAICAgICAgICAgIAAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgABhBBCCAEIggAIgAAIgiAIggAIggAAgAAIgiAIggAQCAQAAUAAEAgEAoFAABAIBAABQAAAAAQCgUAAAAAEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgAAAgICAgICAgICAAIAAgAAAgICAgICAgICAgACAAIAAAICAgICAgICAgIAAAACAAACAgICAgICAgICAAIAAgAAAgICAgICAgICAgACAAIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAggghBBCCCAIAgAAAiAIgiAIAiAIAiAAAiAIgiAIAiAQCAACgAAgEAgEAoEAIBAIAAKAAAAACAQCgQAAAAgAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgACAgICAgICAgIAAgACAAACAgICAgICAgICAAIAAgACAgICAgICAgICAgAAAAIAAgICAgICAgICAgIAAgACAAICAgICAgICAgICAAIAAgAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgAhhBBCACEIAAAIgCAIgiAIgCAIgAAIgCAIgiAIgCAQAAQAAUAgEAgEAgFAIBAABAABAAAQCAQCAQAAEAAAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAACAgICAgICAgIAAgACAAIAAgICAgICAgICAAAAAgACAAICAgICAgICAgACAAIAAgACAgICAgICAgIAAgACAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQAgghhBACCCEAACAAgiAIgiAAgiAAAiAAgiAIgiAAgiAACAACgEAgEAgEAoBAIAAIAAIAACAQCAQCAAAgAAAAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAICAgICAgICAgACAAIAAgACAgICAgICAgIAAAACAAIAAgICAgICAgICAAIAAgACAAICAgICAgICAgACAAIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgghhBBACAEAgAAIgiAIggAIggAIgAAIgiAIggAIggAQAAQAgUAgEAgEAIFAABAABAAAQCAQCAQAAEAAAAAEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAgACAgICAgICAAIAAgACAAIAAgICAgICAgAAAAIAAgACAAICAgICAgIAAgACAAIAAgICAgICAgICAAIAAgAAAAIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgghhABCCAAAAgAIgiAIAiAIAiAAAiAIgiAIAiAIAiAACAACgUAgEAgAAoEAIAAIAAKAQCAQCAAAgAAAAAgAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAACAAACAgICAgIAAgACAAIAAgACAgICAgICAAAAAgACAAIAAAICAgICAgACAAIAAgACAgICAgICAgIAAgACAAAAAgAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgghBBBCAAAIAAAIgiAIgCAIgAAIgCAIgiAIgCAIgAAQAAQCgUAgEAAEAgFAABAABAKBQCAQAAAAAQAAEAAAAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAIAAAACAgICAgACAAIAAgACAAICAgICAgIAAAACAAIAAgAAAAICAgICAAIAAgACAAICAgACAgICAgACAAIAAAACAAAAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgghgBACACAAACAIgiAAgiAAAiAAgiAIgiAAgiAAAiAACAQCgUAgAAgEAoAAIAAIBAKBQCAAAAACAAAgAAAAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAgAAAAICAgICAAIAAgACAAIAAgICAgICAgAAAAIAAgACAAAAAgICAgIAAgACAAIAAgICAAICAgICAAIAAgAAAAIAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQggBhBAAAAEAgAAIggAIggAIgAAIggAIggAIggAIgAAQCAQAgUAAEAgEAAFAABAIBACBQAAAAAQAAEAAAAAEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAgACAAIAAAACAAAAAgACAgIAAgACAAIAAgACAgICAgICAAAAAgACAAIAAAACAgICAgACAAIAAgACAgIAAgICAgIAAgACAAAAAgAAAAICAgICAgICAgICAQICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQggghAAACAAAAgAIAiAIAiAAAiAIAiAIAiAIAiAAAiAQCAAAgQAgEAgAAoAAIBAIAAKBAAAACAAAgAAAAAgAAoFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgICAAIAAgAAAAIAAAACAAACAgACAAIAAgACAAICAgIAAgIAAAACAAIAAgAAAAICAAICAAIAAgACAAICAgACAgACAgACAAIAAAACAAAAAgIAAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAAh+QQJBQACACwAAAAAEAAQAAAC55QkIiIiIoQQQgAhBABAAAAIAAAIgCAIgAAIgCAIgAAIgCAIgAAIgCAQAAAAAUAgEAAEAAFAIBAABAABAAAQAAAAAQAAEAAEAIFAIBAIBAKBQCAQCAQCgUAgEAgEAoFAICAgICAgICAgICAgICAgICAgICAgIAAgACAAAAAgAAAAIAAAACAAIAAgACAAIAAgICAgACAgAAAAIAAgACAAAAAgIAAgIAAgACAAIAAgICAAICAAICAAIAAgAAAAIAAAACAgACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQIAAAQIKAAA7"
+					rel="icon" type="image/x-icon" />
+
+</head>
+
+<script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
+
+<H1>Promise Tester</H1>
+
+<P>
+
+	<button onclick="bOne();"><B>B One</B></button>
+	<P>
+		<button onclick="bTwo();"><B>B Two</B></button>
+		<P>
+			<button onclick="bThree();"><B>B Three</B></button>
+			<P>
+				<button onclick="runTest();"><B>Run Test 1 - Sequential 1 Catch</B></button>
+				<p>
+					<button onclick="runTest2();"><B>Run Test 2 - Sequential 3 Catch</B></button>
+					<P>
+						<button onclick="runTest3();"><B>Run Test 3 - Parallel 3 All</B></button>
+						<P>
+							<button onclick="setup();"><B>Setup - Init Promises</B></button>
+							<P>
+								Callback Test: <input type="checkbox" id="tf" checked onclick="setTf()">
+
+
+
+
+								<script type="text/javascript">
+									'use strict';
+
+									var cbvOne = function() {};
+									var cbvTwo = function() {};
+									var cbvThree = function() {};
+
+									var tf = true;
+
+									//--------------------------------------------------------
+									//  JUNK for JS Lint Complaining
+									//--------------------------------------------------------
+
+									var console = window.console;
+									var RemoteLogMngr = window.RemoteLogMngr;
+
+									var neverUseThisItIsJustForJsLintFooling = function() {
+										neverUseThisItIsJustForJsLintFooling();
+										setTf();
+										bOne();
+										bTwo();
+										bThree();
+										runTest3();
+										runTest2();
+										runTest();
+										CbOne();
+										CbTwo();
+										CbThree();
+										M1();
+										M2();
+										D1();
+										D2();
+										D3();
+										D4();
+										modFun();
+									};
+
+
+									function M2(H1, H2, ...Other) {
+										var fName = H1[0];
+										var lName = H1[1];
+										var other = H1[2];
+										console.log(`H1 = ${fName}, H2 = ${lName}, Other = ${other}`);
+									}
+
+
+									function M1(TrueFalse) {
+										var p = new Promise(function(resolve, reject) {
+
+											if (TrueFalse === true) {
+												resolve(["james", "Gledill"]);
+											} else {
+												reject("Bad", "Data");
+											}
+										});
+
+
+										p.then(
+											M2
+										);
+
+									}
+
+									function D1(Name, Age, MaleFemale) {
+										var funStack = RemoteLogMngr.getStackTraceString((new Error()), "\n\tPromise Stack ->  at ");
+
+										var name = Name;
+										var age = Age;
+
+										var promise = new Promise(function(resolve, reject) {
+											var ret;
+
+											if (name === "James") {
+												if (age === 51) {
+													ret = "Hi " + name + " : " + age + " : " + MaleFemale + funStack;
+													console.log(ret);
+													resolve(ret);
+
+												} else {
+													ret = "You are James but not 51" + funStack;
+													console.log(ret);
+													reject(ret);
+
+												}
+											} else {
+												ret = "Your Name is not James" + funStack;
+												console.log(ret);
+												reject(ret);
+											}
+										});
+
+										return promise;
+									}
+
+									var d2Promise;
+
+									function D2(Name, Age, PreviousFromMod) {
+										var funStack = modFun("HTML:D2", PreviousFromMod);
+
+										var name = Name;
+										var age = Age;
+
+										var promise = new Promise(function(resolve, reject) {
+
+											var foo = "bar";
+											foo = "bat";
+
+											D1(name, age, "M", funStack).then(
+												function(Data) {
+													console.log("D2: " + Data);
+													resolve("D2: " + Data);
+												}
+											).catch(
+												function(Data) {
+													console.error("D2: " + Data);
+													reject("D2: " + Data);
+												}
+											);
+										});
+
+										d2Promise = promise;
+										return promise;
+									}
+
+									function D3() {
+
+									}
+
+									function D4(Name, Age) {
+										var funStack = modFun("HTML:D4");
+
+										D2(Name, Age, funStack).then(
+											function(Data) {
+												console.log("D4: " + Data);
+											}
+										).catch(
+											function(Data) {
+												console.error("D4: " + Data);
+											}
+										);
+									}
+
+									function modFun(CurrentFromMod, PreviousFromMod) {
+										var stackTrace;
+										stackTrace = RemoteLogMngr.getStackTrace();
+
+										if ((!!PreviousFromMod) && (PreviousFromMod !== "")) {
+											PreviousFromMod.push([CurrentFromMod, stackTrace]);
+											return PreviousFromMod;
+										} else {
+											return ["Promise Chain: ", [CurrentFromMod, stackTrace]];
+										}
+									}
+
+
+									function setTf() {
+										if (document.getElementById("tf").checked) {
+											tf = true;
+										} else {
+											tf = false;
+										}
+									}
+
+									function bOne() {
+										cbvOne();
+									}
+
+									function bTwo() {
+										cbvTwo();
+									}
+
+									function bThree() {
+										cbvThree();
+									}
+
+									function runTest3() {
+
+										var multiPromises = [CbOne(), CbTwo(), CbThree()];
+
+										Promise.all(multiPromises).then(
+											function() { // successCallback
+												console.log("Done with all");
+											}
+										).catch(
+											function() { // successCallback
+												console.log("In multi Catch");
+											}
+										);
+
+										console.log("#### End of runTest  --3--  ####");
+									}
+
+
+									function runTest2() {
+
+										CbOne().then(
+											function() { // successCallback
+												console.log("In 1st Then");
+											}
+										).catch(
+											function() { // successCallback
+												console.log("CATCH In 1st Catch");
+											}
+										).then(
+											function() { // successCallback
+												console.log("In Then to set up promiseTwo");
+												return CbTwo(); // Promise with no args
+											}
+										).then(
+											function() { // successCallback
+												console.log("In 2nd THEN");
+											}
+										).catch(
+											function() { // successCallback
+												console.log("CATCH In 2nd Catch");
+											}
+										).then(
+											function() { // successCallback
+												console.log("In Then to set up promiseThree");
+												return CbThree(); // Promise with no args
+											}
+										).then(
+											function() { // successCallback
+												console.log("In 3rd THEN");
+											}
+										).catch(
+											function() { // successCallback
+												console.log("CATCH In 3rd Catch");
+											}
+										);
+
+										console.log("#### End of runTest  --2--  ####");
+
+
+									}
+
+									function runTest() {
+
+										CbOne().then(
+											function() { // successCallback
+												console.log("In 1st Then");
+												return CbTwo(); // Promise with no args
+											}
+										).then(
+											function() { // successCallback
+												console.log("In 2nd Then");
+												return CbThree(); // Promise with no args
+											}
+										).catch(
+											function(rejected) { // successCallback
+												console.log("*** got Catch *** ", rejected);
+											}
+										);
+
+										console.log("#### End of runTest ####");
+									}
+
+									var CbOne = function() {
+										console.log("CbOne: Setup");
+										return new Promise(function(resolve, reject) {
+											console.log("CbOne: Setup Inner");
+											cbvOne = function() {
+												cbvOne = function() {}; // Make cvbOne no longer point here!
+												console.log("cbvOne CB: Trigger ");
+												if (tf === true) {
+													console.log("cbvOne CB: Trigger reslove ++ ");
+													resolve();
+												} else {
+													console.log("cbvOne CB: Trigger reject -- ");
+													reject("tf = false");
+												}
+											};
+										});
+									};
+
+									function CbTwo() {
+										console.log("CbTwo: Setup");
+										return new Promise(function(resolve, reject) {
+											cbvTwo = function() {
+												cbvTwo = function() {};
+												console.log("cbvTwo CB: Trigger ");
+												if (tf === true) {
+													console.log("cbvTwo CB: Trigger reslove ++ ");
+													resolve();
+												} else {
+													console.log("cbvTwo CB: Trigger reject -- ");
+													reject("tf = false");
+												}
+											};
+										});
+									}
+
+
+									function CbThree() {
+										console.log("CbThree: Setup");
+										return new Promise(function(resolve, reject) {
+											cbvThree = function() {
+												cbvThree = function() {};
+												console.log("cbvThree CB: Trigger ");
+
+												if (tf === true) {
+													console.log("cbvThree CB: Trigger reslove ++ ");
+													resolve();
+												} else {
+													console.log("cbvThree CB: Trigger reject -- ");
+													reject("tf = cathc error");
+												}
+											};
+										});
+									}
+
+									window.onload = function() {
+
+									};
+								</script>
+
+
+</html>

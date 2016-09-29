@@ -1,0 +1,721 @@
+<html>
+<head>
+	<title>SFU Pub Test</title>
+</head>
+
+<script src="./js/WsMngr.js" type="text/javascript"></script>
+<script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
+<script src="./js/PromiseData.js" type="text/javascript"></script>
+<script src="./js/DebugData.js" type="text/javascript"></script>
+
+<script src="./js/EventMngr.js" type="text/javascript"></script>
+<script src="./js/RtcMedia.js" type="text/javascript"></script>
+<script src="./js/NkMedia.js" type="text/javascript"></script>
+<script src="./js/PublishMedia.js" type="text/javascript"></script>
+<script src="./js/ListenMedia.js" type="text/javascript"></script>
+<script src="./js/WsMngr.js" type="text/javascript"></script>
+
+<script src="./js/RoomMngr.js" type="text/javascript"></script>
+
+
+<script src="./js/EventLoggerDb.js" type="text/javascript"></script>
+<script src="./js/adapter.js" type="text/javascript"></script>
+<script src="./js/getScreenId.js" type="text/javascript"></script>
+
+<H1>SFU Pub Test</H1>
+
+<H3>NetComposer Login Data: </H3>
+<button id="btnUpdateLogin" onclick="updateLoginObj();"><B>Login to WebSocket</B></button>
+<BR>
+Username:  <input type="text" id="ws_username" value="james@sipstorm.net"><br>
+Password: <input type="text" id="ws_password" value="anything"><br>
+Client Id: <input type="text" id="ws_clientId" value="rtc_james_03">
+
+
+<HR>
+SessionId: <input type="text" id="sessionId" size="40" value="session_id will be put here later"> <br>
+
+<HR>
+<b>Get User Media Options:</b><br>
+Send Audio: <input type="checkbox" id="sendAduioCheckBox" checked="true"> &nbsp;
+Recv Audio: <input type="checkbox" id="recvAduioCheckBox" checked="true">  <BR>
+Send Video: <input type="checkbox" id="sendVideoCheckBox" checked="true"> &nbsp;
+Recv Video: <input type="checkbox" id="recvVideoCheckBox" checked="true">  &nbsp;
+Video Resolution: <select id="videoResPulldown">
+  <option value="any">Default Resolution</option>
+  <option value="QQVGA">QQVGA</option>
+  <option value="QCIF">QCIF</option>
+  <option value="QVGA">QVGA</option>
+  <option value="CIF">CIF</option>
+  <option value="360p">360p</option>
+  <option value="VGA">VGA</option>
+  <option value="SVGA">SVGA</option>
+  <option value="720p">720p</option>
+</select>
+
+<HR>
+<b>Mute</b> - Audio: <input type="checkbox" id="muteAudioXBox" onclick="updateMute();"> &nbsp;
+Video: <input type="checkbox" id="muteVideoXBox" onclick="updateMute();"> &nbsp;
+
+<HR>
+
+<P>
+Set Display/Remote Levels: 
+
+<br> &nbsp; &nbsp; &nbsp;
+Console Log Level: <select id="consoleLevels" onchange="setConsoleLevel()">
+  <option value="OFF">OFF</option>
+  <option value="ALERT">ALERT</option>
+  <option value="ERROR">ERROR</option>
+  <option value="WARN">WARN</option>
+  <option value="INFO">INFO</option>
+  <option value="LOG">LOG</option>
+  <option value="DEBUG" selected="true">DEBUG</option>
+</select>
+
+
+<br> &nbsp; &nbsp; &nbsp;
+Remote Log Level: <select id="remoteLevels" onchange="setRemoteLevel()">
+  <option value="OFF">OFF</option>
+  <option value="ALERT">ALERT</option>
+  <option value="ERROR">ERROR</option>
+  <option value="WARN">WARN</option>
+  <option value="INFO" selected="true" >INFO</option>
+  <option value="LOG">LOG</option>
+  <option value="DEBUG">DEBUG</option>
+</select>
+
+<P>
+
+
+<HR>
+<P><P>
+<H3>Functions</H3>
+
+Step 1) Enter Room Name: <input type="text" id="roomName" size="20" onchange="sfuMngr.confName = roomName.value" value="cool_room@sipstorm.net"> 
+<BR>
+<HR>
+Only One Person should do this. <button id="btnStartTest" onclick="sfuMngr.createRoom()">Create Room</button> 
+<BR> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Later you can 
+<button id="btnStopTest" onclick="sfuMngr.destroyRoom()">Destroy Room</button> If you created it!
+
+
+<HR>
+<P>
+Option A) Two Step Process:
+<BR>
+Step A1) <button onclick="mediaMngr.getLocalFaceStream( true, true )">Use Face Stream</button> or 
+<button onclick="mediaMngr.getLocalScreenCaptureStream()">Use Screen Capture</button>
+
+<P>
+Step A2) <button id="btnStartTest" onclick="mediaMngr.callPublish()">Join Conference</button> 
+<BR> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Later you can 
+<button id="btnStopTest" onclick="mediaMngr.mediaSessionStop()">Leave Conference</button> 
+
+
+<HR>
+<P>
+Option B) One Step Process:
+<BR>
+Step B) <button onclick="mediaMngr.callPublishFace( true, true )">Join with Face</button> or 
+<button onclick="mediaMngr.callPublishScreen()">Join with Screen</button>
+<BR> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Later you can 
+<button id="btnStopTest" onclick="mediaMngr.mediaSessionStop()">Leave Conference</button> 
+
+<HR>
+<P>
+Other) <button id="btnListenAll" onclick="roomListenAll()">Listen All</button> 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<button id="btnStopTest" onclick="stopListening()">Stop Listening</button> 
+<P>
+<textarea rows="10" cols="180" id="log_data" ></textarea>
+<P>
+
+<div id="div1"> </div>
+<P>
+
+Local Video (below) - muted because it is local <BR>
+<video id="localVideo" controls autoplay muted style="max-width:100%"></video><P>
+
+Remote Videos (below)<BR>
+<video id="remoteVideo" controls autoplay style="max-width:100%"></video><P>
+
+
+<script type="text/javascript">
+
+	'use strict';
+
+	//==========================================================================
+	// Var declarations     
+	//==========================================================================
+
+	var portNumber = 9010;
+
+	var sfuMngr; 
+	var mediaMngr;
+	// var mediaManager;
+	// var sessionId = "";
+
+	// var localWsSendData = {
+	// 	class: "media",
+	// 	subclass: "session",
+	// 	cmd: "start",
+	// 	data: {
+ //       		type: "publish"
+ //       		// use_audio: true,
+ //       		// use_video: true,
+ //       		// record: false,
+ //       		// offer: {
+ //       		// 	sdp: ""
+ //       		// }			
+	// 	}
+	// };
+
+
+	var videoElements = {
+		streams : {
+			local: null
+		},
+		session_id : {
+			local: null
+		}
+	};
+
+	//--------------------------------------------------------
+	//  JUNK for JS Lint Complaining 
+	//--------------------------------------------------------
+
+	var neverUseThisItIsJustForJsLintFooling = function() {
+		roomListenAll();
+		// roomPublish();
+		roomListenToPublisher();
+		updateLoginObj();
+		// stopTest();
+		neverUseThisItIsJustForJsLintFooling();
+		// addRemoveVid();
+		setConsoleLevel();
+		setRemoteLevel();
+		updateMute();
+	};
+
+    var setConsoleLevel = function() {
+		RemoteLogMngr.setConsoleLevel( RemoteLogMngr[ document.getElementById('consoleLevels').value ] );
+	};
+
+    var setRemoteLevel = function() {
+		RemoteLogMngr.setRemoteLevel( RemoteLogMngr[ document.getElementById('remoteLevels').value ] );
+	};
+
+
+	//--------------------------------------------------------
+	//  updateMute - Mute/Unmute Local Stream
+	//--------------------------------------------------------
+    var updateMute = function() {
+		var muteAudio = document.getElementById("muteAudioXBox").checked;
+		var muteVideo = document.getElementById("muteVideoXBox").checked;
+
+		sfuMngr.muteAudioVideo( muteAudio, muteVideo );
+    };
+
+
+
+
+
+	//==========================================================================
+	// Primary Functions     
+	//==========================================================================
+
+
+	//--------------------------------------------------------
+	//  roomPublish - 
+	//--------------------------------------------------------
+	//  1) Gets Video Stream from local video (either face or screen )
+	//  2) peerConn_AddLocalStream_CreateOffer_SetLocalDescription_WaitForIce
+	//		a) Adds Stream
+	//		b) Creates Offer
+	//		c) Sets Local Description
+	//		d) Waits for Ice to be done OR timeout -- 2000 ms
+	//		e) Then we get the SDP it created
+	//  3) sendDataViaPromise - send stuff to NC to start Echo
+	//  4) When NC resonds with SDP and session_id
+	//		a) Set Session_Id for later use on updates
+	//		b) peerConn_setRemoteSdpAnswer
+	//  5) Set remote Video to Janus Stream
+	//--------------------------------------------------------
+   //  var roomPublish = function() {
+
+   //  	var localStream = window.localVideo.srcObject;
+        
+   //      sfuMngr.peerConn_AddLocalStream_CreateOffer_SetLocalDescription_WaitForIce( localStream, 0, 1000 ).then(
+			// function() {
+			// 	console.log("HTML: roomPublish: SDP = ", sfuMngr.peerConn.localDescription.sdp );
+
+			// 	// Update localWsSendData.data
+		 //  //      	localWsSendData.data.offer = { sdp: sfuMngr.peerConn.localDescription.sdp };
+			// 	// localWsSendData.cmd = "start";
+
+			// 	RoomMngr.confName = document.getElementById("roomName").value;
+		 //    	return RoomMngr.sfuRoomCreate( );
+		 //    	// return WsMngr.sendDataViaPromise( "media", "room", "create", data );
+	  //       }        	
+   //      ).then(		// THEN for Create Room was successful - now use the room id
+			// function( Data ) {
+			// 	console.log("HTML: roomPublish: Create Room SUCCESS ", Data );
+
+			// 	// Update localWsSendData.data
+		 //       	localWsSendData.data.offer = { sdp: sfuMngr.peerConn.localDescription.sdp };
+			// 	localWsSendData.cmd = "start";
+			// 	localWsSendData.data.room_id = document.getElementById("roomName").value;
+
+		 //       	// return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+
+	  //       }        	
+   //  	).catch(		// CATCH for Create Room was ERROR - now use the room id - Already created
+			// function( Data ) {
+			// 	console.log("HTML: roomPublish: Create Room FAILED ", Data );
+
+			// 	// Update localWsSendData.data
+		 //       	localWsSendData.data.offer = { sdp: sfuMngr.peerConn.localDescription.sdp };
+			// 	localWsSendData.cmd = "start";
+			// 	localWsSendData.data.room_id = document.getElementById("roomName").value;
+
+		 //       	// return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+
+	  //       }        	
+   //      ).then(
+
+   //      	function( ) {
+	  //       	console.log("*** DO Then after Create Room  *** ");
+ 
+		 //       	return WsMngr.sendDataViaPromise(localWsSendData.class, localWsSendData.subclass, localWsSendData.cmd, localWsSendData.data);
+   //     		}
+   //      ).then(
+
+   //      	function( Data ) {
+	  //       	console.log("*** In  roomPublish   RESOLVE  2  *** ", Data.wsResponseData.data.answer.sdp, Data.wsResponseData.data.session_id );
+	  //       	sessionId = Data.wsResponseData.data.session_id;
+	  //       	videoElements.session_id.local = Data.wsResponseData.data.session_id;
+
+	  //       	document.getElementById("sessionId").value = Data.wsResponseData.data.session_id;
+
+   //      		return sfuMngr.peerConn_setRemoteSdpAnswer( Data.wsResponseData.data.answer.sdp );
+   //      	}
+   //  	).then(
+   //      	function( Data ) {
+	  //       	console.log("*** In  roomPublish   RESOLVE  3  *** ", Data );
+
+   // 				roomListenAll();
+   //      	}
+   //  	).catch(
+			// function(error) {
+			// 	console.error("HTML: roomPublish: ERROR = ", error.stack );
+			// 	// throw( error );
+			// }
+   //  	);
+
+   //  };
+
+
+  //   var stopTest = function() {
+
+  //   	WsMngr.sendDataViaPromise( "media", "session", "stop", { session_id: sessionId } ).then(
+  //       	function( Data ) {
+	 //        	console.log("*** In  stopTest   RESOLVE  1  *** ", Data );
+  //       	}    		
+		// ).catch(
+		// 	function(error) {
+		// 		console.log("HTML: stopTest: ERROR = ", error.stack );
+		// 		throw( error );
+		// 	}
+		// );
+  //   };
+
+
+
+	// var addRemoveVid = function() {
+
+	// 	var Vid = document.createElement('video');
+	// 	Vid.id = "afdadfadsf";
+	// 	Vid.controls = true;
+	// 	Vid.autoplay = true;
+	// 	Vid.muted = true;
+
+	// 	document.body.appendChild(Vid);
+	// 	document.body.removeChild(Vid);
+	// };
+
+
+	var removeAllCheckBoxes = function() {
+		var div1 = document.getElementById("div1");
+		while ( div1.hasChildNodes() ) {
+	 	   div1.removeChild(div1.lastChild);
+		}
+	};
+
+    var createCheckBox = function( Name, Id, Checked ) {
+    	var Label = document.createTextNode( Name );
+    	var Div = document.createElement("DIV");
+    	Div.id = "div_" + Id;
+    	// Div.name = "div_" + Name;
+    	var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+		// checkbox.name = "ckBox_" + Name;
+		checkbox.checked = Checked;
+		checkbox.id = Id;
+		// checkbox.onclick = roomListenToPublisher( Id );
+		checkbox.onclick = function() { listenOrDelete( Id ); };
+
+		Div.appendChild( Label );
+		Div.appendChild( checkbox );
+
+		document.getElementById("div1").appendChild( Div );
+
+    };
+
+    var createCheckBoxHeader = function( Name ) {
+    	var Label = document.createTextNode( Name );
+    	var Div = document.createElement("DIV");
+    	Div.id = "div_" + Name;
+    	Div.name = "div_" + Name;
+
+		Div.appendChild( Label );
+		document.getElementById("div1").appendChild( Div );
+
+    };
+
+
+    var listenOrDelete = function( Id ) {
+    	var ddd = document.getElementById( Id );
+    	if (( !!ddd ) && ( !!ddd.checked )) {
+    		console.log("HEY --- I AM CHECKED " + Id );
+    		// roomListenToPublisher( Id );
+    	} else {
+    		// roomListenToPublisher( Id );
+
+    		console.log("HEY --- I AM --NOT-- CHECKED " + Id );
+    	}
+    };
+
+    var roomListenAll = function( ) {
+        var dbg = new DebugData( "Sfu2", "HTML", "roomListenAll" ).dbgDo();
+
+    	// var confRoom = document.getElementById( "roomName" ).value;
+
+    	// RoomMngr.sfuRoomInfo( confRoom, "Sfu.html:roomListenAll" ).then(
+    	sfuMngr.roomInfo().then(
+         	function( Response ) {
+         		dbg.logMessage( "1) ", Response );
+
+	        	removeAllCheckBoxes();
+
+	        	createCheckBoxHeader( "Conference Publishers" );
+
+
+		        for ( var publisher in Response.data.publishers ) {
+
+		        	var longName = Response.data.publishers[ publisher ].user + " " + publisher;
+
+					createCheckBox( longName, publisher, false );
+
+        			if ( publisher === videoElements.session_id.local ) {
+	        			console.log("Pub: LOCAL: " + publisher );
+
+        			} else {
+	        			console.log("Pub: Remote: " + publisher );
+	        			roomListenToPublisher( publisher );
+        			}
+		        }
+        	}  		
+    	).catch(
+         	function( error ) {
+         		console.error("HTML: roomListenAll: ERROR ", error.stack );
+         	}
+    	);
+
+    };
+
+
+
+	//--------------------------------------------------------
+	//  roomListenToPublisher
+	//--------------------------------------------------------
+	// Get Publishers for a room - so we can listen to them
+	//
+	// @param PublisherId - (M)String - ID of the room
+	// @return Data from call
+	// @error Error from call
+	//--------------------------------------------------------
+    var roomListenToPublisher = function( PublisherId ) {
+        var dbg = new DebugData( "Sfu2", "HTML", "roomListenToPublisher" ).dbgDo();
+
+    	var listener = new ListenMedia( { publisherId: PublisherId } );
+
+    	listener.callListen().then(
+        	function( Data ) {
+	        	dbg.logMessage("roomListenToPublisher: ", Data.self );
+
+				var dynamicVideoElement = null;
+
+    			dynamicVideoElement = document.createElement('video');
+    			// dynamicVideoElement.id = pub;
+    			dynamicVideoElement.controls = true;
+    			dynamicVideoElement.autoplay = true;
+    			dynamicVideoElement.muted = true;
+    			dynamicVideoElement.style="max-width:50%";
+				dynamicVideoElement.srcObject = Data.self.remoteStream;
+
+    			document.body.appendChild( dynamicVideoElement );
+
+        	}    		
+		).catch(
+			function(error) {
+				console.log("HTML: roomListenToPublisher: ERROR = ", error );
+			}
+		);
+	
+    };
+
+
+
+
+
+	//--------------------------------------------------------
+	//  updateLoginObj - Send Command NC with new Login User Credentials
+	//--------------------------------------------------------
+	var updateLoginObj = function() {
+
+		WsMngr.updateLoginObj( window.location.hostname, portNumber, 
+			document.getElementById("ws_username").value,			// UserNameString, 
+			document.getElementById("ws_password").value,			// UserPasswordString, 
+			document.getElementById("ws_clientId").value			// DeviceIdString, 
+		 );
+
+		document.getElementById('btnUpdateLogin').innerHTML = "<B>Change Login Credentials</B>";
+
+	};
+          
+
+	//==========================================================================
+	// Event Handlers   
+	//==========================================================================
+
+	//--------------------------------------------------------
+	//  manageClass_Server
+	//--------------------------------------------------------
+
+	var manageClass_Server = function( data ) {
+		console.error("HTML: index.html - \n\n\t\tI got Class -Server- data !!! " + JSON.stringify(data), data);
+		// WsMngr.respondOk( data, {} );
+
+		WsMngr.respondAck( data );
+
+		setTimeout( WsMngr.respondOk, 2500, data, { no: "response"} );
+	};
+
+
+
+
+
+	// var onStartedPublisher = function( TheEvent ) {
+	// 	var roomBody = TheEvent.target;
+	// 	var textArea = document.getElementById("log_data");
+		
+	// 	roomListenAll();
+	// 	textArea.value = textArea.value + 
+	// 		"\n onStartedPublisher: " + roomBody.publisher + " in room: " + roomBody.room;
+	// };
+
+	// var onStoppedPublisher = function( TheEvent ) {
+	// 	var roomBody = TheEvent.target;
+	// 	var textArea = document.getElementById("log_data");
+		
+	// 	roomListenAll();
+	// 	textArea.value = textArea.value + 
+	// 		"\n onStoppedPublisher: " + roomBody.publisher + " in room: " + roomBody.room;
+	// };
+
+	// var onStartedListener = function( TheEvent ) {
+	// 	var roomBody = TheEvent.target;
+	// 	var textArea = document.getElementById("log_data");
+		
+	// 	roomListenAll();
+	// 	textArea.value = textArea.value + 
+	// 		"\n onStartedListener: " + roomBody.listener + " listening to: " + roomBody.publisher + " in room: " + roomBody.room;
+	// };
+
+	// var onStoppedListener = function( TheEvent ) {
+	// 	var roomBody = TheEvent.target;
+	// 	var textArea = document.getElementById("log_data");
+		
+	// 	roomListenAll();
+	// 	textArea.value = textArea.value + 
+	// 		"\n onStoppedListener: " + roomBody.listener + " in room: " + roomBody.room;
+	// };
+
+
+
+
+
+
+
+
+	// {
+	//   "class": "core",
+	//   "cmd": "event",
+	//   "data": {
+	//     "body": {
+	//       "code": 200,
+	//       "reason": "Publisher stopped"
+	//     },
+	//     "class": "media",
+	//     "obj_id": "8c89bd0f-38b3-cd8f-aa66-0401a4bb3501",
+	//     "subclass": "session",
+	//     "type": "stop"
+	//   },
+	//   "tid": 15
+	// }
+
+	// 15:30:35.949 [info] NkSERVICE API Server 4e2e4467-38b3-ccac-12a1-0401a4bb3501 (james@sipstorm.net) sending {
+	//   "class": "core",
+	//   "cmd": "event",
+	//   "data": {
+	//     "body": {
+	//       "publisher": "ea0ce264-38b3-c214-da14-0401a4bb3501",
+	//       "room": "cool_room@sipstorm.net",
+	//       "type": "stopped_publisher"
+	//     },
+	//     "class": "media",
+	//     "obj_id": "1d526014-38b3-ccae-addb-0401a4bb3501",
+	//     "subclass": "session",
+	//     "type": "room"
+	//   },
+	//   "tid": 16
+	// }
+
+
+
+	// {
+	//   "class": "core",
+	//   "cmd": "event",
+	//   "data": {
+	//     "body": {
+	//       "publisher": "8293527d-38b3-574c-4ee8-0401a4bb3501",
+	//       "room": "cool_room@sipstorm.net",
+	//       "type": "started_publisher"
+	//     },
+	//     "class": "media",
+	//     "obj_id": "2b9e5fb5-38b3-47f9-5a7d-0401a4bb3501",
+	//     "subclass": "session",
+	//     "type": "room"
+	//   },
+	//   "tid": 8
+	// }
+
+	// {
+	//   "class": "core",
+	//   "cmd": "event",
+	//   "data": {
+	//     "body": {
+	//       "listener": "c36a7136-38b3-4aac-11d4-0401a4bb3501",
+	//       "publisher": "2b9e5fb5-38b3-47f9-5a7d-0401a4bb3501",
+	//       "room": "cool_room@sipstorm.net",
+	//       "type": "started_listener"
+	//     },
+	//     "class": "media",
+	//     "obj_id": "2b9e5fb5-38b3-47f9-5a7d-0401a4bb3501",
+	//     "subclass": "session",
+	//     "type": "room"
+	//   },
+	//   "tid": 2
+	// }
+
+	// {
+	//   "class": "core",
+	//   "cmd": "event",
+	//   "data": {
+	//     "body": {
+	//       "listener": "bbdc8260-38b3-7a9c-3d24-0401a4bb3501",
+	//       "publisher": "8293527d-38b3-574c-4ee8-0401a4bb3501",
+	//       "room": "cool_room@sipstorm.net",
+	//       "type": "started_listener"
+	//     },
+	//     "class": "media",
+	//     "obj_id": "c36a7136-38b3-4aac-11d4-0401a4bb3501",
+	//     "subclass": "session",
+	//     "type": "room"
+	//   },
+	//   "tid": 25
+	// }
+
+
+
+	//==========================================================================
+	// Other Things    
+	//==========================================================================
+
+
+	// var onFaceStream = function( TheEvent ) {
+	// 	console.log("HTML: onFaceStream: ", TheEvent.target );
+	// };
+
+	// var onScreenStream = function( TheEvent ) {
+	// 	console.log("HTML: onScreenStream: ", TheEvent.target);
+	// };
+
+
+	//==========================================================================
+	// Window Load and Unload   
+	//==========================================================================
+	window.onload = function() {
+
+		RemoteLogMngr.replaceConsole();		// Remote Logging overrides console.xxxx
+
+		this.setRemoteLevel();
+
+		WsMngr = window.WsMngr;
+
+		WsMngr.setConnectData( window.location.hostname, portNumber, 
+			document.getElementById("ws_username").value,			// UserNameString, 
+			document.getElementById("ws_password").value,			// UserPasswordString, 
+			document.getElementById("ws_clientId").value			// DeviceIdString, 
+		);
+
+		WsMngr.addClassManager( "server", manageClass_Server );
+
+		// mediaManager = new window.MediaManager( );
+
+		// sfuMngr = new window.GumRtcStreamHelper( true );
+
+		mediaMngr = new PublishMedia( );
+		mediaMngr.localVideoElement = window.localVideo;	// Tell EchoMedia about video element
+		mediaMngr.remoteVideoElement = window.remoteVideo;	// Tell EchoMedia about video element
+
+		sfuMngr = new RoomMngr( "myName", "foo@bar.com");
+
+		mediaMngr.confRoom = sfuMngr;
+
+		// sfuMngr.addEventListener( "onLocalFaceStream", onFaceStream );
+		// sfuMngr.addEventListener( "onLocalScreenCaptureStream", onScreenStream );
+		// // sfuMngr.addEventListener( "onMuteEvent", onMuteEvent );
+
+		// sfuMngr.addEventListener( "onStartedPublisher", onStartedPublisher );
+		// sfuMngr.addEventListener( "onStoppedPublisher", onStoppedPublisher );
+		// sfuMngr.addEventListener( "onStartedListener", onStartedListener );
+		// sfuMngr.addEventListener( "onStoppedListener", onStoppedListener );
+
+		// sfuMngr.localVideoElement = window.localVideo;	// Tell EchoMedia about video element
+
+
+	};
+
+	window.onunload = function() {
+		sfuMngr.close();
+
+		//  Do stuff here
+	};
+
+
+</script>
+
+
+</html>
