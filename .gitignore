@@ -1,1 +1,5 @@
 NcClient.sublime-project
+*.log
+node_modules
+client/tmp
+/logs/*

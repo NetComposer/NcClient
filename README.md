@@ -4,7 +4,7 @@ NetComposer Javascript client
 A JavaScript client to work with NetComposer, including:
 * WebSocket connection
 * Remote Logging
-* Media managment 
+* Media managment
   * RtcMedia - Client based media
     * Get User Media
     * WebRTC PeerConnection
@@ -13,8 +13,15 @@ A JavaScript client to work with NetComposer, including:
     * SFU
       * Publisher
       * Listener
-      * SFU Manager 
+      * SFU Manager
     * Park
     * Bridge
 
-More to come ... 
+More to come ...
+
+
+# Dennis Notes:
+
+* npm install
+* gulp targets
+    -

@@ -1,15 +1,15 @@
-// https://github.com/gabrielnahmias/Console.js  
+// https://github.com/gabrielnahmias/Console.js
 'use strict';
 
 const RemoteLogMngr_Version = "RemoteLogMngr 1.0.0";
 
+export default class RemoteLogMngr {
 
-class RemoteLogMngr {
-
+    constructor() {    }
 
     static get className() { return "RemoteLogMngr"; }
 	static toString() { return `[object RemoteLogMngr]`; }
-    
+
     static get version() { return RemoteLogMngr_Version; }
     static get versions() { return `${RemoteLogMngr_Version} --> Ojbect`; }
 
@@ -17,10 +17,8 @@ class RemoteLogMngr {
 		var jsonData = {
 			listeners: RemoteLogMngr.listeners
 		};
-
 		return jsonData;
 	}
-
 
 	static init() {
 
@@ -37,7 +35,7 @@ class RemoteLogMngr {
 
 		RemoteLogMngr.consoleLogLevel = 7;
 		RemoteLogMngr.remoteLogLevel = 5;
-		
+
 		RemoteLogMngr.gelfHostName = "not set";
 		RemoteLogMngr.isFullStackPrinted = true;
 
@@ -121,39 +119,39 @@ class RemoteLogMngr {
 
 			RemoteLogMngr.restoreConsoleFlag = true;
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.ALERT ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.ALERT ) {
 				window.console.alert = RemoteLogMngr.realConsoleFunctions.error;
-			} else { 
+			} else {
 				window.console.alert = function() {};
 			}
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.ERROR ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.ERROR ) {
 				window.console.error = RemoteLogMngr.realConsoleFunctions.error;
-			} else { 
+			} else {
 				window.console.error = function() {};
 			}
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.WARN ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.WARN ) {
 				window.console.warn = RemoteLogMngr.realConsoleFunctions.warn;
-			} else { 
+			} else {
 				window.console.warn = function() {};
 			}
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.INFO ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.INFO ) {
 				window.console.info = RemoteLogMngr.realConsoleFunctions.info;
-			} else { 
+			} else {
 				window.console.info = function() {};
 			}
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.LOG ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.LOG ) {
 				window.console.log = RemoteLogMngr.realConsoleFunctions.log;
-			} else { 
+			} else {
 				window.console.log = function() {};
 			}
 
-			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.DEBUG ) { 
+			if ( RemoteLogMngr.consoleLogLevel >= RemoteLogMngr.DEBUG ) {
 				window.console.debug = RemoteLogMngr.realConsoleFunctions.debug;
-			} else { 
+			} else {
 				window.console.debug = function() {};
 			}
 
@@ -165,8 +163,7 @@ class RemoteLogMngr {
 			window.console.localInfoOnly = RemoteLogMngr.realConsoleFunctions.info;
 			window.console.localLogOnly = RemoteLogMngr.realConsoleFunctions.log;
 			window.console.localDebugOnly = RemoteLogMngr.realConsoleFunctions.debug;
-
-
+            return;
 		}
 
 		static replaceConsole(  ) {
@@ -227,7 +224,7 @@ class RemoteLogMngr {
 
 			} else {
 				throw("Remote LogLevel must be a number from 0-7! You sent: " + LogLevel );
-			}			
+			}
 		}
 
 		static getRemoteLevel( ) {
@@ -318,7 +315,7 @@ class RemoteLogMngr {
 		}
 
 		static debug( ) {		// 7 - DEBUG
-			var setupData = {logLevel: RemoteLogMngr.DEBUG, stackShiftAmount: 2, forceSendRemote: false, allowedToSendRemote: true };			
+			var setupData = {logLevel: RemoteLogMngr.DEBUG, stackShiftAmount: 2, forceSendRemote: false, allowedToSendRemote: true };
 			RemoteLogMngr.logIt.apply( this, [ setupData].concat( Array.from(arguments) ) );
 		}
 
@@ -350,13 +347,13 @@ class RemoteLogMngr {
 		// RemoteLogMngr.LOG = 5;		// Same as Normal
 		// RemoteLogMngr.DEBUG = 6;		// Same as Trace
 
-		// 			var setupData = {logLevel: 6, stackShiftAmount: 3, allowedToSendRemote: true };			
+		// 			var setupData = {logLevel: 6, stackShiftAmount: 3, allowedToSendRemote: true };
 
 		static logIt( SetupData, EverythingElseWillBeInArguments ) {		// Generic version - All others call this
 
 			var b = EverythingElseWillBeInArguments;
 			var args;
-			var module; 
+			var module;
 			var stackTrace;
 			var timeStamp = new Date();
 			var timeStampFormatted = RemoteLogMngr.dateToTime(timeStamp);
@@ -426,7 +423,7 @@ class RemoteLogMngr {
 
 			}
 
-			// Remote Loggin here IF SetupData.allowedToSendRemote === true 
+			// Remote Loggin here IF SetupData.allowedToSendRemote === true
 			if ( SetupData.allowedToSendRemote ) {
 
 				// Remote Log Stuff here
@@ -434,9 +431,9 @@ class RemoteLogMngr {
 
 					var message = "";
 					var metaData = {};
-					var remoteLogRetVal; 
+					var remoteLogRetVal;
 					args = Array.prototype.slice.call(arguments, 1);
-					
+
 
 					if ( args[0].length <= 5 ) {
 						module = args[0].toUpperCase();
@@ -535,7 +532,7 @@ class RemoteLogMngr {
 
 
 		static levelNumberToName( LevelNumber ) {
-			var levelName; 
+			var levelName;
 
 			switch(LevelNumber) {
 			    case RemoteLogMngr.ALERT:
@@ -566,7 +563,7 @@ class RemoteLogMngr {
 			return levelName;
 		}
 
-		static header( LogLevel, RemoteFlag, Module, TimeStampMsFormated ) { 
+		static header( LogLevel, RemoteFlag, Module, TimeStampMsFormated ) {
 			var headerCssData = "";
 			var otherCssData = "";
 
@@ -616,7 +613,7 @@ class RemoteLogMngr {
 			        otherCssData = "background: " + RemoteLogMngr.bg2Colors.ALERT + "; color: " + RemoteLogMngr.font2Colors.ALERT;
 			}
 
-			// var header = "%c" + Module + " " + levelName + " " + TimeStampMsFormated; 
+			// var header = "%c" + Module + " " + levelName + " " + TimeStampMsFormated;
 
 			return { header: header, headerCssData: headerCssData, otherCssData: otherCssData };
 		}
@@ -637,7 +634,7 @@ class RemoteLogMngr {
 		// 	// We want our caller's frame. It's index into |stack| depends on the
 		// 	// browser and browser version, so we need to search for the second frame:
 		// 	var frameRE = /:(\d+):(?:\d+)[^\d]*$/;
-			
+
 		// 	do {
 		// 		var frame = stack.shift();
 		// 	} while (!frameRE.exec(frame) && stack.length);
@@ -647,7 +644,7 @@ class RemoteLogMngr {
 
 
 	  //   static getStackTrace( TheStack, StackShiftAmount ) {
-	    	
+
 		 //  // 	var stack = e.stack.replace(/^[^\(]+?[\n$]/gm, '')
 			// 	// .replace(/^\s+at\s+/gm, '')
 			// 	// .replace(/^Object.<anonymous>\s*\(/gm, '{anonymous}()@')
@@ -693,7 +690,7 @@ class RemoteLogMngr {
 
 
 	    	if ( RemoteLogMngr.isFullStackPrinted ) {
-				stack.forEach( function( Str ) { 
+				stack.forEach( function( Str ) {
 					retString = retString + Str + " \n\t\t at ";
 				});
 				retString = retString.substring(0, retString.length - 6 );
@@ -721,9 +718,9 @@ class RemoteLogMngr {
 		}
 
 		static dateToTime( dtt ) {
-			return RemoteLogMngr.pad("00", dtt.getHours(), true) + ":" + 
-				RemoteLogMngr.pad("00", dtt.getMinutes(), true) + ":" + 
-				RemoteLogMngr.pad("00", dtt.getSeconds(), true) + "." + 
+			return RemoteLogMngr.pad("00", dtt.getHours(), true) + ":" +
+				RemoteLogMngr.pad("00", dtt.getMinutes(), true) + ":" +
+				RemoteLogMngr.pad("00", dtt.getSeconds(), true) + "." +
 				RemoteLogMngr.pad("000", dtt.getMilliseconds(), false);
 		}
 
