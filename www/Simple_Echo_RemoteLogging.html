@@ -13,7 +13,6 @@
 <script src="./js/NkMedia.js" type="text/javascript"></script>
 <script src="./js/EchoMedia.js" type="text/javascript"></script>
 
-
 <script src="./js/EventLoggerDb.js" type="text/javascript"></script>
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
@@ -67,9 +66,9 @@ Remote Log Level: <select id="remoteLevels" onchange="setRemoteLevel()">
 Step 1) <button onclick="mediaMngr.getLocalFaceStream( true, true )">Use Face Stream</button> or 
 <button onclick="mediaMngr.getLocalScreenCaptureStream()">Use Screen Capture</button>
 <P>
-Step 2) <button id="btnUdpateEcho" onclick="startEcho()">Start Test</button><BR>Must close previous test before starting a new one
+Step 2) <button id="btnUdpateEcho" onclick="startDemo()">Start Test</button><BR>Must close previous test before starting a new one
 <P>
-Step 3) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Echo Test</button> 
+Step 3) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Test</button> 
 <P>
 
 Local Video (below) - muted because it is local <BR>
@@ -93,7 +92,7 @@ Remote Video (below)<BR>
 
 	var neverUseThisItIsJustForJsLintFooling = function() {
 		neverUseThisItIsJustForJsLintFooling();
-		startEcho();
+		startDemo();
 		updateMute();
 		updateLoginObj();
 		setConsoleLevel();
@@ -119,9 +118,9 @@ Remote Video (below)<BR>
     };
 
 	//--------------------------------------------------------
-	//  startEcho
+	//  startDemo
 	//--------------------------------------------------------
-	var startEcho = function() {
+	var startDemo = function() {
 		updateLoginObj(); 
 		mediaMngr.callEcho().catch( function( err ) { console.error( "Major Error in Starting Echo!", err.stack);});
 	};

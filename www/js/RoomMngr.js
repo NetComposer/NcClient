@@ -47,6 +47,10 @@ class RoomMngr extends EventMngr {
     	this._confName = ( typeof ConfName === 'string' ) ? ConfName : null;				// Used for conference name if provided
     	this._name = ( typeof Name === 'string' ) ? Name : RoomMngr.createNewName(); 		// Instance Name - NOT used for conference name
     	this._joinMethod = null;
+    	this._publisher = null;
+    	this._automaticallyDisplayPublisher = RoomMngr.defaultValues.automaticallyDisplayPublisher;
+    	this._listenMediaDb = {};
+    	this._listenerDiv = null;
 
     	RoomMngr.dbAdd( this );
 
@@ -60,8 +64,13 @@ class RoomMngr extends EventMngr {
 			roomId: this._roomId,
 			confName: this._confName,
 			joinMethod: this._joinMethod,
+			publisher: this._publisher,
+			automaticallyDisplayPublisher: this._automaticallyDisplayPublisher,
+	    	listenMediaDb: this._listenMediaDb,
+
 		};
 	}
+
 
 
 	//--------------------------------------------------------
@@ -88,6 +97,7 @@ class RoomMngr extends EventMngr {
 			confBitrate: 0,
 			confAudioCodec: 'opus',
 			confVideoCodec: 'vp8',
+			automaticallyDisplayPublisher: true,
 		};
 	}
 
@@ -103,12 +113,158 @@ class RoomMngr extends EventMngr {
 	// No Setter, because it should not be changed 
 	
     get name() { 
+
     	if ( typeof this._name !== 'string' ) {
     		this._name = RtcMedia.createNewName();
     	}
 
     	return this._name; 
     }
+
+
+	//--------------------------------------------------------
+	//  publisher
+	//--------------------------------------------------------
+
+	set automaticallyDisplayPublisher( TrueFalse ) {
+		var dbg = new DebugData( RoomMngr.className, this, "set automaticallyDisplayPublisher", TrueFalse ).dbgDo( );
+
+    	if ( TrueFalse === this._sendAudio ) {
+    		// Do nothing here so we don't waste time and resources 
+    	} else {		// They are different so check and process
+
+    		if ( typeof TrueFalse === 'boolean' ) {
+    			this._automaticallyDisplayPublisher = TrueFalse;
+				dbg.logMessage( "Set to ", TrueFalse );
+    		} else {
+				dbg.warnMessage( "Value must be true or false. " +
+					`You gave ${TrueFalse}.  Setting to default value of '${RoomMngr.defaultValues.automaticallyDisplayPublisher}'` );
+				this._automaticallyDisplayPublisher = RoomMngr.defaultValues.automaticallyDisplayPublisher;
+    		}
+    	}
+
+	}
+
+
+	get automaticallyDisplayPublisher() {
+		return this._automaticallyDisplayPublisher;
+	}
+
+
+	//--------------------------------------------------------
+	//  listenerDiv
+	//--------------------------------------------------------
+
+    set listenerDiv( ListenerDiv ) {
+
+		var dbg = new DebugData( RoomMngr.className, this, "set listenerDiv", ListenerDiv ).dbgDo( );
+
+		this._listenerDiv = ListenerDiv;
+    	
+    }
+    
+    get listenerDiv() {
+    	return this._listenerDiv;
+    }
+
+
+
+	//--------------------------------------------------------
+	//  publisher
+	//--------------------------------------------------------
+
+    set publisher( PublishMediaInstance ) {
+
+		var dbg = new DebugData( RoomMngr.className, this, "set publisher", PublishMediaInstance ).dbgDo( );
+
+		if ( PublishMediaInstance instanceof PublishMedia ) {
+			this._publisher = PublishMediaInstance;
+
+			// Set the RoomMngr reference back to this roomMngr
+			PublishMediaInstance.roomMngr = this;
+		} else {
+			var throwVal = "RoomMngr: set publisher: value instanceof PublishMedia.  You gave " + PublishMediaInstance ;
+			dbg.errorMessage( throwVal );
+			throw( throwVal );
+		}
+    	
+    }
+    
+    get publisher() {
+    	return this._publisher;
+    }
+
+
+
+    callPublish( ) {
+		var dbg = new DebugData( RoomMngr.className, this, "callPublish" ).dbgDo( );
+
+		if ( this.publisher === null ) {
+			var throwVal = "RoomMngr: callPublish: A publisher has not been set.  Please set a publisher before calling this function!";
+			dbg.errorMessage( throwVal );
+			throw( throwVal );
+		} 
+
+    	return this.publisher.callPublish();
+
+    }
+
+    joinAsPublisher( PublishMediaInstance ) {
+		new DebugData( RoomMngr.className, this, "joinAsPublisher" ).dbgDo( );
+
+		this.publisher = PublishMediaInstance;
+
+    	return this.publisher.callPublish();
+
+    }
+
+
+    joinAsListener( ) {
+		new DebugData( RoomMngr.className, this, "joinAsPublisher" ).dbgDo( );
+
+    	return this.publisher.callPublish();
+
+    }
+
+ 
+
+    addListener( ListenMediaInstance ) {
+		var dbg = new DebugData( RoomMngr.className, this, "addListener", ListenMediaInstance ).dbgDo( true );
+
+		if ( ListenMediaInstance instanceof ListenMedia ) {
+			var throwVal = "RoomMngr: addListener: A listener has not been added.  You did not provide a valid ListenMedia object!";
+			dbg.errorMessage( throwVal );
+			throw( throwVal );
+		} 
+
+		this._listenMediaDb[ ListenMediaInstance.name ] = ListenMediaInstance;
+
+    }
+
+    deleteListener( ListenMediaInstance ) {
+		var dbg = new DebugData( RoomMngr.className, this, "deleteListener", ListenMediaInstance ).dbgDo( true );
+
+		if ( ListenMediaInstance instanceof ListenMedia ) {
+			var throwVal = "RoomMngr: addListener: A listener has not been deleted.  You did not provide a valid ListenMedia object!";
+			dbg.errorMessage( throwVal );
+			throw( throwVal );
+		} 
+
+		delete this._listenMediaDb[ ListenMediaInstance.name ];
+    }
+
+    getListeners() {
+    	return this._listenMediaDb;
+    }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -594,122 +750,6 @@ class RoomMngr extends EventMngr {
 
     	return NkMedia._nkMediaRoomMsgLogGet( data );
 	}
-
-
-	//--------------------------------------------------------
-	//  sfuRoomGetMessages
-	//--------------------------------------------------------
-	handle_Media_Session_Room( WsEventObj ) {
-
-		var roomBody = WsEventObj.data.body;
-
-		console.log( "SFU", "RoomMngr: handle_Media_Session_Room:\n", JSON.stringify( WsEventObj, null, "\t" ));
-
-		if ( roomBody.room !== this.room_id ) {
-			return; 
-		}
-
-
-
-		WsMngr.respondAck( WsEventObj );
-
-		WsMngr.respondOk( WsEventObj, { thanks: "for that roomBody!"} );
-
-		switch( roomBody.type ) {
-		    
-		    case "started_publisher" :
-					// 	"class": "core",
-					// 	"cmd": "event",
-					// 	"data": {
-					// 		"body": {
-					// 			"publisher": "b2a51764-38cc-5fad-715b-0401a4bb3501",
-					// 			"room": "cool_room@sipstorm.net",
-					// 			"type": "started_publisher"
-					// 		},
-					// 		"class": "media",
-					// 		"obj_id": "2582f7b5-38cc-5ec5-000b-0401a4bb3501",
-					// 		"subclass": "session",
-					// 		"type": "room"
-					// 	},
-					// 	"tid": 2
-					// }
-
-					// Keep list of publishers and listeners current 
-					// Notify App of new Publisher ... they should connect if they want to
-				EventMngr.dispatch( "onStartedPublisher", roomBody );
-		        break;
-		    
-		    case "stopped_publisher" :
-
-					// {
-					// 	"class": "core",
-					// 	"cmd": "event",
-					// 	"data": {
-					// 		"body": {
-					// 			"publisher": "b2a51764-38cc-5fad-715b-0401a4bb3501",
-					// 			"room": "cool_room@sipstorm.net",
-					// 			"type": "stopped_publisher"
-					// 		},
-					// 		"class": "media",
-					// 		"obj_id": "2582f7b5-38cc-5ec5-000b-0401a4bb3501",
-					// 		"subclass": "session",
-					// 		"type": "room"
-					// 	},
-					// 	"tid": 9
-					// }
-				EventMngr.dispatch( "onStoppedPublisher", roomBody );
-		        break;
-		    
-		    case "started_listener" :
-					// {
-					// 	"class": "core",
-					// 	"cmd": "event",
-					// 	"data": {
-					// 		"body": {
-					// 			"listener": "e4a2e341-38cc-7c81-75bb-0401a4bb3501",
-					// 			"publisher": "ff73b50a-38cc-79d2-aec7-0401a4bb3501",
-					// 			"room": "cool_room@sipstorm.net",
-					// 			"type": "started_listener"
-					// 		},
-					// 		"class": "media",
-					// 		"obj_id": "2582f7b5-38cc-5ec5-000b-0401a4bb3501",
-					// 		"subclass": "session",
-					// 		"type": "room"
-					// 	},
-					// 	"tid": 13
-					// }
-				EventMngr.dispatch( "onStartedListener", roomBody );
-		        break;
-		    
-		    case "stopped_listener" :
-					// {
-					// 	"class": "core",
-					// 	"cmd": "event",
-					// 	"data": {
-					// 		"body": {
-					// 			"listener": "e4a2e341-38cc-7c81-75bb-0401a4bb3501",
-					// 			"room": "cool_room@sipstorm.net",
-					// 			"type": "stopped_listener"
-					// 		},
-					// 		"class": "media",
-					// 		"obj_id": "2582f7b5-38cc-5ec5-000b-0401a4bb3501",
-					// 		"subclass": "session",
-					// 		"type": "room"
-					// 	},
-					// 	"tid": 17
-					// }
-				EventMngr.dispatch( "onStoppedListener", roomBody );
-		        break;
-
-		    default:
-				console.error( "SFU","RoomMngr: handle_Media_Session_Room: Un-handled Event.  Need to implement functionality for this.\n", JSON.stringify( WsEventObj, null, "\t" ));
-		}						
-
-	}
-
-
-
-
 
 
 	//--------------------------------------------------------

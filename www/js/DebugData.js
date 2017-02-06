@@ -597,6 +597,14 @@ class DebugData {
 	    			};
 		    	}
 			        break;
+            case '[object RTCSessionDescription]' :
+                retVal = {
+                    type: TheObject.type,
+                    sdp: TheObject.sdp
+                };
+                break;
+
+
 		    case '[object Event]' :
     			retVal = DebugData._getEventTypes( TheObject );
 		        break;

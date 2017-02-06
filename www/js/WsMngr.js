@@ -1109,7 +1109,8 @@ class WsMngr {
 		// Try different URLs if they are available. 
 		
 		if ( WsMngr.isWebSocketOpen() === false ) {
-			var wsUri = 'wss://' + WsMngr._host + ':' + WsMngr._port + '/';
+			var wsUri = 'wss://' + WsMngr._host + '/';  // ':' + WsMngr._port + '/';
+			wsUri = 'wss://c1.netc.io/nkapi/ws';
 			WsMngr._wsConnStartDate	 = new Date();		// Set time to start trying 
 			WsMngr._webSocket           = new WebSocket(wsUri);
 			WsMngr._webSocket.onopen    = WsMngr._onWsOpen;		// this calls _login()

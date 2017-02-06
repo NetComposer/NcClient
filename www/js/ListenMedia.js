@@ -47,6 +47,18 @@ class ListenMedia extends NkMedia {
         dbg.dbgExit(); 
     }
 
+    /**
+     * This provides the JSON data when doing a JSON.stringify function.
+     * @return {object} Data for JSON.stringify to work on.
+     */
+    toJSON() {
+        var jsonData = {
+            publisherId: ( !! this._publisherId ) ? this._publisherId : 'undefined',
+        };
+
+        return Object.assign( {}, jsonData, super.toJSON() );
+    }
+
 
     //--------------------------------------------------------
     //  version(s), className, toString & Versions

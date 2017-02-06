@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Simple Echo Demo</title>
+	<title>Sfu3 Demo</title>
 </head>
 
 <script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
@@ -17,7 +17,7 @@
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
 
-<H1>Simple Echo Demo</H1>
+<H1>Sfu3 Demo</H1>
 
 <H3>NetComposer Login Data: </H3>
 <BR>
@@ -31,8 +31,12 @@ Client Id: <input type="text" id="ws_clientId" value="rtc_james_03" >
 
 Step 1) <button onclick="mediaMngr.getLocalFaceStream( true, true );">Use Face Stream</button> or 
 <button onclick="mediaMngr.getLocalScreenCaptureStream()">Use Screen Capture</button> <P>
-Step 2) <button id="btnUdpateEcho" onclick="startDemo()">Start Test</button><BR>Must close previous test before starting a new one <P>
-Step 3) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Test</button> <P>
+
+Step 2) Enter Room Name: <input type="text" id="roomName" size="20" onchange="sfuMngr.confName = roomName.value" value="cool_room@sipstorm.net"> 
+
+
+<button id="btnUdpateEcho" onclick="startEcho()">Start Test</button><BR>Must close previous test before starting a new one <P>
+Step 3) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Echo Test</button> <P>
 
 Local Video (below) - muted because it is local <BR>
 <video id="localVideo" controls autoplay muted style="max-width:100%"></video><P>
@@ -46,7 +50,7 @@ Remote Video (below)<BR>
 	//==========================================================================
 	// Var declarations     
 	//==========================================================================
-	var portNumber = 443;
+	var portNumber = 9010;
 	var mediaMngr; 
 
 	//--------------------------------------------------------
@@ -54,15 +58,15 @@ Remote Video (below)<BR>
 	//--------------------------------------------------------
 	var neverUseThisItIsJustForJsLintFooling = function() {
 		neverUseThisItIsJustForJsLintFooling();
-		startDemo();
+		startEcho();
 		updateLoginObj();
 	};
 
 
 	//--------------------------------------------------------
-	//  startDemo
+	//  startEcho
 	//--------------------------------------------------------
-	var startDemo = function() {
+	var startEcho = function() {
 		updateLoginObj();
 		mediaMngr.callEcho();
 	};

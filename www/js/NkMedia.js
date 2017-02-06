@@ -51,7 +51,7 @@ class NkMedia extends RtcMedia {
     	this._confCreateRejectOnAlreadyCreated = NkMedia.defaultValues.confCreateRejectOnAlreadyCreated; 
 
     	this._cmdData = {};
-    	this._confRoom = {};
+    	this._roomMngr = null;
 
     	this._wsResponseData = null;
     	this._wsSendData = null;
@@ -94,7 +94,7 @@ class NkMedia extends RtcMedia {
 			nkUseAudio: this._nkUseAudio,
 			nkBitrate: this._nkBitrate,
 			nkRecord: this._nkRecord,
-			confRoom: this._confRoom,
+			roomMngr: this._roomMngr,
 			confCreateRejectOnAlreadyCreated: this._confCreateRejectOnAlreadyCreated,
 			cmdData: this._cmdData,
 			nkSdpOffer: this._nkSdpOffer,
@@ -350,20 +350,20 @@ class NkMedia extends RtcMedia {
 
 
 
-	set confRoom( ConfRoomObject ) {
-		var dbg = new DebugData( RtcMedia.className, this, "set confRoom", ConfRoomObject ).dbgDo( );
+	set roomMngr( RoomMngrObject ) {
+		var dbg = new DebugData( RtcMedia.className, this, "set roomMngr", RoomMngrObject ).dbgDo( );
     	
-		if ( ConfRoomObject instanceof RoomMngr === false ) {
-			var myError = new Error( 'ConfRoomObject MUST be an instance of RoomMngr' );
+		if ( RoomMngrObject instanceof RoomMngr === false ) {
+			var myError = new Error( 'RoomMngrObject MUST be an instance of RoomMngr' );
     		dbg.errorMessage( myError.stack );
     		throw( myError );
 		}
 
-		this._confRoom = ConfRoomObject;
+		this._roomMngr = RoomMngrObject;
 	}
 
-	get confRoom() {
-		return this._confRoom;
+	get roomMngr() {
+		return this._roomMngr;
 	}
 
 
@@ -635,6 +635,120 @@ class NkMedia extends RtcMedia {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Stop a Session.  All parameters should already be set before calling this function.  If there is an
+     *    existing session, this should stop it.
+     *    
+	 * @return {Promise(PromiseData)} Promise.resolve( mySelfPromiseData ) so they can be chained together
+     */
+    registerForEvents() {
+		new DebugData( NkMedia.className, this, "registerForEvents" ).dbgDo( );
+    	return NkMedia._chn_nk_RegisterForEvents( this.mySelfPromiseData );
+    }
+
+
+	//--------------------------------------------------------
+	//  _chn_nk_RegisterForEvents - "media", "session", "stop"
+	//--------------------------------------------------------
+
+	/**
+	 * Stop a Media Session.
+	 * 
+	 * Parameters Used - Should be set before calling.
+	 * * self.nkSessionId - MUST not be set via developer.  Only set by {@link NkMedia._chn_nk_MediaSessionStart}
+	 * * self.stopCode
+	 * * self.stopReason
+	 *
+	 * Parameters Set - Via function (or Promise)
+	 * * self._nkSessionId === 'closed'
+	 * 
+	 * * self._wsSendData
+	 * * self._wsResponseData
+	 * 
+	 * @param  {PromiseData} mySelfPromiseData Contains the instance to work on.  
+	 * 
+	 * @return {Promise(PromiseData)} Promise.resolve( mySelfPromiseData ) so they can be chained together
+	 *
+	 * @see  NkMedia.nkMediaSessionType
+	 * @see  https://github.com/NetComposer/nkmedia/blob/master/doc/api_commands.md#stop-a-session
+	 */
+    static _chn_nk_RegisterForEvents( mySelfPromiseData ) {
+    	var self = mySelfPromiseData.self;
+    	var ncCmdStr = "media:session:stop";
+
+    	var DataObject = {
+    		session_id: self.nkSessionId,
+    		code: self.stopCode,
+    		reason: self.stopReason
+    	}; 
+
+		var dbg = new DebugData( NkMedia.className, self, "_chn_nk_MediaSessionStart", ncCmdStr, DataObject ).dbgEnter( true );
+
+    	var myError;
+
+    	if ( !NkMedia._isValidNkSessionId( self.nkSessionId ) ) {
+			myError = new Error('Invalid nkSessionId of ${self.nkSessionId}');
+    		dbg.errorMessage( myError.stack );
+    		throw( myError );
+    	}
+
+		var promise = new Promise( function(resolve, reject) {
+
+	    	WsMngr.sendDataViaPromise( "media", "session", "stop", DataObject ).then(
+	        	function( Data ) {
+
+	        		self._wsResponseData = Data.wsResponseData;
+	        		self._wsSendData = Data.wsSendData;
+
+		     		dbg.infoMessage( `Resolved`, Data );
+		     		dbg.dbgResolve( 'mySelfPromiseData' );
+		        	resolve( mySelfPromiseData );
+	        	}    		
+			).catch(
+				function(Data) {
+		     		dbg.infoMessage( `Rejected`, Data );
+					dbg.dbgReject( );
+					reject( NkMedia.createRejectObject( Data ) );
+				}
+			);
+		});
+
+		dbg.dbgExitPd( );
+		return promise;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//--------------------------------------------------------
 	//  _chn_nk_MediaSessionStart - "media", "session", "start"
 	//--------------------------------------------------------
@@ -729,7 +843,7 @@ class NkMedia extends RtcMedia {
 
 		var promise = new Promise( function(resolve ) {
 
-	    	WsMngr.sendDataViaPromise( "media", "session", "start", DataObject ).then(
+	    	WsMngr.sendDataViaPromise( "media", "session", "create", DataObject ).then(
 	        	function( Data ) {
 
 	        		self._wsResponseData = Data.wsResponseData;
@@ -738,6 +852,17 @@ class NkMedia extends RtcMedia {
 	        		self._nkSessionId = self._wsResponseData.data.session_id;
 	        		RtcMedia.dbUpdate( self );
 
+    				if ( (typeof PublishMedia !== 'undefined') && (self instanceof PublishMedia) ) {
+    					if ( self.roomMngr === null ) {
+    						self.roomMngr = new RoomMngr();
+    					}
+    					self.roomMngr._roomId = self._wsResponseData.data.room_id;
+    				} else if ( (typeof ListenMedia !== 'undefined') && (self instanceof ListenMedia) ) {
+    					if ( self.roomMngr === null ) {
+    						self.roomMngr = new RoomMngr();
+    					}
+    					self.roomMngr._roomId = self._wsResponseData.data.room_id;
+    				}
 
         			dbg.dbgMessage( 'self._nkSessionId = ',  self._nkSessionId );
 
@@ -769,7 +894,7 @@ class NkMedia extends RtcMedia {
 
 	        		} else {
 	        			var errStr = `${ncCmdStr} Response from NetComposer does not contain an Offer or Answer.  Aborting`;
-	        			dbg.dbgError( errStr );
+	            		dbg.errorMessage( errStr );
 	        			throw( new Error( errStr ));
 	        		}
 
@@ -1299,7 +1424,7 @@ class NkMedia extends RtcMedia {
 	 //        		self._wsResponseData = Data.wsResponseData;
 	 //        		self._wsSendData = Data.wsSendData;
 
-	 //        		self.confRoom.room_id = Data.wsResponseData.data.room_id;
+	 //        		self.roomMngr.room_id = Data.wsResponseData.data.room_id;
 
 		//      		dbg.infoMessage( `Resolved`, Data );
 		//      		dbg.dbgResolve( 'mySelfPromiseData' );
@@ -1333,7 +1458,7 @@ class NkMedia extends RtcMedia {
 		// 		        		self._wsResponseData = Data.wsResponseData;
 		// 		        		self._wsSendData = Data.wsSendData;
 
-		// 		        		self.confRoom.room_id = Data.wsSendData.data.room_id;
+		// 		        		self.roomMngr.room_id = Data.wsSendData.data.room_id;
 
 		// 			     		dbg.infoMessage( `Resolved`, Data );
 		// 			     		dbg.dbgResolve( 'mySelfPromiseData' );
@@ -1387,7 +1512,7 @@ class NkMedia extends RtcMedia {
 
     	// room_id 
     	if ( ( typeof( CmdData.room_id ) !== 'string' ) ) {
-			myError = new Error('self.confRoom.room_id was not set.  Must set self.confRoom.room_id before calling this!');
+			myError = new Error('self.roomMngr.room_id was not set.  Must set self.roomMngr.room_id before calling this!');
     		dbg.errorMessage( myError.stack );
     		throw( myError );
     	}
@@ -1452,7 +1577,7 @@ class NkMedia extends RtcMedia {
 
     	// room_id 
     	if ( ( typeof CmdData.room_id !== 'string' ) ) {
-			myError = new Error('self.confRoom.room_id was not set.  Must set self.confRoom.room_id before calling this!');
+			myError = new Error('self.roomMngr.room_id was not set.  Must set self.roomMngr.room_id before calling this!');
     		dbg.errorMessage( myError.stack );
     		throw( myError );
     	}
@@ -1564,7 +1689,7 @@ class NkMedia extends RtcMedia {
 
     	// room_id 
     	if ( ( typeof CmdData.room_id !== 'string' ) ) {
-			myError = new Error('self.confRoom.room_id was not set.  Must set self.confRoom.room_id before calling this!');
+			myError = new Error('self.roomMngr.room_id was not set.  Must set self.roomMngr.room_id before calling this!');
     		dbg.errorMessage( myError.stack );
     		throw( myError );
     	}
@@ -1643,7 +1768,7 @@ class NkMedia extends RtcMedia {
 
     	// room_id 
     	if ( ( typeof CmdData.room_id !== 'string' ) ) {
-			myError = new Error('self.confRoom.room_id was not set.  Must set self.confRoom.room_id before calling this!');
+			myError = new Error('self.roomMngr.room_id was not set.  Must set self.roomMngr.room_id before calling this!');
     		dbg.errorMessage( myError.stack );
     		throw( myError );
     	}

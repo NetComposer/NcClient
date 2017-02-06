@@ -3107,7 +3107,7 @@ class RtcMedia extends EventMngr {
 		// this._jsepRtcDesc should be set by setRemoteSdpAnswer, setRemoteSdpOffer or setRemoteSdpPreAnswer
         var RTCSessionDescriptionInit = self._jsepRtcDesc;
 
-		var dbg = new DebugData( RtcMedia.className, self, "_chn_pc_SetRemoteDescription", RTCSessionDescriptionInit ).dbgEnterPd();
+		var dbg = new DebugData( RtcMedia.className, self, "_chn_pc_SetRemoteDescription", RTCSessionDescriptionInit ).dbgEnterPd( true );
 
 
 		self.peerConn_Init();	// Just returns if there is already a _peerConn - otherwise creates it.

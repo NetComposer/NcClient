@@ -90,6 +90,10 @@ class EchoMedia extends NkMedia {
         self._cmdData = {
             type: "echo",
             backend: self.mediaServerType,
+            wait_reply: true,
+            no_offer_trickle_ice: true,
+            no_answer_trickle_ice: true,
+            sdp_type: "webrtc",
             offer: {
                 sdp: self.sdpOffer,
             }

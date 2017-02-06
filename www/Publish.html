@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Simple Echo Demo</title>
+	<title>Publish Demo</title>
 </head>
 
 <script src="./js/RemoteLogMngr.js" type="text/javascript"></script>
@@ -11,13 +11,14 @@
 <script src="./js/EventMngr.js" type="text/javascript"></script>
 <script src="./js/RtcMedia.js" type="text/javascript"></script>
 <script src="./js/NkMedia.js" type="text/javascript"></script>
-<script src="./js/EchoMedia.js" type="text/javascript"></script>
+<script src="./js/PublishMedia.js" type="text/javascript"></script>
+<script src="./js/RoomMngr.js" type="text/javascript"></script>
 
 <script src="./js/EventLoggerDb.js" type="text/javascript"></script>
 <script src="./js/adapter.js" type="text/javascript"></script>
 <script src="./js/getScreenId.js" type="text/javascript"></script>
 
-<H1>Simple Echo Demo</H1>
+<H1>Publish Demo</H1>
 
 <H3>NetComposer Login Data: </H3>
 <BR>
@@ -31,13 +32,18 @@ Client Id: <input type="text" id="ws_clientId" value="rtc_james_03" >
 
 Step 1) <button onclick="mediaMngr.getLocalFaceStream( true, true );">Use Face Stream</button> or 
 <button onclick="mediaMngr.getLocalScreenCaptureStream()">Use Screen Capture</button> <P>
-Step 2) <button id="btnUdpateEcho" onclick="startDemo()">Start Test</button><BR>Must close previous test before starting a new one <P>
-Step 3) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Test</button> <P>
+
+Step 2) Enter Room Name: <input type="text" id="roomName" size="20" onchange="updateConfName()" value=""> <P>
+
+Step 3) <button id="btnUdpateEcho" onclick="startDemo()">Start Test</button><BR>Must close previous test before starting a new one <P>
+Step 4) <button id="btnCloseEcho" onclick="mediaMngr.closeAll()">Close Test</button> <P>
 
 Local Video (below) - muted because it is local <BR>
 <video id="localVideo" controls autoplay muted style="max-width:100%"></video><P>
-Remote Video (below)<BR>
-<video id="remoteVideo" controls autoplay style="max-width:100%"></video><P>
+
+
+<div id="div1"> </div> <P>
+
 
 <script type="text/javascript">
 
@@ -46,8 +52,9 @@ Remote Video (below)<BR>
 	//==========================================================================
 	// Var declarations     
 	//==========================================================================
-	var portNumber = 443;
+	var portNumber = 9010;
 	var mediaMngr; 
+	var roomMngr; 
 
 	//--------------------------------------------------------
 	//  JUNK for JS Lint Complaining 
@@ -64,7 +71,14 @@ Remote Video (below)<BR>
 	//--------------------------------------------------------
 	var startDemo = function() {
 		updateLoginObj();
-		mediaMngr.callEcho();
+		mediaMngr.callPublish();
+	};
+
+
+	var updateConfName = function() {
+		if ( document.getElementById("roomName").value !== "" ) {
+			roomMngr.confName = document.getElementById("roomName").value;
+		}
 	};
 
 	//--------------------------------------------------------
@@ -89,9 +103,13 @@ Remote Video (below)<BR>
 			document.getElementById("ws_clientId").value			// DeviceIdString, 
 		);
 
-		mediaMngr = new EchoMedia( );
+		mediaMngr = new PublishMedia( );
 		mediaMngr.localVideoElement = window.localVideo;	// Tell EchoMedia about video element
-		mediaMngr.remoteVideoElement = window.remoteVideo;	// Tell EchoMedia about video element
+
+		// roomMngr = new RoomMngr( "ConfName", "ConfID");
+		roomMngr = new RoomMngr( );
+		roomMngr.publisher = mediaMngr;
+		updateConfName();
 
 		RemoteLogMngr.replaceConsole();		// Remote Logging overrides console.xxxx
 		RemoteLogMngr.setConsoleLevel( 7 );
